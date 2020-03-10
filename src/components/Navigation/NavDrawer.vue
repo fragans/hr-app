@@ -1,6 +1,6 @@
 <template>
 
-      <v-navigation-drawer v-model="drawer" :mini-variant.sync="mini" permanent class="" app >
+      <v-navigation-drawer v-model="drawer" :mini-variant.sync="mini" permanent color=""  app >
       <v-list-item class="px-2">
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
@@ -40,7 +40,7 @@
 
     <template v-slot:append >
         <div class="pa-2">
-          <v-btn block v-if="!mini">Logout</v-btn>
+          <v-btn block v-if="!mini" color="accent">Logout</v-btn>
           <v-list-item-content v-else>
             <v-icon class="items-center"> mdi-logout</v-icon>
           </v-list-item-content>

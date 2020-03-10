@@ -4,7 +4,7 @@
      
       <navDrawer class=""> </navDrawer>
     
-      <v-content fluid>
+      <v-content fluid accent>
         <!-- memanggil router , sesuai folder [views] -->
         
         <router-view></router-view>

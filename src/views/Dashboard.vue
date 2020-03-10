@@ -32,6 +32,34 @@
         </Card>
       </v-col>
     </v-row>
+
+    <v-row>
+      <v-col col="6">
+        <List> 
+          <h3 slot="title" class="uppercase">upcoming events</h3>
+          <div slot="content">
+            <v-simple-table height="150">
+              <template v-slot:default>
+
+                <tbody>
+                  <tr v-for="item in date" :key="item.date">
+                    <td><v-icon>mdi-calendar</v-icon></td>
+                    <td>{{ item.event }}</td>
+                    <td>{{ item.date }}</td>
+                  </tr>
+                </tbody>
+
+              </template>
+            </v-simple-table>
+          </div>
+        </List>
+      </v-col>
+
+      <v-col col="6">
+        <List> 
+        </List>
+      </v-col>
+    </v-row>
     
     
     
@@ -43,11 +71,23 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 import navDrawer from '@/components/Navigation/NavDrawer';
 import Card from '@/components/Card'
+import List from '@/components/List'
 export default {
   components: {
     HelloWorld,
     navDrawer,
-    Card
+    Card,
+    List
+  },
+  data(){
+    return{
+      date:[
+        {
+          event: 'kartini',
+          date: '21 April',
+        }
+      ]
+    }
   }
 }
 </script>

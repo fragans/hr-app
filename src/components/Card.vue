@@ -1,15 +1,15 @@
 <template>
    <v-col class="border border-gray-50 w-full rounded">
         <v-skeleton-loader :loading="loading" height="50" type="card-heading" >
-        <div>
-            <slot name="title" > </slot>    
-        </div>
+            <div>
+                <slot name="title" > </slot>    
+            </div>
         </v-skeleton-loader>
         <v-divider></v-divider>
         <v-skeleton-loader :loading="loading" height="100" type="image" >
-        <div >
-            <slot name="content" > </slot>
-        </div>
+            <div >
+                <slot name="content" > </slot>
+            </div>
         </v-skeleton-loader>
     </v-col>
 </template>

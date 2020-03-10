@@ -18,6 +18,13 @@ const routes = [{
             import ('../views/Employees.vue')
     },
     {
+        path: '/Employee/:id',
+        name: 'Employee',
+        icon: 'account-badge',
+        component: () =>
+            import ('../views/EmployeeEdit.vue')
+    },
+    {
         path: '/Attendance',
         name: 'Attendance',
         icon: 'calendar-check',

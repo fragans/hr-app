@@ -1,24 +1,11 @@
 <template>
     
     <v-container>
-        <v-row >
-            <v-col class="w-full">
-                <v-card-title>
-
-                    <h1>Employees</h1>
-                    
-                    <v-spacer></v-spacer>
-                    
-                    <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line hide-details ></v-text-field>
-
-                </v-card-title>
-                <v-data-table 
-                :headers="headers"
-                :items="desserts"
-                :search="search"
-                ></v-data-table>
-            </v-col>
-        </v-row>
+        <FilterList :search="search" :headers="headers" :items="desserts" > 
+          <v-toolbar flat color="primary" dark slot="title">
+            <v-toolbar-title>{{$routes.name}}</v-toolbar-title>
+          </v-toolbar>
+        </FilterList>
         
     </v-container>
 
@@ -26,7 +13,11 @@
 
 
 <script>
+import FilterList from '@/components/FilterList'
     export default {
+      components:{
+        FilterList
+      },
     data () {
       return {
         search: '',

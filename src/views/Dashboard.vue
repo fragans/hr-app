@@ -64,7 +64,7 @@
               <template v-slot:default>
 
                 <tbody>
-                  <tr v-for="item in date" :key="item.date">
+                  <tr v-for="item in date" :key="item">
                     <td><v-icon>mdi-calendar</v-icon></td>
                     <td>{{ item.event }}</td>
                     <td>{{ item.date }}</td>

@@ -2,8 +2,10 @@
 <v-container>
     <v-row class="title">
         <v-col col="6" class="flex justify-center items-center uppercase">
+            <v-icon left>mdi-card-bulleted</v-icon>
             <h1>
-                Edit Employee {{ $route.params.id }}
+                {{$route.name}} Employee
+                <!-- {{ $route.params.id }} -->
             </h1>
             
         </v-col>
@@ -18,18 +20,20 @@
                 cancel</v-btn>
         </v-col>
     </v-row>
-    <v-row>
+    <v-divider/>
+    <v-card>
 
         <v-col col="12">
             <v-tabs v-model="tab" background-color="transparent" grow >
 
-                <v-tab v-for="item in items" :key="item" >
-                    {{item}}
+                <v-tab v-for="item in items" :key="item.name" color="success">
+                    <v-icon left> mdi-{{item.icon}}</v-icon>
+                    {{item.name}}
                 </v-tab>
-
-                <v-tab-item v-for="block in items" :key="block">           
+                
+                <v-tab-item v-for="block in items" :key="block.name">           
                     <keep-alive>
-                        <component :is="block" ></component>
+                        <component :is="block.name" ></component>
                     </keep-alive>
                 </v-tab-item >
 
@@ -37,7 +41,7 @@
 
         </v-col>
         
-    </v-row>
+    </v-card>
 </v-container>
     
 </template>
@@ -56,7 +60,10 @@ import Emergency from '@/components/Edit/EmergencyContact'
                 tab: 0,
                 currentTab:'Profile',
                 items: [
-                'Profile', 'Occupation', 'Address', 'Emergency',
+                {name:'Profile',icon:'account'},
+                {name:'Occupation',icon:'briefcase'},
+                {name:'Address',icon:'mailbox-open-outline'},
+                {name:'Emergency',icon:'alert-box-outline'},
                 ],
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
             }
@@ -69,7 +76,7 @@ import Emergency from '@/components/Edit/EmergencyContact'
         },
         watch:{
             tab:function(val, OldVal) {
-                this.currentTab = this.items[val];
+                this.currentTab = this.items[val].name;
             }
         },
         methods:{

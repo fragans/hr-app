@@ -1,6 +1,6 @@
 <template>
     <v-row class="p-4">
-        <v-col col="8">
+        <v-col col="8" class="mr-2">
             <v-text-field v-model="name" :error-messages="nameErrors" :counter="10" label="Name" required @input="$v.name.$touch()" @blur="$v.name.$touch()" ></v-text-field>
 
             <v-text-field v-model="email" :error-messages="emailErrors" label="E-mail" required @input="$v.email.$touch()" @blur="$v.email.$touch()" ></v-text-field>

@@ -1,21 +1,24 @@
 <template>
     <v-container>
-         <v-row>
-            <v-col>
-                <v-sheet height="400">
-                    <v-calendar
-                    
-                    :now="today"
-                    :value="today"
-                    
-                    color="primary"
-                    type="week"
-                    :weekdays="[1,2,3,4,5]"
-                    :interval-format="intervalFormat"
-                    ></v-calendar>
-                </v-sheet>
-            </v-col>
+        <v-row>
+          <v-skeleton-loader :loading="loading" height="50" max-width="300" type="list-item-avatar" >
+            <v-card-title>
+            <v-icon left>mdi-{{current_route.icon}}</v-icon>
+            <h1>{{$route.name}}</h1>
+            </v-card-title>
+          </v-skeleton-loader>
         </v-row>
+        <v-row>
+          
+              <v-skeleton-loader :loading="loading" max-width="3000" type="table-thead, table-tbody"  class="">
+                  <v-data-table 
+                 
+                  >
+                  
+                  </v-data-table>
+              </v-skeleton-loader>
+          
+      </v-row>
     </v-container>
 
 </template>
@@ -23,23 +26,11 @@
 <script>
   export default {
     data: () => ({
-      today: '',
-      events: [
-        {
-          name: 'Weekly Meeting',
-          start: '2019-01-07 09:00',
-          end: '2019-01-07 10:00',
-        },
-        {
-          name: 'Thomas\' Birthday',
-          start: '2019-01-10',
-        },
-        {
-          name: 'Mash Potatoes',
-          start: '2019-01-09 12:30',
-          end: '2019-01-09 15:30',
-        },
-      ]
+      items:[],
+      search:'',
+      headers:'',
+      current_route: '',
+      loading: true
     }),
     methods:{
         intervalFormat(interval){
@@ -50,6 +41,16 @@
         const d = new Date();
         this.today  = d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate()
 
+        let self = this;
+            setTimeout(()=>{
+                self.loading = false;
+            },1000)
+            
+
+        const current_route =  this.$router.options.routes.filter((r)=>{
+                return r.name === this.$route.name
+            })
+        this.current_route = current_route[0]
     }
   }
 </script>

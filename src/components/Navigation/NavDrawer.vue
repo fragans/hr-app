@@ -17,11 +17,12 @@
 
       <v-list dense >
         <v-list-item v-for="item in items" :key="item.name" link  >
-            <router-link :to="item" class="flex">
+            <router-link :to="item" class="flex" >
+              <template @click.stop="mini = !mini">
               <v-list-item-icon class="py-4">
                 <v-icon>mdi-{{ item.icon }}</v-icon>
               </v-list-item-icon>
-            
+              </template>
               <v-list-item-content>
                 <v-list-item-title >{{ item.name }}</v-list-item-title>
               </v-list-item-content>
@@ -39,7 +40,9 @@
 
     <template v-slot:append >
         <div class="pa-2">
-          <v-btn block v-if="!mini" color="accent">Logout</v-btn>
+          <v-btn block v-if="!mini" color="accent">
+            <v-icon left> mdi-logout</v-icon>
+            Logout</v-btn>
           <v-list-item-content v-else>
             <v-icon class="items-center"> mdi-logout</v-icon>
           </v-list-item-content>

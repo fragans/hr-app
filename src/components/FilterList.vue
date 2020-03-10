@@ -35,8 +35,6 @@
                     @click:row="handleClick"
                     >
                     
-                    <slot name="filter"></slot>
-                    
                     </v-data-table>
                 </v-skeleton-loader>
             </v-col>

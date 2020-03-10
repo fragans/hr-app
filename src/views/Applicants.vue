@@ -3,7 +3,7 @@
     <v-container>
         <FilterList :search="search" :headers="headers" :items="copy" > 
           <h1 slot="title">Applicants</h1>
-          <v-tabs slot="action">
+          <v-tabs slot="action" show-arrows>
             <v-tab @click="filter(50)">less than 50</v-tab>
           </v-tabs>
         </FilterList>

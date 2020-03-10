@@ -42,7 +42,7 @@ const routes = [{
             import ('../views/Applicants.vue')
     }, {
         path: '/offwork',
-        name: 'LeaveRequest',
+        name: 'Leave Request',
         icon: 'run-fast',
         component: () =>
             import ('../views/LeaveRequest.vue')

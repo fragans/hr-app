@@ -1,9 +1,13 @@
 <template>
     
     <v-container>
-        <FilterList :search="search" :headers="headers" :items="desserts"> 
+        <FilterList :search="search" :headers="headers" :items="copy" > 
           <h1 slot="title">Leave Request</h1>
+          <v-tabs slot="action" show-arrows> 
+            <v-tab @click="filter(50)">less than 50</v-tab>
+          </v-tabs>
         </FilterList>
+        
     </v-container>
 
 </template>
@@ -25,7 +29,6 @@ import FilterList from '@/components/FilterList'
             sortable: false,
             value: 'name',
           },
-          { text: 'Calories', value: 'calories' },
           { text: 'Fat (g)', value: 'fat' },
           { text: 'Carbs (g)', value: 'carbs' },
           { text: 'Protein (g)', value: 'protein' },
@@ -113,8 +116,22 @@ import FilterList from '@/components/FilterList'
             iron: '6%',
           },
         ],
+        copy: []
       }
     },
+    methods:{
+        filter(value){
+             let d = this.desserts;
+            var filtered  = d.filter((el)=>{
+                console.log(el.calories > 50)
+                return el.calories > 400
+            })
+            this.copy = filtered
+        }
+    },
+    beforeMount(){
+        this.copy = this.desserts;
+    }
   }
 </script>
 

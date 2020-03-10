@@ -34,9 +34,10 @@
     </v-row>
 
     <v-row>
+
       <v-col col="6">
         <List> 
-          <h3 slot="title" class="uppercase">upcoming events</h3>
+          <h3 slot="title" class="uppercase  text-center">upcoming events</h3>
           <div slot="content">
             <v-simple-table height="150">
               <template v-slot:default>
@@ -57,8 +58,25 @@
 
       <v-col col="6">
         <List> 
+          <h3 slot="title" class="uppercase  text-center">upcoming events</h3>
+          <div slot="content">
+            <v-simple-table height="150">
+              <template v-slot:default>
+
+                <tbody>
+                  <tr v-for="item in date" :key="item.date">
+                    <td><v-icon>mdi-calendar</v-icon></td>
+                    <td>{{ item.event }}</td>
+                    <td>{{ item.date }}</td>
+                  </tr>
+                </tbody>
+
+              </template>
+            </v-simple-table>
+          </div>
         </List>
       </v-col>
+
     </v-row>
     
     
@@ -82,6 +100,14 @@ export default {
   data(){
     return{
       date:[
+        {
+          event: 'kartini',
+          date: '21 April',
+        },
+        {
+          event: 'kartini',
+          date: '21 April',
+        },
         {
           event: 'kartini',
           date: '21 April',

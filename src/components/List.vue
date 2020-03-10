@@ -1,16 +1,23 @@
 <template>
-    <v-col class="border border-gray-50 w-full rounded">
-        <v-skeleton-loader :loading="loading" height="50" type="heading, text" >
-        <div>
-            <slot name="title" > </slot>    
+    <v-col class="border border-gray-50 w-full rounded p-4">
+        <div class="w-1/2 mx-auto">
+            <v-skeleton-loader :loading="loading" height="20" type="image" class="mx-auto mt-2 mb-4" width="">
+                <div>
+                    <slot name="title" > </slot>    
+                </div>
+            </v-skeleton-loader>
         </div>
-        </v-skeleton-loader>
+        
+
         <v-divider></v-divider>
-        <v-skeleton-loader :loading="loading" height="100" type="table-row-divider@3" >
-        <div >
-            <slot name="content" > </slot>
+        <div class="mt-4">
+            <v-skeleton-loader :loading="loading" height="50" type="text@3" >
+                <div >
+                    <slot name="content" > </slot>
+                </div>
+            </v-skeleton-loader>
         </div>
-        </v-skeleton-loader>
+
     </v-col>
 </template>
 

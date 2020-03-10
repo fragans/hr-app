@@ -17,16 +17,15 @@
 
       <v-list dense >
         <v-list-item v-for="item in $router.options.routes" :key="item.name" link  >
+            <router-link :to="item" class="flex">
+              <v-list-item-icon class="py-4">
+                <v-icon>mdi-{{ item.icon }}</v-icon>
+              </v-list-item-icon>
             
-            <v-list-item-icon class="py-4">
-              <v-icon>mdi-{{ item.icon }}</v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-content>
-              <router-link :to="item">
-              <v-list-item-title >{{ item.name }}</v-list-item-title>
-              </router-link>
-            </v-list-item-content>
+              <v-list-item-content>
+                <v-list-item-title >{{ item.name }}</v-list-item-title>
+              </v-list-item-content>
+            </router-link>
         </v-list-item>
 
       </v-list>

@@ -1,18 +1,15 @@
 <template>
  <v-app id="app">
-   <!-- <v-content class="min-h-screen "> -->
      
       <navDrawer class=""> </navDrawer>
     
       <v-content fluid>
         <!-- memanggil router , sesuai folder [views] -->
-        
-        <router-view></router-view>
+        <transition name="fade" mode="out-in">
+          <router-view class="view"></router-view>
+        </transition>
       </v-content>
             
-      
-     
-  <!-- </v-content> -->
 </v-app>
 </template>
 
@@ -30,5 +27,33 @@ export default {
   data: () => ({
     //
   }),
+  
 };
 </script>
+
+<style >
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+.child-view {
+  position: absolute;
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(30px, 0);
+  transform: translate(30px, 0);
+}
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  -webkit-transform: translate(-30px, 0);
+  transform: translate(-30px, 0);
+}
+</style>

@@ -11,34 +11,35 @@ const routes = [{
         component: Dashboard
     },
     {
-        path: '/Employees',
+        path: '/employees',
         name: 'Employees',
         icon: 'account-badge',
         component: () =>
-            import ('../views/Employees.vue')
+            import ('../views/Employees.vue'),
+        children: [{
+            path: 'edit/:id',
+            name: 'Edit Employee',
+            component: () =>
+                import ('../views/EmployeeEdit.vue'),
+        }, ]
+
+
     },
     {
-        path: '/Employee/:id',
-        name: 'Employee',
-        icon: 'account-badge',
-        component: () =>
-            import ('../views/EmployeeEdit.vue')
-    },
-    {
-        path: '/Attendance',
+        path: '/attendance',
         name: 'Attendance',
         icon: 'calendar-check',
         component: () =>
             import ('../views/Attendance.vue')
     },
     {
-        path: '/Applicants',
+        path: '/applicants',
         name: 'Applicants',
         icon: 'file-document-box-search',
         component: () =>
             import ('../views/Applicants.vue')
     }, {
-        path: '/Leave Request',
+        path: '/offwork',
         name: 'LeaveRequest',
         icon: 'run-fast',
         component: () =>

@@ -3,9 +3,6 @@
             <v-col class="w-full">
                 <v-card-title>
                     <slot name="title" > </slot>
-                    
-                    
-
                 </v-card-title>
                 <v-card-title>
                     <v-row>

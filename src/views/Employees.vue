@@ -1,12 +1,9 @@
 <template>
     
     <v-container>
-        <FilterList :search="search" :headers="headers" :items="desserts" > 
-          <v-toolbar flat color="primary" dark slot="title">
-            <v-toolbar-title>{{$routes.name}}</v-toolbar-title>
-          </v-toolbar>
+        <FilterList :search="search" :headers="headers" :items="desserts"> 
+          <h1 slot="title">Employee</h1>
         </FilterList>
-        
     </v-container>
 
 </template>

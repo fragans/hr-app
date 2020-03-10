@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
-
+import Employees from '../views/Employees.vue'
+import EmployeeEdit from '../views/EmployeeEdit.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -11,17 +12,18 @@ const routes = [{
         component: Dashboard
     },
     {
+        path: '/employees/:id',
+        name: 'Edit',
+        icon: 'account-badge',
+        component: EmployeeEdit,
+
+
+    },
+    {
         path: '/employees',
         name: 'Employees',
         icon: 'account-badge',
-        component: () =>
-            import ('../views/Employees.vue'),
-        children: [{
-            path: 'edit/:id',
-            name: 'Edit Employee',
-            component: () =>
-                import ('../views/EmployeeEdit.vue'),
-        }, ]
+        component: Employees,
 
 
     },
@@ -48,6 +50,7 @@ const routes = [{
 ]
 
 const router = new VueRouter({
+    mode:'history',
     routes
 })
 

@@ -1,9 +1,9 @@
 <template>
 <v-container>
     <v-row class="title">
-        <v-col col="3" class="flex justify-center items-center uppercase">
+        <v-col col="6" class="flex justify-center items-center uppercase">
             <h1>
-                Edit Employee
+                Edit Employee {{ $route.params.id }}
             </h1>
             
         </v-col>
@@ -76,7 +76,7 @@ import Emergency from '@/components/Edit/EmergencyContact'
             
         },
         created(){
-            console.log(this.currentTab)
+            
         }
     }
 </script>

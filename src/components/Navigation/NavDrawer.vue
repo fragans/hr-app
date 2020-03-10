@@ -16,7 +16,7 @@
       <v-divider></v-divider>
 
       <v-list dense >
-        <v-list-item v-for="item in $router.options.routes" :key="item.name" link  >
+        <v-list-item v-for="item in items" :key="item.name" link  >
             <router-link :to="item" class="flex">
               <v-list-item-icon class="py-4">
                 <v-icon>mdi-{{ item.icon }}</v-icon>
@@ -54,12 +54,21 @@
         data(){
             return {
               drawer:true,
-              mini:true
+              mini:true,
+              items: []
+              
             }
         },
         methods:{
 
         },
+        created(){
+          let route = this.$router.options.routes
+          this.items = route.filter((r)=>{
+            return r.name !== 'Edit'
+          })
+
+        }
         
     }
 </script>

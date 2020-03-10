@@ -1,18 +1,40 @@
 <template>
     <v-row class="p-4">
-        <v-col>
+        <v-col col="8">
             <v-text-field v-model="name" :error-messages="nameErrors" :counter="10" label="Name" required @input="$v.name.$touch()" @blur="$v.name.$touch()" ></v-text-field>
 
             <v-text-field v-model="email" :error-messages="emailErrors" label="E-mail" required @input="$v.email.$touch()" @blur="$v.email.$touch()" ></v-text-field>
 
-            <v-select v-model="select" :items="items" :error-messages="selectErrors" label="Item" required @change="$v.select.$touch()" @blur="$v.select.$touch()" ></v-select> 
+            <v-text-field v-model="phone" label="Phone" required  ></v-text-field>
+            <!-- <v-select v-model="select" :items="items" :error-messages="selectErrors" label="Item" required @change="$v.select.$touch()" @blur="$v.select.$touch()" ></v-select>  -->
 
              <v-radio-group v-model="sex" :rules="[v => !!v || 'Item is required']" required class="flex">
                 <v-radio label="Man" value="0"></v-radio>
                 <v-radio label="Woman" value="1"></v-radio>
             </v-radio-group>
+
+            
+            <v-menu v-model="birthDate" :close-on-content-click="false" transition="scale-transition" offset-y
+              max-width="290px"
+              min-width="290px"
+            >
+              <template v-slot:activator="{ on }">
+                <v-text-field
+                  v-model="dateFormatted"
+                  label="Date"
+                  hint="MM/DD/YYYY format"
+                  persistent-hint
+                  @blur="date = parseDate(dateFormatted)"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-date-picker v-model="date" no-title ></v-date-picker>
+            </v-menu>
+            
+            <v-text-field v-model="birthPlace" label="Birth place" required  ></v-text-field>
+
         </v-col>
-        <v-col>
+        <v-col col="3"> 
             <v-img :src="`https://picsum.photos/500/300?image=1`" :lazy-src="`https://picsum.photos/10/6?image=1`" aspect-ratio="1" class="grey lighten-2" >
                   <template v-slot:placeholder>
                     <v-row class="fill-height ma-0" align="center" justify="center" >
@@ -34,6 +56,7 @@
     mixins: [validationMixin],
 
     validations: {
+      phone: {required , maxLength: maxLength(12)},
       name: { required, maxLength: maxLength(10) },
       email: { required, email },
       select: { required },
@@ -44,16 +67,15 @@
       },
     },
 
-    data: () => ({
+    data: vm => ({
+      birthPlace:'',
+      birthDate:'',
+      phone:'',
+      sex:'',
       name: '',
       email: '',
-      select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
-      ],
+      date: new Date().toISOString().substr(0, 10),
+      dateFormatted: vm.formatDate(new Date().toISOString().substr(0, 10)),
       checkbox: false,
     }),
 
@@ -84,8 +106,15 @@
         !this.$v.email.required && errors.push('E-mail is required')
         return errors
       },
+      computedDateFormatted () {
+        return this.formatDate(this.date)
+      },
     },
-
+    watch: {
+      date (val) {
+        this.dateFormatted = this.formatDate(this.date)
+      },
+    },
     methods: {
       submit () {
         this.$v.$touch()
@@ -96,6 +125,18 @@
         this.email = ''
         this.select = null
         this.checkbox = false
+      },
+      formatDate (date) {
+        if (!date) return null
+
+        const [year, month, day] = date.split('-')
+        return `${month}/${day}/${year}`
+      },
+      parseDate (date) {
+        if (!date) return null
+
+        const [month, day, year] = date.split('/')
+        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
       },
     },
   }

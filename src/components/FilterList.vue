@@ -22,6 +22,7 @@
                 :headers="headers"
                 :items="items"
                 :search="search"
+                @click:row="handleClick"
                 >
                 <slot name="filter"></slot>
                 
@@ -32,7 +33,13 @@
 
 <script>
     export default {
-        props:["headers" , "items", "search"]
+        props:["headers" , "items", "search"],
+        methods:{
+            handleClick(value){
+                console.log(value)
+                this.$router.push({ name: 'Edit', params: { id:value.name } })
+            }
+        }
     }
 </script>
 

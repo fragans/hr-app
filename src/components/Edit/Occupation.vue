@@ -12,7 +12,7 @@
                 <v-radio label="Woman" value="1"></v-radio>
             </v-radio-group>
         </v-col>
-        <v-col>
+        <v-col col="3"> 
             <v-img :src="`https://picsum.photos/500/300?image=1`" :lazy-src="`https://picsum.photos/10/6?image=1`" aspect-ratio="1" class="grey lighten-2" >
                   <template v-slot:placeholder>
                     <v-row class="fill-height ma-0" align="center" justify="center" >
@@ -45,6 +45,7 @@
     },
 
     data: () => ({
+      sex:'',
       name: '',
       email: '',
       select: null,

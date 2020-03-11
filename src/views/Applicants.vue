@@ -121,10 +121,9 @@ import FilterList from '@/components/FilterList'
     },
     methods:{
         filter(value){
-             let d = this.desserts;
+            let d = this.desserts;
             var filtered  = d.filter((el)=>{
-                console.log(el.calories > 50)
-                return el.calories > 400
+              return el.calories > 400
             })
             this.copy = filtered
         }

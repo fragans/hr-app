@@ -100,9 +100,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        console.log(store.user)
         if (!store.state.user.is_login) {
-            console.log('ga login')
             next({
                 path: '/login',
                 query: { redirect: to.fullPath },
@@ -110,7 +108,6 @@ router.beforeEach((to, from, next) => {
                     import ('../views/Login.vue')
             })
         } else {
-            console.log('login lolos')
             next()
         }
     } else {

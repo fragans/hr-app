@@ -4,12 +4,15 @@ import axios from 'axios'
 const state = {
     is_loading: false,
     user: '',
-    is_login: true
+    is_login: false
 }
 
 const getters = {
     is_loading(state) {
         return state.is_loading
+    },
+    is_login(state) {
+        return state.is_login
     },
 }
 
@@ -18,7 +21,7 @@ const actions = {
     userLogin({ commit }, payload) {
         commit('isLoading')
         const instance = axios.create({
-            // timeout: 5000,
+            timeout: 5000,
             headers: {
                 'Access-Control-Allow-Methods': '*',
                 'Content-Type': 'application/json'
@@ -27,12 +30,14 @@ const actions = {
         });
         
         instance.
-        get('https://jsonplaceholder.typicode.com/users/1')
+        get('http://localhost:3000/user')
             .then(({ data }) => {
-                console.log(data)
-                console.log(payload)
-                commit('setUser', data)
-                commit('isLoading')
+                if(data[0].password === payload.password){
+                    commit('setUser', data[0])
+                    commit('isLoading')
+                }
+                
+
             }, error => {
                 commit('isLoading')
                 state.is_loading = false;

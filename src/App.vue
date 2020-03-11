@@ -1,5 +1,5 @@
 <template>
- <v-app id="app">
+ <v-app id="app" dark>
      
       <navDrawer v-if="$store.state.user.is_login" > </navDrawer>
     
@@ -27,10 +27,12 @@ export default {
 
   data: () => ({
     //
+    isDark: true
   }),
   computed:{
   },
   mounted(){
+    this.$vuetify.theme.dark = localStorage.getItem('dark') == 1 ? true: false
     // console.log(this.$store.state.user.is_login)
   }
   

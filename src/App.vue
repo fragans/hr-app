@@ -1,7 +1,7 @@
 <template>
  <v-app id="app">
      
-      <navDrawer v-if="isLogin" > </navDrawer>
+      <navDrawer v-if="$store.state.user.is_login" > </navDrawer>
     
       <v-content fluid>
         <!-- memanggil router , sesuai folder [views] -->
@@ -29,9 +29,9 @@ export default {
     //
   }),
   computed:{
-    ...mapGetters({
-      isLogin: 'user/checkLogin',
-    })
+  },
+  mounted(){
+    console.log(this.$store.state.user.is_login)
   }
   
 };

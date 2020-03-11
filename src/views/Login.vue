@@ -5,62 +5,24 @@
         fluid
       >
         <v-row
-          align="center"
-          justify="center"
-        >
+          align="center" justify="center" >
           <v-col cols="12" sm="12" md="4" >
-            <v-card class="elevation-12">
+            <v-card class="elevation-12" min-width="400">
               <v-toolbar color="primary" dark flat >
-                <v-toolbar-title>Login form</v-toolbar-title>
+                <v-toolbar-title>{{$route.name}}</v-toolbar-title>
                 <v-spacer />
-                <v-tooltip bottom>
-                  <template v-slot:activator="{ on }">
-                    <v-btn
-                      :href="source"
-                      icon
-                      large
-                      target="_blank"
-                      v-on="on"
-                    >
-                      <v-icon>mdi-code-tags</v-icon>
-                    </v-btn>
-                  </template>
-                  <span>Source</span>
-                </v-tooltip>
-                <v-tooltip right>
-                  <template v-slot:activator="{ on }">
-                    <v-btn
-                      icon
-                      large
-                      href="https://codepen.io/johnjleider/pen/pMvGQO"
-                      target="_blank"
-                      v-on="on"
-                    >
-                      <v-icon>mdi-codepen</v-icon>
-                    </v-btn>
-                  </template>
-                  <span>Codepen</span>
-                </v-tooltip>
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field
-                    label="Login"
-                    name="login"
-                    type="text"
-                  />
+                  <v-text-field label="username" name="login" type="text" v-model="user.username" />
 
-                  <v-text-field
-                    id="password"
-                    label="Password"
-                    name="password"
-                    type="password"
-                  />
+                  <v-text-field id="password" label="Password" name="password" type="password" v-model="user.password"/>
+
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn color="primary">Login</v-btn>
+                <v-btn color="success" block @click="login()">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -71,14 +33,26 @@
 
 <script>
     export default {
-        methods:{
-            logout(){
-                this.$store.commit('user/logout')
-            }
-        },
-        created(){
-            this.logout()
-        }   
+      data(){
+        return{
+          user: {
+            username: 'admin',
+            password: 'admin'
+          }
+        }
+      },
+      methods:{
+          logout(){
+              this.$store.commit('user/logout')
+          },
+          login(){
+            console.log('loging in')
+            this.$store.dispatch('user/userLogin', this.user)
+          }
+      },
+      created(){
+          this.logout()
+      }   
     }
 </script>
 

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
+import store from '../store/index.js'
 // import Employees from '../views/Employees.vue'
 // import EmployeeEdit from '../views/EmployeeEdit.vue'
 Vue.use(VueRouter)
@@ -94,6 +95,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
+        console.log(store.user)
         if (!localStorage.getItem('login')) {
             next({
                 path: '/login',

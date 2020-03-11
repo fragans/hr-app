@@ -1,5 +1,5 @@
 import axios from 'axios'
-// import router from '../../router'
+// import router from '../../router'z
 
 const state = {
     is_loading: true,
@@ -14,12 +14,33 @@ const getters = {
 }
 
 const actions = {
+// buat fetch
+    userLogin({commit}, payload){
+        
+        // Do something here... lets say, a http call using vue-resource
+        axios.get('https://jsonplaceholder.typicode.com/users/1').then(response => {
+            console.log(response.data)
+            console.log(payload)
+            commit('setUser', response.data)
+        }, error => {
+            // http failed, let the calling function know that action did not work out
+            reject(error)
+        })
+  },
+  checkLogin({commit},state) {
+    if (localStorage.getItem('login')) {
+        commit('setUser',localStorage.getItem('login'))
+    } else {
+        state.is_login = false
+    }
+    return state.is_login;
 
-
+},
 }
 
 const mutations = {
-
+// 1 mutation 1 kerjaan (logic)
+// buat ganti state
     login(state, payload) {
         axios
             .get('http://localhost:3000/user')
@@ -36,17 +57,13 @@ const mutations = {
             })
 
     },
-    checkLogin() {
-        if (localStorage.getItem('login')) {
-            state.is_login = true
-        } else {
-            state.is_login = false
-        }
-        return state.is_login;
-
+    setUser(state,payload){
+        state.is_login = true
+        state.user = payload
     },
     logout(state) {
         state.is_login = false;
+        state.user = ''
         localStorage.removeItem('login');
     },
 

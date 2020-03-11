@@ -1,7 +1,7 @@
 <template>
- <v-app id="app">
+ <v-app id="app" dark>
      
-      <navDrawer class=""> </navDrawer>
+      <navDrawer v-if="$store.state.user.is_login" > </navDrawer>
     
       <v-content fluid>
         <!-- memanggil router , sesuai folder [views] -->
@@ -16,6 +16,7 @@
 <script>
 import HelloWorld from './components/HelloWorld';
 import navDrawer from './components/Navigation/NavDrawer';
+import {  mapGetters } from 'vuex'
 export default {
   name: 'App',
 
@@ -26,7 +27,14 @@ export default {
 
   data: () => ({
     //
+    isDark: true
   }),
+  computed:{
+  },
+  mounted(){
+    this.$vuetify.theme.dark = localStorage.getItem('dark') == 1 ? true: false
+    // console.log(this.$store.state.user.is_login)
+  }
   
 };
 </script>

@@ -25,7 +25,7 @@ const actions = {
             },
             secure: true
         });
-        // Do something here... lets say, a http call using vue-resource
+        
         instance.
         get('https://jsonplaceholder.typicode.com/users/1')
             .then(({ data }) => {

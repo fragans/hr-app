@@ -33,7 +33,6 @@ export default {
   },
   mounted(){
     this.$vuetify.theme.dark = localStorage.getItem('dark') == 1 ? true: false
-    // console.log(this.$store.state.user.is_login)
   }
   
 };

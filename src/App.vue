@@ -31,7 +31,7 @@ export default {
   computed:{
   },
   mounted(){
-    console.log(this.$store.state.user.is_login)
+    // console.log(this.$store.state.user.is_login)
   }
   
 };

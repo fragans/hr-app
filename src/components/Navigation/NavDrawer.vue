@@ -40,12 +40,35 @@
 
     <template v-slot:append >
         <div class="pa-2">
-          <v-btn block v-if="!mini" color="accent">
+          <!-- <v-btn block v-if="!mini" color="accent" @click="logout()">
             <v-icon left> mdi-logout</v-icon>
-            Logout</v-btn>
-          <v-list-item-content v-else>
+            Logout
+          </v-btn> -->
+          <!-- <v-list-item-content v-else>
             <v-icon class="items-center"> mdi-logout</v-icon>
-          </v-list-item-content>
+          </v-list-item-content> -->
+          <v-dialog v-model="dialog" persistent max-width="290">
+            <template v-slot:activator="{ on }">
+              <!-- <v-btn color="primary" dark v-on="on">Open Dialog</v-btn> -->
+              
+                <v-btn color="secondary" v-show="!mini" @click="logout()" v-on="on" block>
+                  <v-icon    left> mdi-logout</v-icon>
+                  Logout
+                </v-btn>
+                  
+        
+              
+            </template>
+            <v-card>
+              <v-card-title class="headline">Use Google's location service?</v-card-title>
+              <v-card-text>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="green darken-1" text @click="dialog = false">Disagree</v-btn>
+                <v-btn color="green darken-1" text @click="dialog = false">Agree</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
         </div>
       </template>
     </v-navigation-drawer>
@@ -58,18 +81,27 @@
             return {
               drawer:true,
               mini:true,
-              items: []
+              items: [],
+              exclude_route:['Login','Edit'],
+              dialog: false,
               
             }
         },
         methods:{
-
+          logout(){
+            // this.$router.push({ name: 'Login' })
+          }
         },
         created(){
-          let route = this.$router.options.routes
-          this.items = route.filter((r)=>{
-            return r.name !== 'Edit'
+          let route =this.$router.options.routes;
+          this.items = this.$router.options.routes.filter((el)=>{
+            console.log(el)
+            return el.meta.nav
           })
+         
+          
+          
+          // if (index !== -1) array.splice(index, 1);
 
         }
         

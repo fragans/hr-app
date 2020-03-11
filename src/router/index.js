@@ -13,7 +13,8 @@ const routes = [{
         component: Dashboard,
         meta: {
             title: '',
-            requiresAuth: true
+            requiresAuth: true,
+            nav: true
         },
         component: () =>
             import ('../views/Dashboard.vue')
@@ -38,7 +39,8 @@ const routes = [{
         // component: Employees,
         meta: {
             title: 'Employees',
-            requiresAuth: true
+            requiresAuth: true,
+            nav: true
         },
         component: () =>
             import ('../views/Employees.vue')
@@ -50,7 +52,8 @@ const routes = [{
         icon: 'calendar-check',
         meta: {
             title: 'Attendance',
-            requiresAuth: true
+            requiresAuth: true,
+            nav: true
         },
         component: () =>
             import ('../views/Attendance.vue')
@@ -61,7 +64,8 @@ const routes = [{
         icon: 'file-document-box-search',
         meta: {
             title: '',
-            requiresAuth: true
+            requiresAuth: true,
+            nav: true
         },
         component: () =>
             import ('../views/Applicants.vue')
@@ -71,7 +75,8 @@ const routes = [{
         icon: 'run-fast',
         meta: {
             title: 'Leave Request',
-            requiresAuth: true
+            requiresAuth: true,
+            nav: true
         },
         component: () =>
             import ('../views/LeaveRequest.vue')
@@ -96,7 +101,8 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         console.log(store.user)
-        if (!localStorage.getItem('login')) {
+        if (!store.state.user.is_login) {
+            console.log('ga login')
             next({
                 path: '/login',
                 query: { redirect: to.fullPath },
@@ -104,6 +110,7 @@ router.beforeEach((to, from, next) => {
                     import ('../views/Login.vue')
             })
         } else {
+            console.log('login lolos')
             next()
         }
     } else {

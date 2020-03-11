@@ -2,7 +2,7 @@
   <v-container class="home w-full ">
 
     <v-row>
-      <v-col cols="4">
+      <v-col cols="4" sm="4" class="float-sm-left">
         <Card class="m-8">
           <h3 slot="title" class="m-2" >Total Employees</h3>
           <div slot="content">
@@ -12,7 +12,7 @@
         </Card>
       </v-col>
       
-      <v-col cols="4">
+      <v-col cols="4" sm="4" class="float-sm-left">
         <Card class="m-8">
           <h3 slot="title" class="m-2" >Total Employees</h3>
           <div slot="content">
@@ -22,7 +22,7 @@
         </Card>
       </v-col>
       
-       <v-col cols="4">
+       <v-col cols="4" sm="4" class="float-sm-left">
         <Card class="m-8">
           <h3 slot="title" class="m-2" >Total Employees</h3>
           <div slot="content">
@@ -56,7 +56,26 @@
         </List>
       </v-col>
 
-      
+      <v-col col="6">
+        <List> 
+          <h3 slot="title" class="uppercase  text-center">upcoming events</h3>
+          <div slot="content">
+            <v-simple-table height="150">
+              <template v-slot:default>
+
+                <tbody>
+                  <tr v-for="item in date" :key="item.date">
+                    <td><v-icon>mdi-calendar</v-icon></td>
+                    <td>{{ item.event }}</td>
+                    <td>{{ item.date }}</td>
+                  </tr>
+                </tbody>
+
+              </template>
+            </v-simple-table>
+          </div>
+        </List>
+      </v-col>
 
     </v-row>
     

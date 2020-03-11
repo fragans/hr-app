@@ -1,6 +1,6 @@
 <template>
 
-      <v-navigation-drawer v-model="drawer" :mini-variant.sync="mini" permanent color=""  app >
+      <v-navigation-drawer v-model="drawer" :mini-variant.sync="mini" permanent color="" expand-on-hover app >
       <v-list-item class="px-2">
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>

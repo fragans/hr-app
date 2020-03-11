@@ -1,7 +1,7 @@
 <template>
  <v-app id="app">
      
-      <navDrawer class=""> </navDrawer>
+      <navDrawer v-if="isLogin" > </navDrawer>
     
       <v-content fluid>
         <!-- memanggil router , sesuai folder [views] -->
@@ -16,6 +16,7 @@
 <script>
 import HelloWorld from './components/HelloWorld';
 import navDrawer from './components/Navigation/NavDrawer';
+import {  mapGetters } from 'vuex'
 export default {
   name: 'App',
 
@@ -27,6 +28,11 @@ export default {
   data: () => ({
     //
   }),
+  computed:{
+    ...mapGetters({
+      isLogin: 'user/checkLogin',
+    })
+  }
   
 };
 </script>

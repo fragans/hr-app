@@ -100,6 +100,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
+        // console.log(store.dispatch('checkLogin'))
+        store.dispatch('user/checkLogin')
         if (!store.state.user.is_login) {
             next({
                 path: '/login',

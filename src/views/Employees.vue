@@ -2,9 +2,7 @@
     
     <v-container>
         <FilterList :search="search" :headers="headers" :items="copy" > 
-          <h1 slot="title"> 
-            
-            Employee</h1>
+          <h1 slot="title">Employee</h1>
           <v-tabs slot="action" show-arrows>
             <v-tab @click="filter('Permanent')">permanent</v-tab>
             <v-tab @click="filter('Probation')">probation</v-tab>

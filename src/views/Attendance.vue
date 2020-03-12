@@ -11,12 +11,13 @@
         <v-row>
           
               <v-skeleton-loader :loading="loading" max-width="3000" type="table-thead, table-tbody"  class="">
-                  <v-data-table 
-                  :headers="headers"
-                  :items="items"
-                  >
-                  
-                  </v-data-table>
+                  <table>
+
+                    <tr>
+                      <td>
+                      </td>
+                    </tr>
+                  </table>
               </v-skeleton-loader>
           
       </v-row>
@@ -32,22 +33,60 @@ import { mapGetters } from 'vuex';
       search:'',
       headers:'',
       current_route: '',
-      loading: true
+      loading: true,
     }),
+    computed:{
+      ...mapGetters({
+        attends:'attendance/attends',
+        persons:'employees/persons',
+
+      })
+    },
     methods:{
         intervalFormat(interval){
             return interval.time
+        },
+        query(){
+          console.log(this.attends)
+          console.log(this.persons)
+          let res=[];
+          this.persons.forEach(emp => {
+            let line =this.attends.filter((at)=>{
+              return at.emp_id === emp.id
+            })
+            // console.log(line[0])
+            if(line[0]){
+              res.push(
+                {
+                'date':line[0].date,
+                'name': emp.name
+                }
+            )
+            }
+            
+          });
+          console.log(res)
+          
+            
+        
+
+        },
+        fetch(){
+          this.$store.dispatch('attendance/fetch').then(()=>{
+        
+          this.$store.dispatch('employees/fetch').then(()=>{
+          
+            this.query();
+          })
+        })
         }
     },
-    computed:{
-      ...mapGetters({
-        attends:'attendance/attends'
-      })
-    },
+    
     created(){
-      this.$store.dispatch('attendance/fetch').then(()=>{
+      this.fetch();
+      // let employees = null;
+      // let attends = null
 
-      })
         const d = new Date();
         this.today  = d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate()
 

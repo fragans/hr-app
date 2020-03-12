@@ -22,13 +22,6 @@ const actions = {
             commit('setLoading',false)
         })
     },
-    getByID({commit}){
-        return axios.get('http://localhost:3000/employees')
-        .then(({ data })=>{
-            commit('setEmployees',data)
-            commit('setLoading',false)
-        })
-    }
 }
 
 const mutations = {

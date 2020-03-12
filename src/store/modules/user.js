@@ -51,7 +51,7 @@ const actions = {
         if (localStorage.getItem('login')) {
             commit('setUser', JSON.parse(localStorage.getItem('login')))
         } else {
-            state.is_login = false
+            // state.is_login = false
             commit('logout')
         }
         // return state.is_login;

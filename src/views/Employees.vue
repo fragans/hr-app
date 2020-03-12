@@ -42,7 +42,6 @@ import { mapGetters } from 'vuex'
           { text: 'Email', value: 'email' },
           { text: 'Position', value: 'position' },
           { text: 'Status', value: 'status' },
-          { text: 'Iron (%)', value: 'iron' },
           
         ],
         desserts: [
@@ -77,9 +76,7 @@ import { mapGetters } from 'vuex'
       // this.fetch()
     },
     created(){
-      this.$store.dispatch('employees/fetch',{
-        id: 1
-      })
+      this.$store.dispatch('employees/fetch')
       .then(()=>{
         this.copy = this.persons
       }

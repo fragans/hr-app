@@ -81,22 +81,12 @@
             return{
                 loading:true,
                 current_route: '',
-                menuItems:[
-                    "export", "exportAll"
-                ]
             }
         },
         methods:{
             handleClick(value){
-                
                 this.$router.push({ name: 'Edit', params: { id:value.name } })
             },
-            exportCSV(){
-                console.log('exx')
-            },
-            exportAllCSV(){
-                console.log('exx')
-            }
         },
         created(){
             let self = this;

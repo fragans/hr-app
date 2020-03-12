@@ -24,7 +24,17 @@
               </v-list-item-icon>
               </template>
               <v-list-item-content>
-                <v-list-item-title >{{ item.name }}</v-list-item-title>
+                <v-list-item-title >
+                  
+                  {{ item.name }}
+                  <template v-if="(item.name === 'Leave Request')">
+                    <span class="bg-red-thunderbird-400 text-white px-1">
+
+                    {{leaveReq}}
+                    </span>
+                  </template>
+                </v-list-item-title>
+                
               </v-list-item-content>
             </router-link>
         </v-list-item>
@@ -66,6 +76,7 @@
 </template>
 
 <script>
+import axios from 'axios'
     export default {
         data(){
             return {
@@ -75,7 +86,8 @@
               exclude_route:['Login','Edit'],
               dialog: false,
               dark:false,
-              setTheme:false
+              setTheme:false,
+              leaveReq: 0,
             }
         },
         watch:{
@@ -92,16 +104,13 @@
           logout(){
             this.$router.push({ name: 'Login' })
           },
-          darkMode(){
-            // console.log(this.$vuetify.theme.dark)
-            
-            // let is_dark = $vuetify.theme.dark;
-            // let theme = localStorage.getItem('darkTheme')
-            // if(!theme){
-            //   localStorage.setItem('darkTheme', true)
-            // }else{
-
-            // }
+          fetchLeaveReq(){
+            axios.get('http://localhost:3000/outtoday').then(({ data })=>{
+            console.log(data.length)
+            this.leaveReq = data.length
+            // this.desserts = data
+            // this.copy = this.desserts;
+          })
           }
         },
         created(){
@@ -109,6 +118,7 @@
           this.items = this.$router.options.routes.filter((el)=>{
             return el.meta.nav
           })
+          this.fetchLeaveReq()
          
           
           

@@ -3,9 +3,14 @@
     <v-container>
         <FilterList :search="search" :headers="headers" :items="copy" > 
           <h1 slot="title">Leave Request</h1>
-          <v-tabs slot="action" show-arrows> 
+          
+          <v-tabs slot="filter" show-arrows> 
             <v-tab @click="filter(50)">less than 50</v-tab>
           </v-tabs>
+
+          <template slot="action">
+            <v-btn>New request</v-btn>
+          </template>
         </FilterList>
         
     </v-container>
@@ -24,7 +29,7 @@ import FilterList from '@/components/FilterList'
         search: '',
         headers: [
           {
-            text: 'Dessert (100g serving)',
+            text: 'Name',
             align: 'start',
             sortable: false,
             value: 'name',

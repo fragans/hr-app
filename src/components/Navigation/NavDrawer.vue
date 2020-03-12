@@ -80,8 +80,6 @@
         },
         watch:{
           setTheme(val,OldVal) {
-            console.log(val)
-            
               let dark = val? "1" : "0"
               this.$vuetify.theme.dark = val
               localStorage.setItem('dark',dark)

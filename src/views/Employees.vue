@@ -3,11 +3,17 @@
     <v-container>
         <FilterList :search="search" :headers="headers" :items="copy" > 
           <h1 slot="title">Employee</h1>
-          <v-tabs slot="action" show-arrows>
+
+          <v-tabs slot="filter" show-arrows>
+            <v-tab @click="reset">All</v-tab>
             <v-tab @click="filter('Permanent')">permanent</v-tab>
             <v-tab @click="filter('Probation')">probation</v-tab>
             <v-tab @click="filter('Contract')">contract</v-tab>
           </v-tabs>
+
+          <template slot="action">
+            <v-btn>Add Employee</v-btn>
+          </template>
         </FilterList>
         
     </v-container>
@@ -27,7 +33,7 @@ import axios from 'axios'
         search: '',
         headers: [
           {
-            text: 'Dessert (100g serving)',
+            text: 'Name',
             align: 'start',
             sortable: false,
             value: 'name',
@@ -59,6 +65,9 @@ import axios from 'axios'
             this.desserts = data
             this.copy = this.desserts;
           })
+        },
+        reset(){
+          this.copy = this.desserts
         }
     },
     mounted()

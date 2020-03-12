@@ -8,7 +8,8 @@ import '@mdi/font/css/materialdesignicons.css'
 import '@/assets/css/styles.css'
 
 Vue.config.productionTip = false
-
+// Vue.config.resolve.symlinks(false);
+// store = store.store();
 new Vue({
     router,
     store,

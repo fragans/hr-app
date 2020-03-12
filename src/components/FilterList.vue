@@ -16,11 +16,12 @@
 
                             <!-- <v-btn @click="exportCSV">Export</v-btn>
                             <v-btn @click="exportAllCSV">Export All</v-btn> -->
-                            <v-btn>
+                            <v-btn color="purple" class="text-white">
 
                             
                             <download-csv
-                                class   = "btn btn-default"
+                                class   = "text-white"
+
                                 :data   = "items"
                                 name    = "data.csv">
 
@@ -85,7 +86,7 @@
         },
         methods:{
             handleClick(value){
-                this.$router.push({ name: 'Edit', params: { id:value.name } })
+                this.$router.push({ name: 'Edit', params: { id:value.id } })
             },
         },
         created(){

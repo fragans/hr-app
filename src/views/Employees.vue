@@ -1,6 +1,6 @@
 <template>
     
-    <v-container>
+    <v-container v-if="persons.length > 0">
         <FilterList :search="search" :headers="headers" :items="copy" > 
           <h1 slot="title">Employee</h1>
 
@@ -24,6 +24,7 @@
 <script>
 import FilterList from '@/components/FilterList'
 import axios from 'axios'
+import { mapGetters } from 'vuex'
     export default {
       components:{
         FilterList
@@ -42,37 +43,49 @@ import axios from 'axios'
           { text: 'Position', value: 'position' },
           { text: 'Status', value: 'status' },
           { text: 'Iron (%)', value: 'iron' },
+          
         ],
         desserts: [
           
         ],
+        loading:[],
         copy: []
       }
     },
+    computed:{
+      ...mapGetters({
+        persons : 'employees/persons',
+        // loading : 'employees/loading'
+      })
+    },
     methods:{
         filter(value){
-              let d = this.desserts;
+              let d = this.persons;
               var filtered  = d.filter((el)=>{
                 return el.status === value
             })
             this.copy = filtered
         },
 
-        fetch()
-        {
-          axios.get('http://localhost:3000/employees').then(({ data })=>{
-            // console.log(data)
-            this.desserts = data
-            this.copy = this.desserts;
-          })
-        },
         reset(){
-          this.copy = this.desserts
+          this.copy = this.persons
         }
     },
     mounted()
     {
-      this.fetch()
+      
+      // this.fetch()
+    },
+    created(){
+      this.$store.dispatch('employees/fetch',{
+        id: 1
+      })
+      .then(()=>{
+        this.copy = this.persons
+      }
+        
+        
+      )
     },
     beforeMount(){
         

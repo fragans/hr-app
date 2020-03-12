@@ -12,7 +12,8 @@
           
               <v-skeleton-loader :loading="loading" max-width="3000" type="table-thead, table-tbody"  class="">
                   <v-data-table 
-                 
+                  :headers="headers"
+                  :items="items"
                   >
                   
                   </v-data-table>
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
   export default {
     data: () => ({
       items:[],
@@ -37,7 +39,15 @@
             return interval.time
         }
     },
+    computed:{
+      ...mapGetters({
+        attends:'attendance/attends'
+      })
+    },
     created(){
+      this.$store.dispatch('attendance/fetch').then(()=>{
+
+      })
         const d = new Date();
         this.today  = d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate()
 

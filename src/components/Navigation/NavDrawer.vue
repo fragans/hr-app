@@ -20,15 +20,18 @@
             <router-link :to="item" class="flex" >
               <template @click.stop="mini = !mini">
               <v-list-item-icon class="py-4">
-                <v-icon>mdi-{{ item.icon }}</v-icon>
+                <v-badge bordered bottom color="red accent-4" dot v-if="leaveReq>0 && item.name === 'Leave Request'">
+                  <v-icon>mdi-{{ item.icon }}</v-icon>
+                </v-badge>
+                <v-icon v-else>mdi-{{ item.icon }}</v-icon>
               </v-list-item-icon>
               </template>
               <v-list-item-content>
                 <v-list-item-title >
                   
                   {{ item.name }}
-                  <template v-if="(item.name === 'Leave Request')">
-                    <span class="bg-red-thunderbird-400 text-white px-1">
+                  <template v-if="(item.name === 'Leave Request')" >
+                    <span class="bg-red-thunderbird-400 text-white px-1 ml-2">
 
                     {{leaveReq}}
                     </span>

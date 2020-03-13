@@ -19,14 +19,8 @@
                             <v-btn color="purple" class="text-white">
 
                             
-                            <download-csv
-                                class   = "text-white"
-
-                                :data   = "items"
-                                name    = "data.csv">
-
+                            <download-csv v-if="items.length > 0" class   = "text-white" :data="items" :name="'export '+new Date()">
                                 export
-
                             </download-csv>
                             </v-btn>
                         <slot name="action">
@@ -75,7 +69,7 @@
     export default {
         props:["headers" , "items", "search"],
         components:{
-        downloadCsv
+            downloadCsv
         },
         
         data(){

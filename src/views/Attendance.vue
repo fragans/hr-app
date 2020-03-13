@@ -11,13 +11,14 @@
         <v-row>
           
               <v-skeleton-loader :loading="loading" max-width="3000" type="table-thead, table-tbody"  class="">
-                  <table>
-
-                    <tr>
-                      <td>
-                      </td>
-                    </tr>
-                  </table>
+                  <v-data-table 
+                    :headers="headers"
+                    :items="items"
+                    :search="search"
+                    @click:row="handleClick"
+                    >
+                    
+                    </v-data-table>
               </v-skeleton-loader>
           
       </v-row>
@@ -31,7 +32,18 @@ import { mapGetters } from 'vuex';
     data: () => ({
       items:[],
       search:'',
-      headers:'',
+      headers:[
+        {
+            text: 'Name',
+            align: 'start',
+            sortable: false,
+            value: 'name',
+          },
+          { text: 'Fat (g)', value: 'fat' },
+          { text: 'Carbs (g)', value: 'carbs' },
+          { text: 'Protein (g)', value: 'protein' },
+          { text: 'Iron (%)', value: 'iron' },
+      ],
       current_route: '',
       loading: true,
     }),
@@ -52,21 +64,21 @@ import { mapGetters } from 'vuex';
           let res=[];
           this.persons.forEach(emp => {
             let line =this.attends.filter((at)=>{
-              return at.emp_id === emp.id
+              return at.emp_id === emp.id;
             })
             // console.log(line[0])
             if(line[0]){
               res.push(
                 {
-                'date':line[0].date,
-                'name': emp.name
+                'text':line[0].date,
+                'value': 'date'
                 }
             )
             }
             
           });
           console.log(res)
-          
+          this.headers = res;
             
         
 

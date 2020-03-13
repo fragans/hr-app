@@ -33,6 +33,7 @@ import { mapGetters } from 'vuex'
       return {
         search: '',
         headers: [
+          { text: 'ID', value: 'id' },
           {
             text: 'Name',
             align: 'start',
@@ -54,7 +55,6 @@ import { mapGetters } from 'vuex'
     computed:{
       ...mapGetters({
         persons : 'employees/persons',
-        // loading : 'employees/loading'
       })
     },
     methods:{
@@ -79,10 +79,7 @@ import { mapGetters } from 'vuex'
       this.$store.dispatch('employees/fetch')
       .then(()=>{
         this.copy = this.persons
-      }
-        
-        
-      )
+      })
     },
     beforeMount(){
         

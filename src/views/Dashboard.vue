@@ -1,9 +1,9 @@
 <template>
   <v-container class="home w-full ">
 
-    <v-row>
-      <v-col cols="4" sm="4" class="float-sm-left">
-        <Card class="m-8">
+    <v-row class="justify-center">
+      <v-col cols="3" >
+        <Card >
           <h3 slot="title" class="m-2" >Total Employees</h3>
           <div slot="content">
             <h1 class="text-3xl mt-2 font-bold ml-4" >789</h1>
@@ -12,8 +12,8 @@
         </Card>
       </v-col>
       
-      <v-col cols="4" sm="4" class="float-sm-left">
-        <Card class="m-8">
+      <v-col cols="3" >
+        <Card >
           <h3 slot="title" class="m-2" >Total Employees</h3>
           <div slot="content">
             <h1 class="text-3xl mt-2 font-bold ml-4" >789</h1>
@@ -22,8 +22,8 @@
         </Card>
       </v-col>
       
-       <v-col cols="4" sm="4" class="float-sm-left">
-        <Card class="m-8">
+       <v-col cols="3" >
+        <Card >
           <h3 slot="title" class="m-2" >Total Employees</h3>
           <div slot="content">
             <h1 class="text-3xl mt-2 font-bold ml-4" >789</h1>

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import store from '../store/index.js'
+import leave from '../views/LeaveRequest.vue'
+import newLeave from '../views/NewLeave.vue'
 // import Employees from '../views/Employees.vue'
 // import EmployeeEdit from '../views/EmployeeEdit.vue'
 Vue.use(VueRouter)
@@ -23,7 +25,6 @@ const routes = [{
         path: '/employees/:id',
         name: 'Edit',
         icon: 'account-badge',
-        // component: EmployeeEdit,
         meta: {
             title: '',
             requiresAuth: true
@@ -36,7 +37,6 @@ const routes = [{
         path: '/employees',
         name: 'Employees',
         icon: 'account-badge',
-        // component: Employees,
         meta: {
             title: 'Employees',
             requiresAuth: true,
@@ -76,11 +76,28 @@ const routes = [{
         meta: {
             title: 'Leave Request',
             requiresAuth: true,
+            
             nav: true
         },
-        component: () =>
-            import ('../views/LeaveRequest.vue')
-    }, {
+        component: leave,
+        // component: () =>
+        //     import('../views/LeaveRequest.vue')
+
+    },
+    {
+        path: '/offwork/add',
+        name: 'New Leave Request',
+        icon: 'run-fast',
+        meta: {
+            title: 'Leave Request',
+            requiresAuth: true,
+            icon: 'run-fast',
+            nav: true
+        },
+        component: newLeave,
+    },
+    {
+        
         path: '/login',
         name: 'Login',
         icon: 'lock',
@@ -100,9 +117,9 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        console.log(store.user)
+        // console.log(store.dispatch('checkLogin'))
+        store.dispatch('user/checkLogin')
         if (!store.state.user.is_login) {
-            console.log('ga login')
             next({
                 path: '/login',
                 query: { redirect: to.fullPath },
@@ -110,7 +127,6 @@ router.beforeEach((to, from, next) => {
                     import ('../views/Login.vue')
             })
         } else {
-            console.log('login lolos')
             next()
         }
     } else {

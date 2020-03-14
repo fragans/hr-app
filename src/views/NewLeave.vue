@@ -55,13 +55,24 @@
             <v-row>
                 <v-spacer></v-spacer>
                 <v-col>
-                    <v-btn block color="success" @click="submitDayOff">submit</v-btn>
+                    <v-btn block color="success" :disabled="selected = null" @click="submitDayOff">submit</v-btn>
 
                 </v-col>
             </v-row>
 
                 
             </v-card>
+
+
+        <v-dialog v-model="dialog" persistent max-width="290">
+            <v-card class="p-4">
+              <v-card-title class="headline text-center">Request Sent!</v-card-title>
+              <v-card-actions class="items-center justify-center">
+
+                <v-btn color="success" class="text-white" @click="dialog = false">Ok</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
 
             
         </v-row>
@@ -73,7 +84,7 @@ import vueSelect from 'vue-select'
 import { mapGetters } from 'vuex'
     export default {
          data: vm => ({
-
+                dialog:false,
                 loading: true,
                 selected:'',
                 startDate: new Date().toISOString().substr(0, 10),
@@ -106,6 +117,9 @@ import { mapGetters } from 'vuex'
                     emp_id: this.selected,
                     date: this.startDateFormatted,
                     status: 'Pending'
+                })
+                .then(()=>{
+                    this.dialog =true
                 })
             }
         },

@@ -92,7 +92,6 @@ const routes = [{
             title: 'Leave Request',
             requiresAuth: true,
             icon: 'run-fast',
-            nav: true
         },
         component: newLeave,
     },

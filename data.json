@@ -273,40 +273,76 @@
       "status": "Approved"
     },
     {
-      "id": 4,
-      "status": "Pending",
-      "date": "03/13/2020"
-    },
-    {
-      "id": 5,
-      "status": "Pending",
-      "date": "03/13/2020"
-    },
-    {
+      "emp_id": "3",
       "status": "Pending",
       "date": "03/13/2020",
-      "id": 6
-    },
-    {
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 7
-    },
-    {
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 8
-    },
-    {
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 9
+      "id": 4
     },
     {
       "emp_id": "2",
       "status": "Pending",
       "date": "03/13/2020",
+      "id": 5
+    },
+    {
+      "emp_id": "2",
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 6
+    },
+    {
+      "emp_id": "2",
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 7
+    },
+    {
+      "emp_id": "",
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 8
+    },
+    {
+      "emp_id": "",
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 9
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
       "id": 10
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 11
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 12
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 13
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 14
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 15
     }
   ],
   "todaypresent": [

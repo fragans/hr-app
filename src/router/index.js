@@ -105,6 +105,17 @@ const routes = [{
         },
         component: () =>
             import ('../views/Login.vue')
+    },
+    {
+        
+        path: '/image',
+        name: 'Image',
+        icon: 'lock',
+        meta: {
+            title: 'Upload Image'
+        },
+        component: () =>
+            import ('../views/Image.vue')
     }
 
 ]

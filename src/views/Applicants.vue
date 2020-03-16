@@ -1,54 +1,37 @@
 <template>
     
     <v-container>
-      ini view
-        <router-view>
+       <v-row class="title py-4">
+          <v-skeleton-loader :loading="loading" height="50" width="250" max-width="300" type="list-item-avatar" >
+              <v-card-title>
+                {{$route.name}}
+              </v-card-title>
+          </v-skeleton-loader>  
+      </v-row>
+      <router-view>
 
-        </router-view>
+      </router-view>
     </v-container>
 
 </template>
 
 <script>
-import FilterList from '@/components/FilterList'
-import axios from 'axios'
-import {mapGetters} from 'vuex'
 
-    export default {
-      components:{
-        FilterList
-      },
-    data () {
-      return {
-        search: '',
-        headers: [
-          {
-            text: 'Name',
-            align: 'start',
-            sortable: false,
-            value: 'name',
-          },
-          { text: 'Email', value: 'email' },
-          { text: 'Position', value: 'position' },
-          { text: 'Status', value: 'status' },
-          { text: 'Status', value: 'status' },
-        ],
-        desserts: [
-          
-        ],
-        copy: []
-      }
-    },
+export default {
+  data(){
+    return{
+      loading:true
+    }
+  },
+  mounted(){
+     setTimeout(()=>{
+        this.loading = false
+      },1000)
+  },
+
 
     methods:{
-        filter(value){
-              let d = this.persons;
-              var filtered  = d.filter((el)=>{
-                  return el.status === value
-              })
-              this.copy = filtered
-        },
-
+       
         fetch()
         {
             axios.get('http://localhost:3000/newApplicants').then(({ data })=>{
@@ -63,13 +46,6 @@ import {mapGetters} from 'vuex'
         }
     },
 
-    computed:{
-      ...mapGetters({
-          persons:'applicants/persons'
-      })
-
-    },
-
     watch:{
         loading(value, oldval)
         {
@@ -77,37 +53,6 @@ import {mapGetters} from 'vuex'
         }
     },
 
-    created()
-    {
-        this.$store.dispatch('applicants/fetch')
-        .then(()=>{
-          this.copy = this.persons
-        })
-    },
-
-    mounted()
-    {
-      // console.log("test")
-      // this.fetch()
-    },
-
-    beforeMount(){
-      let d = this.desserts;
-      var filtered  = d.filter((el)=>{
-          return el.status === value
-      })
-      this.copy = filtered
-    },
-
-        
-    
-    mounted()
-    {
-      this.fetch()
-    },
-    beforeMount(){
-        
-    }
   }
 
 </script>

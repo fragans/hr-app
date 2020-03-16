@@ -33,7 +33,7 @@
                 <template v-if="!loading">
                 <v-tab-item v-for="block in items" :key="block.name">           
                     <keep-alive>
-                        <component :is="block.name" :data="data" ></component>
+                        <component :is="block.name" v-bind="computedProp" ></component>
                     </keep-alive>
                 </v-tab-item >
                 </template>
@@ -82,7 +82,19 @@ import {mapGetters} from 'vuex'
             },
             ...mapGetters({
                 employee : 'employees/person'
-            })
+            }),
+
+            computedProp()
+            {
+                if (this.$route.name === 'Edit Employee')
+                {
+                    return { data: this.employee }
+                }
+                else if(this.$route.name === 'New Applicant')
+                {
+                    return {data : ''}
+                }
+            }
         },
         watch:{
             tab:function(val, OldVal) {

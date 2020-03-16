@@ -1,5 +1,6 @@
 <template>
     
+
     <v-container>
       ini vieww
         <router-view>
@@ -38,7 +39,7 @@ import {mapGetters} from 'vuex'
         desserts: [
           
         ],
-        loading:[],
+        loading:true,
         copy: []
       }
     },
@@ -63,14 +64,6 @@ import {mapGetters} from 'vuex'
 
     },
 
-    computed:{
-      ...mapGetters({
-        persons:'employees/persons',
-        // loading: 'employees/loading'
-      })
-
-    },
-
     watch:{
       loading(value, oldval)
       {
@@ -78,20 +71,11 @@ import {mapGetters} from 'vuex'
       }
     },
 
-    mounted()
-    {
-      
-      // this.fetch()
-    },
-    created(){
-      this.$store.dispatch('employees/fetch')
-      .then(()=>{
-        this.copy = this.persons
-      })
-    },
+    mounted(){
+      setTimeout(()=>{
+        this.loading = false
+      },1000)
 
-    beforeMount(){
- 
     },
 
     created()

@@ -1,6 +1,6 @@
 <template>
 
-    <v-container v-if="copy.length > 0">
+    <v-container >
         <FilterList :search="search" :headers="headers" :items="copy" rowClick="Edit Leave Status"> 
           <h1 slot="title">Employee</h1>
 

@@ -3,23 +3,14 @@
             <v-col class="w-full">
                 <v-row>
                     <v-col>
-                        <v-skeleton-loader :loading="loading" height="50" max-width="300" type="list-item-avatar" >
-                            <v-card-title>
-                            <!-- <v-icon left>mdi-{{current_route.icon}}</v-icon> -->
-                            <h1>{{$route.name}}</h1>
-                            </v-card-title>
-                        </v-skeleton-loader>    
+                          
                     </v-col>
                     <v-spacer></v-spacer>
                     <v-col class="flex justify-around items-center">
                         
-
-                            <!-- <v-btn @click="exportCSV">Export</v-btn>
-                            <v-btn @click="exportAllCSV">Export All</v-btn> -->
                             <v-btn color="purple" class="text-white">
-
                             
-                            <download-csv class   = "text-white" :data="items" :name="'export '+new Date()">
+                            <download-csv class="text-white" :data="items" :name="'Export '+new Date()">
                                 export
                             </download-csv>
                             </v-btn>

@@ -1,23 +1,13 @@
 <template>
     <v-container class="h-full">
-        <v-row>
-            <v-col>
-                <v-skeleton-loader :loading="loading" height="50" max-width="300" type="list-item-avatar" >
-                    <v-card-title>
-                    <v-icon left>mdi-{{$route.meta.icon}}</v-icon>
-                    <h1>{{$route.name}}</h1>
-                    </v-card-title>
-                </v-skeleton-loader>    
-            </v-col>
-            
-        </v-row>  
+
         <v-row class="pt-4" width="300">
             <v-card class="p-8 mx-auto w-full max-w-md">
 
 
             <v-row>
                 
-                <v-select :loading="loading"  v-model="selected" :items="persons" item-text="name" item-value="id" label="Employee Name" placeholder="Identify yourself ... ">
+                <v-select :loading="loading"  v-model="employee" :items="persons" item-text="name" item-value="id" label="Employee Name" placeholder="Identify yourself ... ">
                 </v-select>
                 
             </v-row>   
@@ -68,7 +58,7 @@
               <v-card-title class="headline text-center">Request Sent!</v-card-title>
               <v-card-actions class="items-center justify-center">
 
-                <v-btn color="success" class="text-white" @click="dialog = false">Ok</v-btn>
+                <v-btn color="success" class="text-white" @click="redirect">Ok</v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>
@@ -85,7 +75,7 @@ import { mapGetters } from 'vuex'
          data: vm => ({
                 dialog:false,
                 loading: true,
-                selected:'',
+                employee:'',
                 startDate: new Date().toISOString().substr(0, 10),
                 endDate: new Date().toISOString().substr(0, 10),
                 dayoff:'',
@@ -113,20 +103,23 @@ import { mapGetters } from 'vuex'
             },
             submitDayOff(){
                 this.$store.dispatch('dayoff/insert',{
-                    emp_id: this.selected,
+                    emp_id: this.employee,
                     date: this.startDateFormatted,
                     status: 'Pending'
                 })
                 .then(()=>{
                     this.dialog =true
                 })
+            },
+            redirect(){
+                this.dialog = false
+                this.$router.push({ name: 'Leave Request' })
             }
         },
         mounted(){
             this.$store.dispatch('employees/fetch')
             .then(()=>{
                 this.loading = false
-                // console.log(this.persons)
             })
 
         }

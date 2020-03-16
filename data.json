@@ -11,7 +11,10 @@
       "status": "Permanent",
       "gender": "Male",
       "birthdate": "07/08/1990",
-      "birthplace": "Jakarta"
+      "birthplace": "Jakarta",
+      "address": "Jalan terus no 10",
+      "emergencyperson": "Rhodey",
+      "emergencycontact": "081234562"
     },
     {
       "id": "2",
@@ -23,8 +26,11 @@
       "photo": "0",
       "status": "Permanent",
       "gender": "Male",
-      "birthdate": "1990-09-09",
-      "birthplace": "Jakarta"
+      "birthdate": "07/07/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 10",
+      "emergencyperson": "Someone",
+      "emergencycontact": "0812345621"
     },
     {
       "id": "3",
@@ -35,7 +41,12 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
-      "gender": "Male"
+      "gender": "Male",
+      "birthdate": "07/06/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 11",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456212"
     },
     {
       "id": "4",
@@ -46,7 +57,12 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
-      "gender": "Male"
+      "gender": "Male",
+      "birthdate": "07/05/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 12",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456213"
     },
     {
       "id": "5",
@@ -57,7 +73,12 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
-      "gender": "Male"
+      "gender": "Male",
+      "birthdate": "07/04/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 13",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456211"
     },
     {
       "id": "6",
@@ -68,7 +89,12 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
-      "gender": "Male"
+      "gender": "Male",
+      "birthdate": "07/03/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 1",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456214"
     },
     {
       "id": "7",
@@ -79,7 +105,12 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
-      "gender": "Female"
+      "gender": "Female",
+      "birthdate": "07/03/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 2",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456214"
     },
     {
       "id": "8",
@@ -90,7 +121,12 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
-      "gender": "Female"
+      "gender": "Female",
+      "birthdate": "07/03/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 2",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456214"
     },
     {
       "id": "9",
@@ -101,7 +137,12 @@
       "division": "Research and Development",
       "photo": "0",
       "status": "Permanent",
-      "gender": "Female"
+      "gender": "Female",
+      "birthdate": "07/03/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 3",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456215"
     },
     {
       "id": "10",
@@ -112,7 +153,12 @@
       "division": "Research and Development",
       "photo": "0",
       "status": "Permanent",
-      "gender": "Male"
+      "gender": "Male",
+      "birthdate": "07/03/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 3",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456215"
     },
     {
       "id": "11",
@@ -123,7 +169,12 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Probation",
-      "gender": "Female"
+      "gender": "Female",
+      "birthdate": "07/03/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 3",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456215"
     },
     {
       "id": "12",
@@ -134,7 +185,12 @@
       "division": "Research and Development",
       "photo": "0",
       "status": "Probation",
-      "gender": "Male"
+      "gender": "Male",
+      "birthdate": "07/03/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 3",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456215"
     },
     {
       "id": "13",
@@ -145,7 +201,12 @@
       "division": "Research and Development",
       "photo": "0",
       "status": "Contract",
-      "gender": "Male"
+      "gender": "Male",
+      "birthdate": "07/03/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 3",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456215"
     },
     {
       "id": "14",
@@ -156,7 +217,12 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Probation",
-      "gender": "Male"
+      "gender": "Male",
+      "birthdate": "07/03/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan kanan no 3",
+      "emergencyperson": "Someone",
+      "emergencycontact": "08123456215"
     },
     {
       "id": "15",

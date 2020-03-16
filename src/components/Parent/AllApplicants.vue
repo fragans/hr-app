@@ -38,7 +38,6 @@ import { mapGetters } from 'vuex'
           { text: 'Email', value: 'email' },
           { text: 'Position', value: 'position' },
           { text: 'Status', value: 'status' },
-          { text: 'Iron (%)', value: 'iron' },
         ],
         desserts: [
           
@@ -69,7 +68,6 @@ import { mapGetters } from 'vuex'
     {
         this.$store.dispatch('applicants/fetch')
             .then(()=>{
-                console.log('siap')
                 this.copy=this.applies
             })
     },

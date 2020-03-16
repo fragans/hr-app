@@ -1,13 +1,6 @@
 <template>
-    <v-content>
-        <v-row class="title py-4">
-            <v-col col="6" class="flex justify-center items-center uppercase">
-                <v-icon left>mdi-card-bulleted</v-icon>
-                <h1>{{$route.name}}</h1>
-                
-            </v-col>
-           
-        </v-row>
+    <v-content class="flex justify-center items-center">
+        
         <v-row>
             <v-card class="mx-auto p-4 w-full">
 
@@ -43,7 +36,7 @@
                         </v-btn>
                         <v-btn class="mr-4" block  color="error">
                             <v-icon left>mdi-cancel</v-icon>    
-                            Send
+                            Reject
                         </v-btn>
                     </v-col>
                     <v-spacer></v-spacer>

@@ -1,8 +1,14 @@
 <template>
     
     <v-container v-if="persons.length > 0">
+      <v-row class="title py-4">
+           <v-skeleton-loader :loading="loading" height="50" width="250" max-width="300" type="list-item-avatar" >
+                <v-card-title>
+                  {{$route.name}}
+                </v-card-title>
+            </v-skeleton-loader>  
+        </v-row>
         <FilterList :search="search" :headers="headers" :items="copy" rowClick="Edit"> 
-          <h1 slot="title">Employee</h1>
 
           <v-tabs slot="filter" show-arrows>
             <v-tab @click="reset">All</v-tab>
@@ -48,7 +54,7 @@ import { mapGetters } from 'vuex'
         desserts: [
           
         ],
-        loading:[],
+        loading:true,
         copy: []
       }
     },
@@ -70,10 +76,10 @@ import { mapGetters } from 'vuex'
           this.copy = this.persons
         }
     },
-    mounted()
-    {
-      
-      // this.fetch()
+    mounted(){
+      setTimeout(()=>{
+        this.loading = false
+      },1000)
     },
     created(){
       this.$store.dispatch('employees/fetch')

@@ -2,10 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import store from '../store/index.js'
-import leave from '../views/LeaveRequest.vue'
 
-// import Employees from '../views/Employees.vue'
-// import EmployeeEdit from '../views/EmployeeEdit.vue'
+
+
 Vue.use(VueRouter)
 
 const routes = [{
@@ -48,7 +47,7 @@ const routes = [{
     },
     {
         path: '/attendance',
-        name: 'Attendance',
+        
         icon: 'calendar-check',
         meta: {
             title: 'Attendance',
@@ -57,6 +56,14 @@ const routes = [{
         },
         component: () =>
             import ('../views/Attendance.vue')
+        ,children:[
+            {
+                name: 'Attendance',
+                path:'',
+                component: () =>
+                import('../components/Parent/AllAttendance.vue')
+            },
+        ]
     },
     {
         path: '/applicants',
@@ -68,42 +75,42 @@ const routes = [{
         },
         component: () =>
             import ('../views/Applicants.vue')
-            ,children:[
-                {
-                    name:'Applicants',
-                    path: '',
+        ,children:[
+            {
+                name:'Applicants',
+                path: '',
+                icon: 'file-document-box-search',
+                meta:{
+                    title:'Applicants',
                     icon: 'file-document-box-search',
-                    meta:{
-                        title:'Applicants',
-                        icon: 'file-document-box-search',
-                    },
-                    component: () =>
-                    import('../components/Parent/AllApplicants.vue')
                 },
-                {
-                    name:'Edit Applicant Status',
-                    path: 'edit/:id',
+                component: () =>
+                import('../components/Parent/AllApplicants.vue')
+            },
+            {
+                name:'Edit Applicant Status',
+                path: 'edit/:id',
+                icon:'mdi-run-fast'      ,
+                meta:{
+                    title:'asue',
                     icon:'mdi-run-fast'      ,
-                    meta:{
-                        title:'asue',
-                        icon:'mdi-run-fast'      ,
-                    },
-                    component: () =>
-                    import('../components/Edit/EditApplicant.vue')
                 },
-                {
-                    name: 'New Applicant',
-                    path: 'add',
-                    icon: 'run-fast',
-                    meta: {
-                        title: 'Leave Request',
-                        icon: 'mdi-run-fast',
-                    },
-                    component: () =>
-                    import('../components/AddForm/NewApplicant.vue')
-                    
+                component: () =>
+                import('../components/Edit/EditApplicant.vue')
+            },
+            {
+                name: 'New Applicant',
+                path: 'add',
+                icon: 'run-fast',
+                meta: {
+                    title: 'Leave Request',
+                    icon: 'mdi-run-fast',
                 },
-            ],
+                component: () =>
+                import('../components/AddForm/NewApplicant.vue')
+                
+            },
+        ],
     }, {
         path: '/offwork',
         icon:'run-fast',

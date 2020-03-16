@@ -295,60 +295,6 @@
       "status": "Pending",
       "date": "03/13/2020",
       "id": 7
-    },
-    {
-      "emp_id": "",
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 8
-    },
-    {
-      "emp_id": "",
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 9
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 10
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 11
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 12
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 13
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 14
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 15
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/14/2020",
-      "id": 16
     }
   ],
   "todaypresent": [

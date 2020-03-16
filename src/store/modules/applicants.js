@@ -1,66 +1,62 @@
-import axios from 'axios'
-// import router from '../../router'z
+import axios from 'axios';
 
 const state = {
-    persons: [],
-    loading: true
+    apply:{},
+    applies:[],
 }
 
 const getters = {
-    persons(state)
-    {
-        return state.persons
+    applies(state){
+        return state.applies
     },
-
-    loading(state)
-    {
-        return state.loading
+    apply(state){
+        return state.apply
     }
 }
-
 const actions = {
-    // buat fetch
-
-    fetch({commit}, state)
-    {
-        return axios.get('http://localhost:3000/newApplicants').
-        then(({ data })=>{
-            // console.log(data)
-            this.desserts = data
-            this.copy = this.desserts
-            // state.loading = false
-            // console.log(data)
-            commit('setApplicants', data)
-            commit('setLoading')
+    fetch({commit}){
+        
+        return axios.get('http://localhost:3000/newApplicants')
+        .then(({ data })=>{
+            commit('setApplies',data)
         })
     },
+    insert({commit,dispatch},payload){
+        // console.log(payload)
+        dispatch('fetch').then(()=>{
+            console.log(state.apply)
+            return axios.post('http://localhost:3000/newApplicants',
+            {
+                emp_id: payload.emp_id,
+                status: payload.status,
+                date: payload.date,
+                id:(state.apply.length+1 ),
+                
+            })
+            .then(response=>{
+                console.log(response)
+            })
+        })
+        
+        
 
-    fetchPerson({commit}, state, payload)
-    {
-        return axios.get('http://localhost:3000/newApplicants/1').
-        then(({ data })=>{
-            // console.log(data)
-            this.desserts = data
-            this.copy = this.desserts
-            // state.loading = false
-            // console.log(data)
-            commit('setApplicants', data)
-            commit('setLoading')
+    },
+    fetchById({commit},payload){
+        return axios.get(`http://localhost:3000/newApplicants/${payload}`)
+        .then(({ data })=>{
+            commit('setApply',data)
+
         })
     }
 }
 
 const mutations = {
-    
-    setApplicants(state, payload)
-    {
-        state.persons = payload
+    setApplies(state,payload){
+        state.applies= payload
     },
-
-    setLoading(state)
-    {
-        state.loading = false
-    }
+    setApply(state, payload){
+        state.apply = payload
+    },
 
 }
 
@@ -70,4 +66,5 @@ export default {
     actions,
     mutations,
     getters
+
 }

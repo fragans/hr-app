@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import store from '../store/index.js'
 import leave from '../views/LeaveRequest.vue'
-import newLeave from '../views/NewLeave.vue'
+
 // import Employees from '../views/Employees.vue'
 // import EmployeeEdit from '../views/EmployeeEdit.vue'
 Vue.use(VueRouter)
@@ -14,36 +14,61 @@ const routes = [{
         icon: 'home',
         component: Dashboard,
         meta: {
-            title: '',
+            title: 'Dashboard',
             requiresAuth: true,
             nav: true
         },
         component: () =>
             import ('../views/Dashboard.vue')
     },
-    {
-        path: '/employees/:id',
-        name: 'Edit',
-        icon: 'account-badge',
-        meta: {
-            title: '',
-            requiresAuth: true
-        },
-        component: () =>
-            import ('../views/EmployeeEdit.vue')
+    // {
+    //     path: '/employees/:id',
+    //     name: 'Edit',
+    //     icon: 'account-group',
+    //     meta: {
+    //         title: '',
+    //         requiresAuth: true
+    //     },
+    //     component: () =>
+    //         import ('../views/EmployeeEdit.vue')
 
-    },
+    // },
     {
         path: '/employees',
         name: 'Employees',
-        icon: 'account-badge',
+        icon: 'account-group',
         meta: {
             title: 'Employees',
             requiresAuth: true,
             nav: true
         },
         component: () =>
-            import ('../views/Employees.vue')
+            import ('../views/Employees.vue'),
+            children:[
+                {
+                    name:'Employees',
+                    path: '',
+                    icon: 'file-document-box-search',
+                    meta:{
+                        title:'Employees',
+                        icon: 'file-document-box-search',
+                    },
+                    component: () =>
+                    import('../components/Parent/AllEmployees.vue')
+                },
+                {
+                    name:'Edit Employee',
+                    path: '/edit/:id',
+                    icon:'mdi-run-fast'      ,
+                    meta:{
+                        title:'asue',
+                        icon:'mdi-run-fast'      ,
+                    },
+                    component: () =>
+                    import('../components/Edit/EditEmployee.vue')
+                },
+            ],
+
 
     },
     {
@@ -60,41 +85,100 @@ const routes = [{
     },
     {
         path: '/applicants',
-        name: 'Applicants',
-        icon: 'file-document-box-search',
+        icon: 'account-multiple-plus',
         meta: {
-            title: '',
+            title: 'Applicants',
             requiresAuth: true,
             nav: true
         },
         component: () =>
             import ('../views/Applicants.vue')
+            ,children:[
+                {
+                    name:'Applicants',
+                    path: '',
+                    icon: 'file-document-box-search',
+                    meta:{
+                        title:'Applicants',
+                        icon: 'file-document-box-search',
+                    },
+                    component: () =>
+                    import('../components/Parent/AllApplicants.vue')
+                },
+                {
+                    name:'Edit Applicant Status',
+                    path: 'edit/:id',
+                    icon:'mdi-run-fast'      ,
+                    meta:{
+                        title:'asue',
+                        icon:'mdi-run-fast'      ,
+                    },
+                    component: () =>
+                    import('../components/Edit/EditApplicant.vue')
+                },
+                {
+                    name: 'New Applicant',
+                    path: 'add',
+                    icon: 'run-fast',
+                    meta: {
+                        title: 'Leave Request',
+                        icon: 'mdi-run-fast',
+                    },
+                    component: () =>
+                    import('../components/AddForm/NewApplicant.vue')
+                    
+                },
+            ],
     }, {
         path: '/offwork',
-        name: 'Leave Request',
-        icon: 'run-fast',
+        icon:'run-fast',
         meta: {
-            title: 'Leave Request',
             requiresAuth: true,
+            nav: true,
+            title:'Leave Request'
             
-            nav: true
         },
-        component: leave,
-        // component: () =>
-        //     import('../views/LeaveRequest.vue')
+        component: () =>
+            import('../views/LeaveRequest.vue')
+        ,children:[
+            {
+                name:'Leave Request',
+                path: '',
+                icon:'mdi-run-fast'      ,
+                meta:{
+                    title:'Leave Request',
+                    icon:'mdi-run-fast'      ,
+                },
+                component: () =>
+                import('../components/Parent/AllLeaveRequest.vue')
+            },
+            {
+                name:'Edit Leave Status',
+                path: 'edit/:id',
+                icon:'mdi-run-fast'      ,
+                meta:{
+                    title:'asue',
+                    icon:'mdi-run-fast'      ,
+                },
+                component: () =>
+                import('../views/EditLeave.vue')
+            },
+            {
+                name: 'New Leave Request',
+                path: 'add',
+                meta: {
+                    title: 'Leave Request',
+                    icon: 'run-fast',
+                },
+                component: () =>
+                import('../components/AddForm/NewLeave.vue')
+                
+            },
+        ],
+        
 
     },
-    {
-        path: '/offwork/add',
-        name: 'New Leave Request',
-        icon: 'run-fast',
-        meta: {
-            title: 'Leave Request',
-            requiresAuth: true,
-            icon: 'run-fast',
-        },
-        component: newLeave,
-    },
+    
     {
         
         path: '/login',
@@ -105,7 +189,19 @@ const routes = [{
         },
         component: () =>
             import ('../views/Login.vue')
-    }
+    },
+    {
+        
+        path: '/image',
+        name: 'Image',
+        icon: 'lock',
+        meta: {
+            title: 'Upload Image'
+        },
+        component: () =>
+            import ('../views/Image.vue')
+    },
+  
 
 ]
 

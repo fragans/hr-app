@@ -2,9 +2,11 @@ import axios from 'axios'
 // import router from '../../router'z
 
 const state = {
+
     persons: [],
     person: {},
     loading: true
+
 }
 
 const getters = {
@@ -12,6 +14,7 @@ const getters = {
     {
         return state.persons
     },
+
 
     person(state)
     {
@@ -41,18 +44,6 @@ const actions = {
         })
     },
 
-    fetchPerson({commit}, state, payload)
-    {
-        return axios.get('http://localhost:3000/employees/1').
-        // return axios.get(`http://localhost:3000/employees/state.employees.id)}`)
-        // return axios.get(`http://localhost:3000/employees/1`)
-        then(({ data })=>{
-            commit('setProfile', data)
-            commit('setLoading')
-        })
-
-    },
-
     update(state,payload)
     {
         // console.log(payload)
@@ -61,6 +52,15 @@ const actions = {
             console.log(response)
         })
         // console.log(payload)
+    },
+
+    fetchById({commit},payload){
+        console.log("p = "+ payload)
+        return axios.get(`http://localhost:3000/employees/${payload}`)
+        .then(({ data })=>{
+            commit('setEmployee',data)
+            commit('setLoading')
+        })
     }
 }
 
@@ -71,15 +71,14 @@ const mutations = {
         state.persons = payload
     },
 
-    setProfile(state, payload)
-    {
-        state.person = payload
-    },
-
     updatePerson(state, payload)
     {
         console.log(payload)
         state.person.name = payload
+    },
+
+    setEmployee(state,payload){
+        state.person= payload
     },
 
     setLoading(state)

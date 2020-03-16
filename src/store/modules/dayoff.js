@@ -1,11 +1,15 @@
 import axios from 'axios';
 
 const state = {
-    day:[],
+    day:{},
+    days:[],
     loading:true
 }
 
 const getters = {
+    days(state){
+        return state.days
+    },
     day(state){
         return state.day
     },
@@ -18,7 +22,7 @@ const actions = {
         
         return axios.get('http://localhost:3000/outtoday')
         .then(({ data })=>{
-            commit('setDay',data)
+            commit('setDays',data)
         })
     },
     insert({commit,dispatch},payload){
@@ -40,12 +44,21 @@ const actions = {
         
         
 
+    },
+    fetchById({commit},payload){
+        return axios.get(`http://localhost:3000/outtoday/${payload}`)
+        .then(({ data })=>{
+            commit('setDay',data)
+        })
     }
 }
 
 const mutations = {
-    setDay(state,payload){
-        state.day= payload
+    setDays(state,payload){
+        state.days= payload
+    },
+    setDay(state, payload){
+        state.day = payload
     },
     setLoading(state, payload){
         state.loading = payload

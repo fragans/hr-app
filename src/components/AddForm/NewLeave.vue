@@ -18,7 +18,6 @@
             <v-row>
                 
                 <v-select :loading="loading"  v-model="selected" :items="persons" item-text="name" item-value="id" label="Employee Name" placeholder="Identify yourself ... ">
-
                 </v-select>
                 
             </v-row>   

@@ -35,18 +35,7 @@
 
         </v-col>
         <v-col col="3"> 
-          <v-row class="my-2">
-            <v-img :src="`https://picsum.photos/500/300?image=1`" :lazy-src="`https://picsum.photos/10/6?image=1`" aspect-ratio="1" class="grey lighten-2" >
-              <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center" >
-                  <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
-          </v-row>
-          <v-row class="my-2">
-            <v-btn block>Upload Image</v-btn>
-          </v-row>
+          <imgUpload />
             
         </v-col>
         
@@ -57,8 +46,10 @@
 <script>
   import { validationMixin } from 'vuelidate'
   import { required, maxLength, email } from 'vuelidate/lib/validators'
-
+  import imgUpload from '@/components/Edit/ImageUploader'
+  import Emergency from '@/components/Edit/EmergencyContact'
   export default {
+    components:{imgUpload},
     mixins: [validationMixin],
 
     validations: {

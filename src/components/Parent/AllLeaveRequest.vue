@@ -1,21 +1,20 @@
 <template>
-    
-    <v-container v-if="persons.length > 0">
-        <FilterList :search="search" :headers="headers" :items="copy" rowClick="Edit"> 
+
+    <v-container v-if="copy.length > 0">
+        <FilterList :search="search" :headers="headers" :items="copy" rowClick="Edit Leave Status"> 
           <h1 slot="title">Employee</h1>
 
           <v-tabs slot="filter" show-arrows>
             <v-tab @click="reset">All</v-tab>
-            <v-tab @click="filter('Permanent')">permanent</v-tab>
-            <v-tab @click="filter('Probation')">probation</v-tab>
-            <v-tab @click="filter('Contract')">contract</v-tab>
+            <v-tab @click="filter('Approved')">Approved</v-tab>
+            <v-tab @click="filter('Pending')">Pending</v-tab>
+            <v-tab @click="filter('Rejected')">Rejected</v-tab>
           </v-tabs>
 
           <template slot="action">
-            <v-btn>Add Employee</v-btn>
+            <v-btn to="/offwork/add">new req</v-btn>
           </template>
         </FilterList>
-        
     </v-container>
 
 </template>
@@ -33,33 +32,27 @@ import { mapGetters } from 'vuex'
       return {
         search: '',
         headers: [
-          { text: 'ID', value: 'id' },
           {
-            text: 'Name',
+            text: 'EmployeeID',
             align: 'start',
             sortable: false,
-            value: 'name',
+            value: 'emp_id',
           },
-          { text: 'Email', value: 'email' },
-          { text: 'Position', value: 'position' },
+          { text: 'Date', value: 'date' },
           { text: 'Status', value: 'status' },
           
         ],
-        desserts: [
-          
-        ],
-        loading:[],
         copy: []
       }
     },
     computed:{
       ...mapGetters({
-        persons : 'employees/persons',
+        dayoff : 'dayoff/days',
       })
     },
     methods:{
         filter(value){
-              let d = this.persons;
+              let d = this.dayoff;
               var filtered  = d.filter((el)=>{
                 return el.status === value
             })
@@ -70,16 +63,12 @@ import { mapGetters } from 'vuex'
           this.copy = this.persons
         }
     },
-    mounted()
-    {
-      
-      // this.fetch()
-    },
     created(){
-      this.$store.dispatch('employees/fetch')
-      .then(()=>{
-        this.copy = this.persons
-      })
+      this.$store.dispatch('dayoff/fetch')
+        .then(()=>{
+          this.copy = this.dayoff
+        }
+      )
     },
     beforeMount(){
         

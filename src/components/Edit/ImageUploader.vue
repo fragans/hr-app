@@ -1,30 +1,22 @@
 <template>
-<v-content class="max-w-md mx-auto">
+<v-content class="">
     
         <v-row class="border border-gray-100">
-            <v-img :src="decode64" aspect-ratio="1" />
+            <v-img :src="showImg" aspect-ratio="1" ref="img" />
         </v-row>
         <v-row>
-            <v-btn @click="upload">upload</v-btn>
+            
             <v-file-input 
                 label="Upload image" 
                 v-model="files" 
                 filled 
-                prepend-icon="mdi-image" 
+                prepend-icon="mdi-account-box-outline" 
                 @change="onSelect" 
                 accept="image/png, image/jpeg, image/bmp" 
                 show-size
-                ref="upload"
                 >
             </v-file-input>   
         </v-row>
-        <!-- <v-row>
-            <v-textarea ref="text" v-model="imgConverted" id="" cols="30" rows="10"></v-textarea>
-        </v-row> -->
-        <!-- <v-btn @click="decodeText">Decode</v-btn> -->
-        
-
-    
 
     <v-dialog v-model="dialog" persistent max-width="290">
         <v-card>
@@ -34,7 +26,7 @@
             </v-card-title>
             
             <v-card-actions>
-            <v-btn color="primary" light block @click="dialog = false">ok</v-btn>
+                <v-btn color="primary" light block @click="dialog = false">ok</v-btn>
             </v-card-actions>
 
         </v-card>
@@ -50,12 +42,11 @@
     export default {
         data(){
             return{
-                decode64:'https://www.forda-mof.org/theme/img/no_image.png',
+                showImg:'https://www.forda-mof.org/theme/img/no_image.png',
                 dialog:false,
                 files:[],
                 imgConverted:'',
-                errors:'Image too large!',
-                f:[],
+                errors:'image is too large!',
                 rules: [
                     value => !value || value.size < 2000000 || 'Avatar size should be less than 2 MB!',
                 ],
@@ -70,8 +61,9 @@
         },
         methods:{
             onSelect(e){
-                console.log('masuk onSelek')
+
                 var f = this.files; // FileList object
+                if(this.files.length === 0 ) return
                 console.log('file_size='+this.files.size)
                 if(this.files.size < 2000000){
                     var reader = new FileReader();
@@ -90,16 +82,15 @@
                     console.log('convert to 64 success!')
                     reader.readAsBinaryString(f);
                 }else{
-                    console.log('masuk else')
                     this.dialog = true
                     this.files=[]
                 }
-            },
-            upload(){
-                this.$refs.upload.click()
+                    
+
+                
             },
             decodeText(){
-                this.decode64 = "data:image/jpg;base64," + this.imgConverted
+                this.showImg = "data:image/jpg;base64," + this.imgConverted
             }
         }
     }

@@ -1,28 +1,24 @@
 <template>
-    
-    <v-container v-if="persons.length > 0">
-        <FilterList :search="search" :headers="headers" :items="copy" rowClick="Edit"> 
-          <h1 slot="title">Employee</h1>
+    <v-container v-if="copy.length > 0">
+        <FilterList :search="search" :headers="headers" :items="copy" rowClick="Edit Applicant Status"> 
+            <h1 slot="title">Employee</h1>
 
-          <v-tabs slot="filter" show-arrows>
+            <v-tabs slot="filter" show-arrows>
             <v-tab @click="reset">All</v-tab>
-            <v-tab @click="filter('Permanent')">permanent</v-tab>
-            <v-tab @click="filter('Probation')">probation</v-tab>
-            <v-tab @click="filter('Contract')">contract</v-tab>
-          </v-tabs>
+            <v-tab @click="filter('Unprocessed')">Unprocessed</v-tab>
+            <v-tab @click="filter('Scheduled to Psycho Test')"> Psycho Test</v-tab>
+            <v-tab @click="filter('Scheduled to Interview')"> Interview</v-tab>
+            </v-tabs>
 
-          <template slot="action">
-            <v-btn>Add Employee</v-btn>
-          </template>
+            <template slot="action">
+            <v-btn to="applicants/add/">Add Applicant</v-btn>
+            </template>
         </FilterList>
-        
     </v-container>
-
 </template>
 
-
 <script>
-import FilterList from '@/components/FilterList'
+   import FilterList from '@/components/FilterList'
 import axios from 'axios'
 import { mapGetters } from 'vuex'
     export default {
@@ -33,7 +29,6 @@ import { mapGetters } from 'vuex'
       return {
         search: '',
         headers: [
-          { text: 'ID', value: 'id' },
           {
             text: 'Name',
             align: 'start',
@@ -43,23 +38,23 @@ import { mapGetters } from 'vuex'
           { text: 'Email', value: 'email' },
           { text: 'Position', value: 'position' },
           { text: 'Status', value: 'status' },
-          
+          { text: 'Iron (%)', value: 'iron' },
         ],
         desserts: [
           
         ],
-        loading:[],
         copy: []
       }
     },
     computed:{
-      ...mapGetters({
-        persons : 'employees/persons',
-      })
+        ...mapGetters({
+            applies: 'applicants/applies'
+        })
+        
     },
     methods:{
         filter(value){
-              let d = this.persons;
+              let d = this.applies;
               var filtered  = d.filter((el)=>{
                 return el.status === value
             })
@@ -67,19 +62,16 @@ import { mapGetters } from 'vuex'
         },
 
         reset(){
-          this.copy = this.persons
+          this.copy = this.applies
         }
     },
     mounted()
     {
-      
-      // this.fetch()
-    },
-    created(){
-      this.$store.dispatch('employees/fetch')
-      .then(()=>{
-        this.copy = this.persons
-      })
+        this.$store.dispatch('applicants/fetch')
+            .then(()=>{
+                console.log('siap')
+                this.copy=this.applies
+            })
     },
     beforeMount(){
         

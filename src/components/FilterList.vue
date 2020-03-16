@@ -5,7 +5,7 @@
                     <v-col>
                         <v-skeleton-loader :loading="loading" height="50" max-width="300" type="list-item-avatar" >
                             <v-card-title>
-                            <v-icon left>mdi-{{current_route.icon}}</v-icon>
+                            <!-- <v-icon left>mdi-{{current_route.icon}}</v-icon> -->
                             <h1>{{$route.name}}</h1>
                             </v-card-title>
                         </v-skeleton-loader>    
@@ -19,7 +19,7 @@
                             <v-btn color="purple" class="text-white">
 
                             
-                            <download-csv v-if="items.length > 0" class   = "text-white" :data="items" :name="'export '+new Date()">
+                            <download-csv class   = "text-white" :data="items" :name="'export '+new Date()">
                                 export
                             </download-csv>
                             </v-btn>
@@ -67,7 +67,7 @@
 <script>
     import downloadCsv from 'vue-json-csv'
     export default {
-        props:["headers" , "items", "search"],
+        props:["headers" , "items", "search","rowClick"],
         components:{
             downloadCsv
         },
@@ -80,7 +80,7 @@
         },
         methods:{
             handleClick(value){
-                this.$router.push({ name: 'Edit', params: { id:value.id } })
+                this.$router.push({ name: this.rowClick , params: { id:value.id } })
             },
         },
         created(){

@@ -1,40 +1,36 @@
 import axios from 'axios';
 
 const state = {
-    day:{},
-    days:[],
-    loading:true
+    apply:{},
+    applies:[],
 }
 
 const getters = {
-    days(state){
-        return state.days
+    applies(state){
+        return state.applies
     },
-    day(state){
-        return state.day
-    },
-    loading(state){
-        return state.loading
+    apply(state){
+        return state.apply
     }
 }
 const actions = {
     fetch({commit}){
         
-        return axios.get('http://localhost:3000/outtoday')
+        return axios.get('http://localhost:3000/newApplicants')
         .then(({ data })=>{
-            commit('setDays',data)
+            commit('setApplies',data)
         })
     },
     insert({commit,dispatch},payload){
         // console.log(payload)
         dispatch('fetch').then(()=>{
-            console.log(state.day)
-            return axios.post('http://localhost:3000/outtoday',
+            console.log(state.apply)
+            return axios.post('http://localhost:3000/newApplicants',
             {
                 emp_id: payload.emp_id,
                 status: payload.status,
                 date: payload.date,
-                id:(state.day.length+1 ),
+                id:(state.apply.length+1 ),
                 
             })
             .then(response=>{
@@ -46,22 +42,19 @@ const actions = {
 
     },
     fetchById({commit},payload){
-        return axios.get(`http://localhost:3000/outtoday/${payload}`)
+        return axios.get(`http://localhost:3000/newApplicants/${payload}`)
         .then(({ data })=>{
-            commit('setDay',data)
+            commit('setApply',data)
         })
     }
 }
 
 const mutations = {
-    setDays(state,payload){
-        state.days= payload
+    setApplies(state,payload){
+        state.applies= payload
     },
-    setDay(state, payload){
-        state.day = payload
-    },
-    setLoading(state, payload){
-        state.loading = payload
+    setApply(state, payload){
+        state.apply = payload
     },
 }
 

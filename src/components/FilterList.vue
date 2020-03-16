@@ -8,13 +8,9 @@
                     <v-spacer></v-spacer>
                     <v-col class="flex justify-around items-center">
                         
-
-                            <!-- <v-btn @click="exportCSV">Export</v-btn>
-                            <v-btn @click="exportAllCSV">Export All</v-btn> -->
                             <v-btn color="purple" class="text-white">
-
                             
-                            <download-csv class="text-white" :data="items" :name="'export '+new Date()">
+                            <download-csv class="text-white" :data="items" :name="'Export '+new Date()">
                                 export
                             </download-csv>
                             </v-btn>

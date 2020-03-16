@@ -53,7 +53,7 @@
         methods:{
             handleClick(value){
                 console.log(value)
-                this.$router.push({ name: 'Edit', params: { id:value.name } })
+                this.$router.push({ name: 'Edit', params: { id:value.id } })
             }
         },
         created(){

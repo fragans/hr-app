@@ -11,7 +11,7 @@
         </v-col>
         <v-spacer></v-spacer>
         <v-col col="3">
-            <v-btn class="mr-4" color="success">
+            <v-btn class="mr-4" color="success" @click="update">
                 <v-icon left>mdi-content-save</v-icon>    
                 save
             </v-btn>
@@ -30,12 +30,13 @@
                     <v-icon left> mdi-{{item.icon}}</v-icon>
                     {{item.name}}
                 </v-tab>
-                
+                <template v-if="!loading">
                 <v-tab-item v-for="block in items" :key="block.name">           
                     <keep-alive>
-                        <component :is="block.name" ></component>
+                        <component :is="block.name" :data="data" ></component>
                     </keep-alive>
                 </v-tab-item >
+                </template>
 
             </v-tabs>
 
@@ -51,7 +52,11 @@ import Profile from '@/components/Edit/Profile'
 import Occupation from '@/components/Edit/Occupation'
 import Address from '@/components/Edit/Address'
 import Emergency from '@/components/Edit/EmergencyContact'
-    export default {
+import axios from 'axios'
+import {mapGetters} from 'vuex'
+
+    export default
+    {
         components:{
             Profile,Occupation,Address,Emergency
         },
@@ -60,11 +65,13 @@ import Emergency from '@/components/Edit/EmergencyContact'
                 tab: 0,
                 currentTab:'Profile',
                 items: [
-                {name:'Profile',icon:'account'},
-                {name:'Occupation',icon:'briefcase'},
-                {name:'Address',icon:'mailbox-open-outline'},
-                {name:'Emergency',icon:'alert-box-outline'},
+                    {name:'Profile',icon:'account'},
+                    {name:'Occupation',icon:'briefcase'},
+                    {name:'Address',icon:'mailbox-open-outline'},
+                    {name:'Emergency',icon:'alert-box-outline'},
                 ],
+                data:'',
+                loading:true,
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
             }
         },
@@ -72,7 +79,10 @@ import Emergency from '@/components/Edit/EmergencyContact'
             renderedComponent: () => {
                 let self = this;
                 return () => import('@/components/' + this.currentTab)
-            }
+            },
+            ...mapGetters({
+                employee : 'employees/person'
+            })
         },
         watch:{
             tab:function(val, OldVal) {
@@ -80,11 +90,30 @@ import Emergency from '@/components/Edit/EmergencyContact'
             }
         },
         methods:{
-            
+            filter(value){
+                // let d = this.desserts;
+                let d = this.persons
+                var filtered  = d.filter((el)=>{
+                    return el.status === value
+                })
+                this.copy = filtered
+            },
+
+            update()
+            {
+                this.$store.dispatch('employees/update',this.employee)
+            }
         },
-        created(){
-            
-        }
+
+        created()
+        {
+            // console.log('emp'+this.employee)
+            this.$store.dispatch('employees/fetchPerson')
+              .then(()=>{
+                this.data = this.employee
+                this.loading = false
+            })
+        },
     }
 </script>
 

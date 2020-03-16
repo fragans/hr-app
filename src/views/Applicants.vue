@@ -4,7 +4,9 @@
         <FilterList :search="search" :headers="headers" :items="copy" > 
           <h1 slot="title">Applicants</h1>
           <v-tabs slot="action" show-arrows>
-            <v-tab @click="filter(50)">less than 50</v-tab>
+            <v-tab @click="filter('Unprocessed')">Unprocessed</v-tab>
+            <v-tab @click="filter('Scheduled to Psycho Test')">Scheduled to Psycho Test</v-tab>
+            <v-tab @click="filter('Scheduled to Interview')">Scheduled to Interview</v-tab>
           </v-tabs>
         </FilterList>
         
@@ -15,6 +17,8 @@
 
 <script>
 import FilterList from '@/components/FilterList'
+import axios from 'axios'
+import {mapGetters} from 'vuex'
     export default {
       components:{
         FilterList
@@ -24,115 +28,74 @@ import FilterList from '@/components/FilterList'
         search: '',
         headers: [
           {
-            text: 'Dessert (100g serving)',
+            text: 'Name',
             align: 'start',
             sortable: false,
             value: 'name',
           },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' },
+          { text: 'Email', value: 'email' },
+          { text: 'Phone', value: 'phone' },
+          { text: 'Position', value: 'position' },
+          { text: 'Status', value: 'status' },
         ],
         desserts: [
-          {
-            name: 'Frozen Yogurt',
-            calories: 159,
-            fat: 6.0,
-            carbs: 24,
-            protein: 4.0,
-            iron: '1%',
-          },
-          {
-            name: 'Ice cream sandwich',
-            calories: 237,
-            fat: 9.0,
-            carbs: 37,
-            protein: 4.3,
-            iron: '1%',
-          },
-          {
-            name: 'Eclair',
-            calories: 262,
-            fat: 16.0,
-            carbs: 23,
-            protein: 6.0,
-            iron: '7%',
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-            fat: 3.7,
-            carbs: 67,
-            protein: 4.3,
-            iron: '8%',
-          },
-          {
-            name: 'Gingerbread',
-            calories: 356,
-            fat: 16.0,
-            carbs: 49,
-            protein: 3.9,
-            iron: '16%',
-          },
-          {
-            name: 'Jelly bean',
-            calories: 375,
-            fat: 0.0,
-            carbs: 94,
-            protein: 0.0,
-            iron: '0%',
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-            fat: 0.2,
-            carbs: 98,
-            protein: 0,
-            iron: '2%',
-          },
-          {
-            name: 'Honeycomb',
-            calories: 408,
-            fat: 3.2,
-            carbs: 87,
-            protein: 6.5,
-            iron: '45%',
-          },
-          {
-            name: 'Donut',
-            calories: 452,
-            fat: 25.0,
-            carbs: 51,
-            protein: 4.9,
-            iron: '22%',
-          },
-          {
-            name: 'KitKat',
-            calories: 518,
-            fat: 26.0,
-            carbs: 65,
-            protein: 7,
-            iron: '6%',
-          },
+          
         ],
         copy: []
       }
     },
     methods:{
         filter(value){
-             let d = this.desserts;
-            var filtered  = d.filter((el)=>{
-                console.log(el.calories > 50)
-                return el.calories > 400
+              let d = this.persons;
+              var filtered  = d.filter((el)=>{
+                  return el.status === value
+              })
+              this.copy = filtered
+        },
+
+        fetch()
+        {
+            axios.get('http://localhost:3000/newApplicants').then(({ data })=>{
+              console.log(data)
+              this.desserts = data
+              this.copy = this.desserts;
             })
-            this.copy = filtered
         }
     },
+
+    computed:{
+      ...mapGetters({
+          persons:'applicants/persons'
+      })
+
+    },
+
+    watch:{
+        loading(value, oldval)
+        {
+          this.copy = this.applicants
+        }
+    },
+
+    created()
+    {
+        this.$store.dispatch('applicants/fetch')
+        .then(()=>{
+          this.copy = this.persons
+        })
+    },
+
+    mounted()
+    {
+      // console.log("test")
+      // this.fetch()
+    },
+
     beforeMount(){
-        this.copy = this.desserts;
+        
     }
   }
+
 </script>
 
 <style scoped>

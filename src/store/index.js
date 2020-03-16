@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import employees from './modules/employees'
+import applicants from './modules/applicants'
 
 import user from './modules/user'
 
@@ -10,6 +12,8 @@ export default new Vuex.Store({
     mutations: {},
     actions: {},
     modules: {
-        user
+        user,
+        employees,
+        applicants
     }
 })

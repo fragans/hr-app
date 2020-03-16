@@ -1,6 +1,6 @@
 <template>
     
-    <v-container>
+    <v-container v-if="persons.length > 0">
         <FilterList :search="search" :headers="headers" :items="copy" > 
           <h1 slot="title"> 
             
@@ -20,6 +20,7 @@
 <script>
 import FilterList from '@/components/FilterList'
 import axios from 'axios'
+import {mapGetters} from 'vuex'
     export default {
       components:{
         FilterList
@@ -29,7 +30,7 @@ import axios from 'axios'
         search: '',
         headers: [
           {
-            text: 'Dessert (100g serving)',
+            text: 'Name',
             align: 'start',
             sortable: false,
             value: 'name',
@@ -37,7 +38,7 @@ import axios from 'axios'
           { text: 'Email', value: 'email' },
           { text: 'Position', value: 'position' },
           { text: 'Status', value: 'status' },
-          { text: 'Iron (%)', value: 'iron' },
+          // { text: 'Iron (%)', value: 'iron' },
         ],
         desserts: [
           
@@ -47,7 +48,8 @@ import axios from 'axios'
     },
     methods:{
         filter(value){
-              let d = this.desserts;
+              // let d = this.desserts;
+              let d = this.persons;
               var filtered  = d.filter((el)=>{
                 return el.status === value
             })
@@ -62,15 +64,45 @@ import axios from 'axios'
             this.copy = this.desserts;
           })
         }
+
+
     },
+
+    computed:{
+      ...mapGetters({
+        persons:'employees/persons',
+        // loading: 'employees/loading'
+      })
+
+    },
+
+    watch:{
+      loading(value, oldval)
+      {
+        this.copy = this.employees
+      }
+    },
+
     mounted()
     {
-      this.fetch()
+      // this.fetch()
     },
-    beforeMount(){
-        
 
-        
+    beforeMount(){
+ 
+    },
+
+    created()
+    {
+      this.$store.dispatch('employees/fetch')
+      .then(()=>{
+        this.copy = this.persons
+      })
+    },
+
+    destroyed()
+    {
+      console.log("Employee destoryed")
     }
   }
 </script>

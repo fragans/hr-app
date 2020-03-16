@@ -1,16 +1,16 @@
 <template>
     <v-row class="p-4">
         <v-col col="8" class="mr-2">
-            <v-text-field v-model="name" label="Name" @input="updatePerson" required ></v-text-field>
+            <v-text-field v-model="name" :error-messages="nameErrors" :counter="10" label="Name" required @input="$v.name.$touch()" @blur="$v.name.$touch()" ></v-text-field>
 
-            <v-text-field v-model="email" :error-messages="emailErrors" label="E-mail" required></v-text-field>
+            <v-text-field v-model="email" :error-messages="emailErrors" label="E-mail" required @input="$v.email.$touch()" @blur="$v.email.$touch()" ></v-text-field>
 
             <v-text-field v-model="phone" label="Phone" required  ></v-text-field>
             <!-- <v-select v-model="select" :items="items" :error-messages="selectErrors" label="Item" required @change="$v.select.$touch()" @blur="$v.select.$touch()" ></v-select>  -->
 
              <v-radio-group v-model="sex" :rules="[v => !!v || 'Item is required']" required class="flex">
-                <v-radio label="Man" value="Male"></v-radio>
-                <v-radio label="Woman" value="Female"></v-radio>
+                <v-radio label="Man" value="0"></v-radio>
+                <v-radio label="Woman" value="1"></v-radio>
             </v-radio-group>
 
             
@@ -31,22 +31,11 @@
               <v-date-picker v-model="date" no-title ></v-date-picker>
             </v-menu>
             
-            <v-text-field v-model="birthPlace" label="Birth place" required ></v-text-field>
+            <v-text-field v-model="birthPlace" label="Birth place" required  ></v-text-field>
 
         </v-col>
         <v-col col="3"> 
-          <v-row class="my-2">
-            <v-img :src="`https://picsum.photos/500/300?image=1`" :lazy-src="`https://picsum.photos/10/6?image=1`" aspect-ratio="1" class="grey lighten-2" >
-              <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center" >
-                  <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
-          </v-row>
-          <v-row class="my-2">
-            <v-btn block>Upload Image</v-btn>
-          </v-row>
+          <imgUpload />
             
         </v-col>
         
@@ -57,10 +46,23 @@
 <script>
   import { validationMixin } from 'vuelidate'
   import { required, maxLength, email } from 'vuelidate/lib/validators'
-  import {mapGetters} from 'vuex'
-
+  import imgUpload from '@/components/Edit/ImageUploader'
+  import Emergency from '@/components/Edit/EmergencyContact'
   export default {
-    props:["data"],
+    components:{imgUpload},
+    mixins: [validationMixin],
+
+    validations: {
+      phone: {required , maxLength: maxLength(12)},
+      name: { required, maxLength: maxLength(10) },
+      email: { required, email },
+      select: { required },
+      checkbox: {
+        checked (val) {
+          return val
+        },
+      },
+    },
 
     data: vm => ({
       birthPlace:'',
@@ -75,19 +77,41 @@
     }),
 
     computed: {
-      ...mapGetters({
-        profil: 'employees/person'
-      })
+      checkboxErrors () {
+        const errors = []
+        if (!this.$v.checkbox.$dirty) return errors
+        !this.$v.checkbox.checked && errors.push('You must agree to continue!')
+        return errors
+      },
+      selectErrors () {
+        const errors = []
+        if (!this.$v.select.$dirty) return errors
+        !this.$v.select.required && errors.push('Item is required')
+        return errors
+      },
+      nameErrors () {
+        const errors = []
+        if (!this.$v.name.$dirty) return errors
+        !this.$v.name.maxLength && errors.push('Name must be at most 10 characters long')
+        !this.$v.name.required && errors.push('Name is required.')
+        return errors
+      },
+      emailErrors () {
+        const errors = []
+        if (!this.$v.email.$dirty) return errors
+        !this.$v.email.email && errors.push('Must be valid e-mail')
+        !this.$v.email.required && errors.push('E-mail is required')
+        return errors
+      },
+      computedDateFormatted () {
+        return this.formatDate(this.date)
+      },
     },
     watch: {
       date (val) {
         this.dateFormatted = this.formatDate(this.date)
       },
-      name(val){
-        console.log(val)
-      }
     },
-
     methods: {
       submit () {
         this.$v.$touch()
@@ -111,34 +135,7 @@
         const [month, day, year] = date.split('/')
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
       },
-
-      updatePerson()
-      {
-        this.$store.commit('employees/updatePerson', this.name)
-        // this.$store.commit('employees/updatePerson', this.email)
-      }
-
     },
-
-    mounted()
-    {
-      // console.log(this.profil)
-      this.name = this.profil.name
-      this.phone = this.profil.phone
-      this.sex = this.profil.gender
-      this.birthPlace = this.profil.birthplace
-      this.birthDate = this.profil.birthdate
-      this.email = this.profil.email
-      // this.$store.dispatch('employees/fetchPerson')
-      //         .then(()=>{
-      //           console.log(this.profil)
-      //           this.name = this.profil.name
-      //           // this.data = this.employee
-      //       })
-
-      
-      // this.name = this.person.name
-    }
   }
 </script>
 

@@ -2,6 +2,10 @@
   "employees": [
     {
       "id": "1",
+<<<<<<< HEAD
+=======
+      "name": "Tony Stark",
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
       "email": "tonystark@email.com",
       "phone": "021123456",
       "position": "Devops",
@@ -9,9 +13,19 @@
       "photo": "0",
       "status": "Permanent",
       "gender": "Male",
+<<<<<<< HEAD
       "birthdate": "1990-08-07",
       "birthplace": "Jakarta",
       "name": "Tony Stark"
+=======
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "2",
@@ -23,8 +37,18 @@
       "photo": "0",
       "status": "Permanent",
       "gender": "Male",
+<<<<<<< HEAD
       "birthdate": "1990-09-09",
       "birthplace": "Jakarta"
+=======
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "3",
@@ -35,7 +59,18 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
+<<<<<<< HEAD
       "gender": "Male"
+=======
+      "gender": "Male",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "4",
@@ -46,7 +81,18 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
+<<<<<<< HEAD
       "gender": "Male"
+=======
+      "gender": "Male",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "5",
@@ -57,7 +103,18 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
+<<<<<<< HEAD
       "gender": "Male"
+=======
+      "gender": "Male",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "6",
@@ -68,7 +125,18 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
+<<<<<<< HEAD
       "gender": "Male"
+=======
+      "gender": "Male",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "7",
@@ -79,7 +147,18 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
+<<<<<<< HEAD
       "gender": "Female"
+=======
+      "gender": "Female",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "8",
@@ -90,7 +169,18 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Permanent",
+<<<<<<< HEAD
       "gender": "Female"
+=======
+      "gender": "Female",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "9",
@@ -101,7 +191,18 @@
       "division": "Research and Development",
       "photo": "0",
       "status": "Permanent",
+<<<<<<< HEAD
       "gender": "Female"
+=======
+      "gender": "Female",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "10",
@@ -112,7 +213,18 @@
       "division": "Research and Development",
       "photo": "0",
       "status": "Permanent",
+<<<<<<< HEAD
       "gender": "Male"
+=======
+      "gender": "Male",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "11",
@@ -123,7 +235,18 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Probation",
+<<<<<<< HEAD
       "gender": "Female"
+=======
+      "gender": "Female",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "12",
@@ -134,7 +257,18 @@
       "division": "Research and Development",
       "photo": "0",
       "status": "Probation",
+<<<<<<< HEAD
       "gender": "Male"
+=======
+      "gender": "Male",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "13",
@@ -145,7 +279,18 @@
       "division": "Research and Development",
       "photo": "0",
       "status": "Contract",
+<<<<<<< HEAD
       "gender": "Male"
+=======
+      "gender": "Male",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "14",
@@ -156,6 +301,7 @@
       "division": "Engineering",
       "photo": "0",
       "status": "Probation",
+<<<<<<< HEAD
       "gender": "Male"
     },
     {
@@ -170,23 +316,120 @@
       "gender": "Male",
       "birthdate": "1990-01-02",
       "birthplace": "New York"
+=======
+      "gender": "Male",
+      "address": "",
+      "emergency_contanct": [
+        {
+          "name": "",
+          "phone": ""
+        }
+      ]
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     }
   ],
   "outtoday": [
     {
       "id": "1",
       "emp_id": "9",
+<<<<<<< HEAD
       "date": "2020-03-27"
+=======
+      "date": "2020-03-27",
+      "status": "Pending"
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "2",
       "emp_id": "10",
+<<<<<<< HEAD
       "date": "2020-03-27"
+=======
+      "date": "2020-03-27",
+      "status": "Rejected"
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     },
     {
       "id": "3",
       "emp_id": "5",
+<<<<<<< HEAD
       "date": "2020-03-27"
+=======
+      "date": "2020-03-27",
+      "status": "Approved"
+    },
+    {
+      "emp_id": "3",
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 4
+    },
+    {
+      "emp_id": "2",
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 5
+    },
+    {
+      "emp_id": "2",
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 6
+    },
+    {
+      "emp_id": "2",
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 7
+    },
+    {
+      "emp_id": "",
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 8
+    },
+    {
+      "emp_id": "",
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 9
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 10
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 11
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 12
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 13
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 14
+    },
+    {
+      "emp_id": null,
+      "status": "Pending",
+      "date": "03/13/2020",
+      "id": 15
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     }
   ],
   "todaypresent": [
@@ -237,6 +480,57 @@
       "emp_id": "14",
       "date": "2020-03-27",
       "time": "08:02:00"
+<<<<<<< HEAD
+=======
+    },
+    {
+      "id": "9",
+      "emp_id": "1",
+      "date": "2020-03-28",
+      "time": "09:00:00"
+    },
+    {
+      "id": "10",
+      "emp_id": "2",
+      "date": "2020-03-28",
+      "time": "09:00:10"
+    },
+    {
+      "id": "11",
+      "emp_id": "3",
+      "date": "2020-03-28",
+      "time": "09:00:20"
+    },
+    {
+      "id": "12",
+      "emp_id": "4",
+      "date": "2020-03-28",
+      "time": "09:00:30"
+    },
+    {
+      "id": "13",
+      "emp_id": "11",
+      "date": "2020-03-28",
+      "time": "09:00:40"
+    },
+    {
+      "id": "14",
+      "emp_id": "12",
+      "date": "2020-03-28",
+      "time": "09:00:50"
+    },
+    {
+      "id": "15",
+      "emp_id": "13",
+      "date": "2020-03-28",
+      "time": "09:01:00"
+    },
+    {
+      "id": "16",
+      "emp_id": "14",
+      "date": "2020-03-28",
+      "time": "09:02:00"
+>>>>>>> d68cb19c94e55d5c699f229fc7f5a41948008468
     }
   ],
   "newApplicants": [

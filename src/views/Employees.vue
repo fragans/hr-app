@@ -2,14 +2,18 @@
     
     <v-container v-if="persons.length > 0">
         <FilterList :search="search" :headers="headers" :items="copy" > 
-          <h1 slot="title"> 
-            
-            Employee</h1>
-          <v-tabs slot="action" show-arrows>
+          <h1 slot="title">Employee</h1>
+
+          <v-tabs slot="filter" show-arrows>
+            <v-tab @click="reset">All</v-tab>
             <v-tab @click="filter('Permanent')">permanent</v-tab>
             <v-tab @click="filter('Probation')">probation</v-tab>
             <v-tab @click="filter('Contract')">contract</v-tab>
           </v-tabs>
+
+          <template slot="action">
+            <v-btn>Add Employee</v-btn>
+          </template>
         </FilterList>
         
     </v-container>
@@ -29,6 +33,7 @@ import {mapGetters} from 'vuex'
       return {
         search: '',
         headers: [
+          { text: 'ID', value: 'id' },
           {
             text: 'Name',
             align: 'start',
@@ -38,17 +43,22 @@ import {mapGetters} from 'vuex'
           { text: 'Email', value: 'email' },
           { text: 'Position', value: 'position' },
           { text: 'Status', value: 'status' },
-          // { text: 'Iron (%)', value: 'iron' },
+
         ],
         desserts: [
           
         ],
+        loading:[],
         copy: []
       }
     },
+    computed:{
+      ...mapGetters({
+        persons : 'employees/persons',
+      })
+    },
     methods:{
         filter(value){
-              // let d = this.desserts;
               let d = this.persons;
               var filtered  = d.filter((el)=>{
                 return el.status === value
@@ -56,13 +66,8 @@ import {mapGetters} from 'vuex'
             this.copy = filtered
         },
 
-        fetch()
-        {
-          axios.get('http://localhost:3000/employees').then(({ data })=>{
-            // console.log(data)
-            this.desserts = data
-            this.copy = this.desserts;
-          })
+        reset(){
+          this.copy = this.persons
         }
 
 
@@ -85,7 +90,14 @@ import {mapGetters} from 'vuex'
 
     mounted()
     {
+      
       // this.fetch()
+    },
+    created(){
+      this.$store.dispatch('employees/fetch')
+      .then(()=>{
+        this.copy = this.persons
+      })
     },
 
     beforeMount(){

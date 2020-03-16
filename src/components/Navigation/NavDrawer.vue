@@ -6,7 +6,7 @@
           <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
         </v-list-item-avatar>
 
-        <v-list-item-title>John Leider</v-list-item-title>
+        <v-list-item-title>{{$store.state.user.user.username}}</v-list-item-title>
 
         <v-btn icon @click.stop="mini = !mini" >
           <v-icon>mdi-chevron-left</v-icon>
@@ -20,11 +20,24 @@
             <router-link :to="item" class="flex" >
               <template @click.stop="mini = !mini">
               <v-list-item-icon class="py-4">
-                <v-icon>mdi-{{ item.icon }}</v-icon>
+                <v-badge bordered bottom color="red accent-4" dot v-if="leaveReq>0 && item.name === 'Leave Request'">
+                  <v-icon>mdi-{{ item.icon }}</v-icon>
+                </v-badge>
+                <v-icon v-else>mdi-{{ item.icon }}</v-icon>
               </v-list-item-icon>
               </template>
               <v-list-item-content>
-                <v-list-item-title >{{ item.name }}</v-list-item-title>
+                <v-list-item-title >
+                  
+                  {{ item.name }}
+                  <template v-if="(item.name === 'Leave Request')" >
+                    <span class="bg-red-thunderbird-400 text-white px-1 ml-2">
+
+                    {{leaveReq}}
+                    </span>
+                  </template>
+                </v-list-item-title>
+                
               </v-list-item-content>
             </router-link>
         </v-list-item>
@@ -66,6 +79,7 @@
 </template>
 
 <script>
+import axios from 'axios'
     export default {
         data(){
             return {
@@ -75,13 +89,12 @@
               exclude_route:['Login','Edit'],
               dialog: false,
               dark:false,
-              setTheme:false
+              setTheme:false,
+              leaveReq: 0,
             }
         },
         watch:{
           setTheme(val,OldVal) {
-            console.log(val)
-            
               let dark = val? "1" : "0"
               this.$vuetify.theme.dark = val
               localStorage.setItem('dark',dark)
@@ -94,16 +107,13 @@
           logout(){
             this.$router.push({ name: 'Login' })
           },
-          darkMode(){
-            // console.log(this.$vuetify.theme.dark)
-            
-            // let is_dark = $vuetify.theme.dark;
-            // let theme = localStorage.getItem('darkTheme')
-            // if(!theme){
-            //   localStorage.setItem('darkTheme', true)
-            // }else{
-
-            // }
+          fetchLeaveReq(){
+            axios.get('http://localhost:3000/outtoday').then(({ data })=>{
+            console.log(data.length)
+            this.leaveReq = data.length
+            // this.desserts = data
+            // this.copy = this.desserts;
+          })
           }
         },
         created(){
@@ -111,6 +121,7 @@
           this.items = this.$router.options.routes.filter((el)=>{
             return el.meta.nav
           })
+          this.fetchLeaveReq()
          
           
           

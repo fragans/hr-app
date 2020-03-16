@@ -86,13 +86,13 @@ const mutations = {
     {
         state.loading = false
     }
-
 }
 
 export default {
     namespaced: true,
+    getters,
     state,
     actions,
     mutations,
-    getters
+
 }

@@ -2,12 +2,18 @@
     
     <v-container>
         <FilterList :search="search" :headers="headers" :items="copy" > 
-          <h1 slot="title">Applicants</h1>
-          <v-tabs slot="action" show-arrows>
+          <h1 slot="title">Employee</h1>
+
+          <v-tabs slot="filter" show-arrows>
+            <v-tab @click="reset">All</v-tab>
             <v-tab @click="filter('Unprocessed')">Unprocessed</v-tab>
-            <v-tab @click="filter('Scheduled to Psycho Test')">Scheduled to Psycho Test</v-tab>
-            <v-tab @click="filter('Scheduled to Interview')">Scheduled to Interview</v-tab>
+            <v-tab @click="filter('Scheduled to Psycho Test')"> Psycho Test</v-tab>
+            <v-tab @click="filter('Scheduled to Interview')"> Interview</v-tab>
           </v-tabs>
+
+          <template slot="action">
+            <v-btn>Add Employee</v-btn>
+          </template>
         </FilterList>
         
     </v-container>
@@ -19,6 +25,7 @@
 import FilterList from '@/components/FilterList'
 import axios from 'axios'
 import {mapGetters} from 'vuex'
+
     export default {
       components:{
         FilterList
@@ -34,8 +41,8 @@ import {mapGetters} from 'vuex'
             value: 'name',
           },
           { text: 'Email', value: 'email' },
-          { text: 'Phone', value: 'phone' },
           { text: 'Position', value: 'position' },
+          { text: 'Status', value: 'status' },
           { text: 'Status', value: 'status' },
         ],
         desserts: [
@@ -44,6 +51,7 @@ import {mapGetters} from 'vuex'
         copy: []
       }
     },
+
     methods:{
         filter(value){
               let d = this.persons;
@@ -60,6 +68,10 @@ import {mapGetters} from 'vuex'
               this.desserts = data
               this.copy = this.desserts;
             })
+        },
+
+        reset(){
+          this.copy = this.desserts
         }
     },
 
@@ -91,6 +103,20 @@ import {mapGetters} from 'vuex'
       // this.fetch()
     },
 
+    beforeMount(){
+      let d = this.desserts;
+      var filtered  = d.filter((el)=>{
+          return el.status === value
+      })
+      this.copy = filtered
+    },
+
+        
+    
+    mounted()
+    {
+      this.fetch()
+    },
     beforeMount(){
         
     }

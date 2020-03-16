@@ -43,23 +43,21 @@
       },
       computed:{
           ...mapGetters({
-                is_loading: 'user/is_loading'
+                is_loading: 'user/is_loading',
+                is_login: 'user/is_login'
             })
+      },
+      watch:{
+        is_login(val,Oldval){
+          if(val) this.$router.push({ name: 'Dashboard'}) 
+        }
       },
       methods:{
           logout(){
-              this.$store.commit('user/logout')
+            this.$store.commit('user/logout')
           },
           login(){
-            console.log('loging in')
-
             this.$store.dispatch('user/userLogin', this.user)
-            .then(()=>{
-                console.log(this.$store.state.user.is_login)
-                if(this.$store.state.user.is_login){
-                    this.$router.push({ name: 'Dashboard'})
-                }
-            })
           }
       },
       created(){

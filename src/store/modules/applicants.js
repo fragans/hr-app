@@ -41,6 +41,16 @@ const actions = {
         
 
     },
+
+    update(state,payload)
+    {
+        console.log("di fungsi update payload = "+payload)
+        return axios.put(`http://localhost:3000/newApplicants/${payload}`).
+        then(response=>{
+            console.log(response)
+        })
+    },
+
     fetchById({commit},payload){
         return axios.get(`http://localhost:3000/newApplicants/${payload}`)
         .then(({ data })=>{

@@ -46,8 +46,7 @@ const actions = {
 
     update(state,payload)
     {
-        // console.log(payload)
-        return axios.put('http://localhost:3000/employees/1', payload ).
+        return axios.put(`http://localhost:3000/employees/${payload}`).
         then(response=>{
             console.log(response)
         })

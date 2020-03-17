@@ -103,10 +103,10 @@ const routes = [{
             {
                 name:'Edit Applicant Status',
                 path: 'edit/:id',
-                icon:'mdi-run-fast'      ,
+                icon:'mdi-run-fast',
                 meta:{
                     title:'asue',
-                    icon:'mdi-run-fast'      ,
+                    icon:'mdi-run-fast',
                 },
                 component: () =>
                 import('../components/Edit/EditApplicant.vue')

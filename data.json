@@ -13,8 +13,12 @@
       "birthdate": "07/08/1990",
       "birthplace": "Jakarta",
       "address": "Jalan terus no 10",
-      "emergencyperson": "Rhodey",
-      "emergencycontact": "081234562"
+      "emergency_contact": [
+        {
+          "name": "Rhodey",
+          "phone": "0819214781423"
+        }
+      ]
     },
     {
       "id": "2",
@@ -29,8 +33,12 @@
       "birthdate": "07/07/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 10",
-      "emergencyperson": "Someone",
-      "emergencycontact": "0812345621"
+      "emergency_contact": [
+        {
+          "name": "Someone",
+          "phone": "081236423"
+        }
+      ]
     },
     {
       "id": "3",
@@ -45,8 +53,12 @@
       "birthdate": "07/06/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 11",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456212"
+      "emergency_contact": [
+        {
+          "name": "John Watson",
+          "phone": "08123456212"
+        }
+      ]
     },
     {
       "id": "4",
@@ -61,8 +73,12 @@
       "birthdate": "07/05/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 12",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456213"
+      "emergency_contact": [
+        {
+          "name": "Nuno Bettencourt",
+          "phone": "08123456213"
+        }
+      ]
     },
     {
       "id": "5",
@@ -77,8 +93,12 @@
       "birthdate": "07/04/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 13",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456211"
+      "emergency_contact": [
+        {
+          "name": "Someone",
+          "phone": "08123456211"
+        }
+      ]
     },
     {
       "id": "6",
@@ -93,8 +113,12 @@
       "birthdate": "07/03/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 1",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456214"
+      "emergency_contact": [
+        {
+          "name": "Steven Tyler",
+          "phone": "08123456214"
+        }
+      ]
     },
     {
       "id": "7",
@@ -109,8 +133,12 @@
       "birthdate": "07/03/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 2",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456214"
+      "emergency_contact": [
+        {
+          "name": "Someone",
+          "phone": "08123456214"
+        }
+      ]
     },
     {
       "id": "8",
@@ -125,8 +153,12 @@
       "birthdate": "07/03/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 2",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456214"
+      "emergency_contact": [
+        {
+          "name": "Someone",
+          "phone": "08123456212"
+        }
+      ]
     },
     {
       "id": "9",
@@ -141,8 +173,12 @@
       "birthdate": "07/03/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 3",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456215"
+      "emergency_contact": [
+        {
+          "name": "Someone",
+          "phone": "08123456212"
+        }
+      ]
     },
     {
       "id": "10",
@@ -157,8 +193,12 @@
       "birthdate": "07/03/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 3",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456215"
+      "emergency_contact": [
+        {
+          "name": "Someone",
+          "phone": "08123456212"
+        }
+      ]
     },
     {
       "id": "11",
@@ -173,8 +213,12 @@
       "birthdate": "07/03/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 3",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456215"
+      "emergency_contact": [
+        {
+          "name": "Someone",
+          "phone": "08123456215"
+        }
+      ]
     },
     {
       "id": "12",
@@ -189,8 +233,12 @@
       "birthdate": "07/03/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 3",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456215"
+      "emergency_contact": [
+        {
+          "name": "Someone",
+          "phone": "08123456212"
+        }
+      ]
     },
     {
       "id": "13",
@@ -205,8 +253,12 @@
       "birthdate": "07/03/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 3",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456215"
+      "emergency_contact": [
+        {
+          "name": "Someone",
+          "phone": "08123456212"
+        }
+      ]
     },
     {
       "id": "14",
@@ -221,8 +273,12 @@
       "birthdate": "07/03/1990",
       "birthplace": "Jakarta",
       "address": "Jalan kanan no 3",
-      "emergencyperson": "Someone",
-      "emergencycontact": "08123456215"
+      "emergency_contact": [
+        {
+          "name": "Someone",
+          "phone": "08123456212"
+        }
+      ]
     },
     {
       "id": "15",
@@ -253,6 +309,12 @@
       "id": "3",
       "emp_id": "5",
       "date": "2020-03-27"
+    },
+    {
+      "emp_id": "7",
+      "status": "Pending",
+      "date": "03/26/2020",
+      "id": 11
     }
   ],
   "todaypresent": [
@@ -303,7 +365,27 @@
       "emp_id": "14",
       "date": "2020-03-27",
       "time": "08:02:00"
-    }
+    },
+    {
+      "id": "9",
+      "emp_id": "1",
+      "date": "2020-03-28",
+      "time": "09:00:00"
+    },
+    [
+      {
+        "id": "10",
+        "emp_id": "2",
+        "date": "2020-03-28",
+        "time": "09:00:10"
+      },
+      {
+        "id": "11",
+        "emp_id": "3",
+        "date": "2020-03-28",
+        "time": "09:00:20"
+      }
+    ]
   ],
   "newApplicants": [
     {

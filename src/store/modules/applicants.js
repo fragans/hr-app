@@ -22,7 +22,6 @@ const actions = {
         })
     },
     insert({commit,dispatch},payload){
-        // console.log(payload)
         dispatch('fetch').then(()=>{
             console.log(state.apply)
             return axios.post('http://localhost:3000/newApplicants',

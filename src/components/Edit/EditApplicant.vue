@@ -36,7 +36,7 @@
                         </v-btn>
                         <v-btn class="mr-4"   color="error">
                             <v-icon left>mdi-cancel</v-icon>    
-                            Send
+                            reject
                         </v-btn>
                         <v-btn class="mr-4"   color="error" @click="dialog = true">
                             <v-icon left>mdi-account-remove</v-icon>    

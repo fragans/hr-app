@@ -43,10 +43,10 @@
               <template v-slot:default>
 
                 <tbody>
-                  <tr v-for="item in date" :key="item.date">
+                  <tr v-for="item in filterDays" :key="item.date">
                     <td><v-icon>mdi-calendar</v-icon></td>
-                    <td>{{ item.event }}</td>
-                    <td>{{ item.date }}</td>
+                    <td>{{ item.desc }}</td>
+                    <td>{{ formatDate(item.date) }}</td>
                   </tr>
                 </tbody>
 
@@ -101,12 +101,14 @@ export default {
   },
   data(){
     return{
-      date:[]
+      date:[],
+      filterDays:''
     }
   },
   computed:{
     ...mapGetters({
-      applies: 'applicants/applies'
+      applies: 'applicants/applies',
+      days: 'holidays/days'
     })
   },
   methods:{
@@ -114,10 +116,49 @@ export default {
       const diff = require('human-date');
       return diff.relativeTime(date)
 
+    },
+    formatDate(date){
+      const p = require('human-date')
+      let year= date.substring(0,4);
+      let month= date.substring(4,6);
+      let day= date.substring(6,8);
+      return p.prettyPrint(new Date(month+'-'+day+'-'+year))
+      // return day+'-'+month+'-'+year
+      // return date
+    },
+    filterHolidays(){
+      let now = new Date().toISOString().substr(0, 10)
+      // console.log('now='+now);
+      const [year, month, day] = now.split('-')
+      // console.log(year, month, day);
+      const formattedNow = year+month+day;
+      console.log('now='+formattedNow)
+      let res = [];
+      let days = this.days[0];
+      for (const key in days) {
+        // console.log(key)
+        // console.log(key)
+        //  console.log(`${key}: ${days[key].deskripsi}`);
+        if(key >= formattedNow){
+          res.push(
+            {
+              date: key,
+              desc : days[key].deskripsi
+            }
+          )
+        }
+        
+      }
+      console.log(res)
+      this.filterDays = res;
     }
   },
   mounted(){
     this.$store.dispatch('applicants/fetch')
+    this.$store.dispatch('holidays/fetch')
+    .then(()=>{
+      this.filterHolidays();
+    })
   }
 }
 </script>

@@ -33,7 +33,7 @@
                 
                 <v-tab-item v-for="block in items" :key="block.name">           
                     <keep-alive>
-                        <component :is="block.name" ></component>
+                        <component :is="block.name" v-bind="currentProperties"></component>
                     </keep-alive>
                 </v-tab-item >
 
@@ -51,6 +51,7 @@ import Profile from '@/components/Edit/Profile'
 import Occupation from '@/components/Edit/Occupation'
 import Address from '@/components/Edit/Address'
 import Emergency from '@/components/Edit/EmergencyContact'
+import { mapGetters } from 'vuex'
     export default {
         components:{
             Profile,Occupation,Address,Emergency
@@ -72,6 +73,18 @@ import Emergency from '@/components/Edit/EmergencyContact'
             renderedComponent: () => {
                 let self = this;
                 return () => import('@/components/' + this.currentTab)
+            },
+            ...mapGetters({
+                employee:'employees/person',
+                apllicants:'applicant/apply'
+
+            })
+        },
+        methods:{
+            currentProperties(){
+                if (this.$route.name === 'New Applicant') {
+                    return { foo: 'bar' }
+                }
             }
         },
         watch:{
@@ -82,8 +95,8 @@ import Emergency from '@/components/Edit/EmergencyContact'
         methods:{
             
         },
-        created(){
-            
+        mounted(){
+            this.dispatch('employee/fetchById'.this.$route.params.id)
         }
     }
 </script>

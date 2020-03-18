@@ -427,18 +427,6 @@
       "date": "03-15-2020"
     },
     {
-      "id": "2",
-      "name": "Sue Storm",
-      "email": "suestorm@email.com",
-      "phone": "02112345631",
-      "position": "Software Engineer",
-      "division": "Engineering",
-      "photo": "0",
-      "status": "Scheduled to Psycho Test",
-      "gender": "Female",
-      "date": "03-15-2020"
-    },
-    {
       "id": "3",
       "name": "Johnny Storm",
       "email": "johnnystorm@email.com",

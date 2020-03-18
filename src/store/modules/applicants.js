@@ -46,6 +46,13 @@ const actions = {
         .then(({ data })=>{
             commit('setApply',data)
         })
+    },
+    remove({commit},payload){
+        return axios.delete(`http://localhost:3000/newApplicants/${payload}`)
+        .then(response=>{
+            
+        })
+        
     }
 }
 

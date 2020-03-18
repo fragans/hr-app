@@ -2,9 +2,38 @@
     <v-container>
         <v-row>
           <v-skeleton-loader :loading="loading" max-width="3000" type="table-thead, table-tbody"  class="">
-              <v-data-table>
-                </v-data-table>
+            <!-- <table v-if="!loading">
+
+              <tr>
+                <th >
+                  Employee
+                </th>
+                
+                <th v-for="item in disAttends" :key="item">
+                  {{item}}
+                </th>
+              </tr>
+
+              <tr v-for="(person,i) in persons" :key="i">
+
+                <td>{{person.name}}</td>
+                <td v-for="(item,j) in attendsMap[person.name]" :key="j" >
+                  {{item}}
+                </td>
+                
+              </tr>
+            </table> -->
+            <v-data-table
+            :headers="headers"
+            :items="tableArray"
+            >
+            
+           
+            </v-data-table>
           </v-skeleton-loader>
+      </v-row>
+      <v-row>
+        
       </v-row>
     </v-container>
 </template>
@@ -13,92 +42,108 @@
 import { mapGetters } from 'vuex';
   export default {
     data: () => ({
-      items:[],
-      search:'',
-      headers:[
-        {
-            text: 'Name',
-            align: 'start',
-            sortable: false,
-            value: 'name',
-          },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' },
-      ],
-      current_route: '',
+      disAttends:[],
       loading: true,
+      attendsMap: [],
+      tableArray:[],
+      headers:[]
     }),
     computed:{
       ...mapGetters({
         attends:'attendance/attends',
         persons:'employees/persons',
-
-      })
+      }),
     },
     methods:{
-        intervalFormat(interval){
-            return interval.time
-        },
-        query(){
-          console.log(this.attends)
-          console.log(this.persons)
-          let res=[];
-          this.persons.forEach(emp => {
-            let line =this.attends.filter((at)=>{
-              return at.emp_id === emp.id;
-            })
-            if(line[0]){
-              res.push(
-                {
-                'text':line[0].date,
-                'value': 'date'
-                }
+      intervalFormat(interval){
+          return interval.time
+      },
+      getHeaders(){
+        let keys=[];
+        for (var key in this.tableArray[0]) {
+            // keys.push(key);
+            this.headers.push(
+              {
+                text:key,
+                value:key
+              }
             )
-            }
-            
-          });
-          console.log(res)
-          this.headers = res;
-            
-        
-
-        },
-        fetch(){
-          this.$store.dispatch('attendance/fetch').then(()=>{
-        
-          this.$store.dispatch('employees/fetch').then(()=>{
-          
-            this.query();
-          })
-        })
         }
+
+        console.log(this.headers)
+        
+      },
+      constTableArray(){
+        let res=[];
+        this.persons.forEach((emp,i) => {
+          let line ={};
+          // line["id"]=emp.id
+          line["NAME"]=emp.name
+          this.disAttends.forEach(ad => {
+            line[ad]="false"
+            this.attends.forEach(at=>{
+              if(at.date === ad){
+                if(at.emp_id === emp.id)
+                line[ad]= "true"
+              }
+            })
+          });
+          res[i]=line;
+        });
+        console.log('res')
+        console.log(res)
+        this.tableArray = res;
+        this.getHeaders()
+      },
+      query(){
+        var res={}  ;
+        this.persons.forEach((emp,i) => {
+          let line = new Array(this.disAttends.length).fill("A");
+          this.disAttends.forEach((da,j) => {
+            this.attends.forEach(at => {
+
+                if(da === at.date){
+                  line[j]= "P"
+                }
+              
+            });
+            })
+          res[emp.name]=line
+          console.log()
+          });
+        this.attendsMap = res;
+        this.constTableArray()
+      },
+      fetch(){
+        this.$store.dispatch('attendance/fetch').then(()=>{
+      
+        this.$store.dispatch('employees/fetch').then(()=>{
+          this.loading = false
+          this.disAttends= [...new Set(this.attends.map(x=>x.date))]
+          this.query()
+        })
+      })
+      }
     },
     
     created(){
+      
       this.fetch();
-      // let employees = null;
-      // let attends = null
-
-        const d = new Date();
-        this.today  = d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate()
-
-        let self = this;
-            setTimeout(()=>{
-                self.loading = false;
-            },1000)
-            
-
-        // const current_route =  this.$router.options.routes.filter((r)=>{
-        //         return r.name === this.$route.name
-        //     })
-        // this.current_route = current_route[0]
     }
   }
 </script>
 
 
 <style scoped>
+th{
+  min-width: 150px;
+}
+th,tr,td{
+  border: 1px black;
+  border-style: solid;
+}
+td{
+  text-align: center;
+}
 
 </style>

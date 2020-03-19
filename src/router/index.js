@@ -197,13 +197,24 @@ const routes = [{
     {
         
         path: '/clockin',
-        name: 'Employee Attendance',
+        name: 'Employee Clock In',
         icon: 'calendar-check',
         meta: {
             title: 'Employee Attendance'
         },
         component: () =>
-            import ('../views/NewAttendance.vue')
+            import ('../views/ClockIn.vue')
+    },
+    {
+        
+        path: '/clockout',
+        name: 'Employee Clock Out',
+        icon: 'calendar-check',
+        meta: {
+            title: 'Employee Attendance'
+        },
+        component: () =>
+            import ('../views/ClockOut.vue')
     },
 
 ]

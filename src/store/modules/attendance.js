@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const state = {
     attends:[],
+    attend:{},
     loading:true
 }
 
@@ -10,9 +11,13 @@ const getters = {
     attends(state){
         return state.attends
     },
+    attend(state){
+        return state.attend
+    },
     loading(state){
         return state.loading
-    }
+    },
+    
 }
 const actions = {
     fetch({commit}){
@@ -22,21 +27,41 @@ const actions = {
             commit('setLoading',false)
         })
     },
-    insert({dispatch,state},payload){
+    clockIn({dispatch,state},payload){
+        console.log(payload)        
+        dispatch('fetch').then(()=>{
+            // console.log(state.attends)
+            return axios.post('http://localhost:3000/todaypresent',
+            {
+                id:String(state.attends.length+1 ),
+                emp_id: String(payload.id),
+                date: payload.date,
+                in: payload.time,
+                out:''
+                
+            })
+            .then(response=>{
+                console.log(response)
+            })
+        })
+    },
+    clockOut({dispatch,state,commit},payload){
         console.log(payload)
         let time = new Date();
         
         dispatch('fetch').then(()=>{
             // console.log(state.attends)
-            let day = new Date().toLocaleString('id').substr(0,10).split("/").join("-")
-            let t = new Date().toLocaleTimeString('id').split(".").join(":");
-            console.log(time)
-            return axios.post('http://localhost:3000/todaypresent',
+            let find = state.attends.filter(at => at.emp_id === String(payload.id) && at.date == String(payload.date))
+            // console.log(find.length)
+            if (find.length <= 0) return
+            commit('setAttend',find[0]);
+            console.log(find[0])
+            return axios.put(`http://localhost:3000/todaypresent/${find[0].id}/`,
             {
-                emp_id: String(payload),
-                date: day,
-                id:String(state.attends.length+1 ),
-                time: t
+                emp_id: payload.id,
+                date: payload.date,
+                in: find[0].in,
+                out: payload.time,
                 
             })
             .then(response=>{
@@ -53,6 +78,9 @@ const mutations = {
     setLoading(state, payload){
         state.loading = payload
     },
+    setAttend(state,payload){
+        state.attend = payload
+    }
 }
 
 export default {

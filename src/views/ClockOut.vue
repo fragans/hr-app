@@ -5,7 +5,7 @@
 
                 <v-row class="flex justify-center my-16 ">
                     <v-icon left>mdi-calendar-check</v-icon>
-                    <span class="uppercase">Employee Clock-in</span>
+                    <span class="uppercase">{{$route.name}}</span>
                 </v-row>
 
                 <v-row class="my-16 ">
@@ -18,7 +18,7 @@
                 </v-row>
                 <v-row v-if="clockIn">
                     <v-col class="text-center">
-                        Recorded! {{employee.name}} @ {{this.param.date}} - {{this.param.time}}
+                        Recorded! {{employee.name}} @in {{attend.in}} @out {{param.time}}
                     </v-col>
                 </v-row>
       
@@ -44,17 +44,19 @@ import { mapGetters } from 'vuex'
         }),
         computed:{
             ...mapGetters({
-                persons: 'employees/persons'
+                persons: 'employees/persons',
+                attend : 'attendance/attend'
             })
         },
         methods:{
             checkIn(){
                 this.param.id = this.employee
-                this.$store.dispatch('attendance/insert', this.employee )
+                this.$store.dispatch('attendance/clockOut', this.param )
                 this.clockIn =true
-                setTimeout(()=>{
-                    location.reload()
-                },1500)
+                console.log(this.attend.in === undefined)
+                // setTimeout(()=>{
+                //     location.reload()
+                // },1500)
             }
         },
         created(){

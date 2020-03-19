@@ -10,11 +10,13 @@
       "photo": "0",
       "status": "Permanent",
       "gender": "Male",
-      "address": "",
-      "emergency_contanct": [
+      "birthdate": "07/08/1990",
+      "birthplace": "Jakarta",
+      "address": "Jalan terus no 10",
+      "emergency_contact": [
         {
           "name": "Rhodey",
-          "phone": "08121324"
+          "phone": "0819214781423"
         }
       ]
     },
@@ -914,7 +916,14 @@
   "newApplicants": [
     {
       "id": "1",
-      "photo": "0"
+      "name": "Reed Richards",
+      "email": "reedrichards@email.com",
+      "phone": "02112345633",
+      "position": "Software Engineer",
+      "division": "Engineering",
+      "photo": "0",
+      "status": "Unprocessed",
+      "gender": "Male"
     },
     {
       "id": "2",

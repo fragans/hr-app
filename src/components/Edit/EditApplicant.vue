@@ -80,9 +80,14 @@
                             <v-icon left>mdi-content-save</v-icon>    
                             Update Status
                         </v-btn> -->
-                        <v-btn class="mr-4" block  color="error">
+                       <!-- <v-btn class="mr-4" block  color="error">
                             <v-icon left>mdi-cancel</v-icon>    
                             Cancel
+                        </v-btn> -->
+
+                        <v-btn class="mr-4" block  color="error" @click="deleteApplicant">
+                            <v-icon left>mdi-delete</v-icon>    
+                            Delete
                         </v-btn>
                     </v-col>
                     <v-spacer></v-spacer>
@@ -108,7 +113,6 @@ import { mapGetters } from 'vuex'
         computed:{
             ...mapGetters({
                 day:'dayoff/day',
-                // employee: 'employees/person'
                 applicant: 'applicants/apply'
             })
         },
@@ -118,17 +122,24 @@ import { mapGetters } from 'vuex'
             {
                 let data = {
                       "id": this.$route.params.id,
-                      "name": this.applicant.name,
-                      "email": this.email,
-                      "phone": this.phone,
-                      "position": this.position,
-                      "division": this.division,
+                      "name": this.data.name,
+                      "email": "HArdcode",
+                      "phone": "HArdcode",
+                      "position": "HArdcode",
+                      "division": "HArdcode",
                       "photo": "0",
-                      "status": this.applicant.status,
-                      "gender": this.gender
+                      "status": "HArdcode",
+                      "gender": "Male"
                 }
 
                 this.$store.dispatch('applicants/update',data)
+            },
+
+            deleteApplicant()
+            {
+                console.log("di editapplicant, id : "+this.$route.params.id)
+                let id = this.$route.params.id
+                this.$store.dispatch('applicants/delete', id)
             }
 
         },

@@ -57,6 +57,15 @@ const actions = {
         })
     },
 
+    delete(state, payload)
+    {
+        console.log("di fungsi delete payload = "+payload.id)
+        return axios.delete(`http://localhost:3000/newApplicants/`+payload.id).
+        then(response=>{
+            console.log(response)
+        })
+    },
+
     fetchById({commit},payload){
         return axios.get(`http://localhost:3000/newApplicants/${payload}`)
         .then(({ data })=>{

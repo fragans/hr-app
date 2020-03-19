@@ -16,6 +16,7 @@
 </template>
 
 <script>
+
 export default {
   data(){
     return{
@@ -26,10 +27,32 @@ export default {
      setTimeout(()=>{
         this.loading = false
       },1000)
+  },
+
+
+    methods:{
+       
+        fetch()
+        {
+            axios.get('http://localhost:3000/newApplicants').then(({ data })=>{
+              console.log(data)
+              this.desserts = data
+              this.copy = this.desserts;
+            })
+        },
+
+        reset(){
+          this.copy = this.desserts
+        }
+    },
+
+    watch:{
+        loading(value, oldval)
+        {
+          this.copy = this.applicants
+        }
+    },
+
   }
-}
+
 </script>
-
-<style scoped>
-
-</style>

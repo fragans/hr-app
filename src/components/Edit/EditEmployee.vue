@@ -33,7 +33,7 @@
                 <template v-if="!loading">
                 <v-tab-item v-for="block in items" :key="block.name">           
                     <keep-alive>
-                        <component :is="block.name" v-bind="currentProperties"></component>
+                        <component :is="block.name" v-bind="computedProp" ></component>
                     </keep-alive>
                 </v-tab-item >
                 </template>
@@ -52,8 +52,11 @@ import Profile from '@/components/Edit/Profile'
 import Occupation from '@/components/Edit/Occupation'
 import Address from '@/components/Edit/Address'
 import Emergency from '@/components/Edit/EmergencyContact'
-import { mapGetters } from 'vuex'
-    export default {
+import axios from 'axios'
+import {mapGetters} from 'vuex'
+
+    export default
+    {
         components:{
             Profile,Occupation,Address,Emergency
         },
@@ -78,15 +81,18 @@ import { mapGetters } from 'vuex'
                 return () => import('@/components/' + this.currentTab)
             },
             ...mapGetters({
-                employee:'employees/person',
-                apllicants:'applicant/apply'
+                employee : 'employees/person'
+            }),
 
-            })
-        },
-        methods:{
-            currentProperties(){
-                if (this.$route.name === 'New Applicant') {
-                    return { foo: 'bar' }
+            computedProp()
+            {
+                if (this.$route.name === 'Edit Employee')
+                {
+                    return { data: this.employee }
+                }
+                else if(this.$route.name === 'New Applicant')
+                {
+                    return {data : ''}
                 }
             }
         },
@@ -107,7 +113,7 @@ import { mapGetters } from 'vuex'
 
             update()
             {
-                this.$store.dispatch('employees/update',this.employee.id)
+                this.$store.dispatch('employees/update',this.employee)
             }
         },
 
@@ -120,9 +126,6 @@ import { mapGetters } from 'vuex'
                 this.loading = false
             })
         },
-        mounted(){
-            this.dispatch('employee/fetchById'.this.$route.params.id)
-        }
     }
 </script>
 

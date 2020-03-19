@@ -27,23 +27,40 @@ const actions = {
             return axios.post('http://localhost:3000/newApplicants',
             {
                 emp_id: payload.emp_id,
-                status: payload.status,
+                name: payload.name,
+                email: payload.email,
+                phone: payload.phone,
+                position: payload.position,
+                division: payload.division,
+                photo: "0",
+                status: "Unprocessed",
+                gender: payload.gender,
+                address: payload.address,
                 date: payload.date,
-                id:(state.apply.length+1 ),
-                
+                id:(state.apply.length+1 )                
             })
             .then(response=>{
                 console.log(response)
             })
         })
-        
-        
 
     },
+
+    update(state,payload)
+    {
+        // console.log("di fungsi update payload = "+payload.id)
+        console.log("di fungsi update "+payload.status)
+        return axios.put(`http://localhost:3000/newApplicants/`+payload.id, payload).
+        then(response=>{
+            console.log(response)
+        })
+    },
+
     fetchById({commit},payload){
         return axios.get(`http://localhost:3000/newApplicants/${payload}`)
         .then(({ data })=>{
             commit('setApply',data)
+
         })
     },
     remove({commit},payload){
@@ -62,13 +79,14 @@ const mutations = {
     setApply(state, payload){
         state.apply = payload
     },
+
 }
 
 export default {
     namespaced: true,
-    getters,
     state,
     actions,
     mutations,
-    
+    getters
+
 }

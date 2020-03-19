@@ -1,11 +1,20 @@
 <template>
     
+    <v-container v-if="persons.length > 0">
+        <FilterList :search="search" :headers="headers" :items="copy" rowClick="Edit Employee"> 
+          <h1 slot="title">Employee</h1>
 
-    <v-container>
-      ini vieww
-        <router-view>
+          <v-tabs slot="filter" show-arrows>
+            <v-tab @click="reset">All</v-tab>
+            <v-tab @click="filter('Permanent')">permanent</v-tab>
+            <v-tab @click="filter('Probation')">probation</v-tab>
+            <v-tab @click="filter('Contract')">contract</v-tab>
+          </v-tabs>
 
-        </router-view>
+          <template slot="action">
+            <v-btn>Add Employee</v-btn>
+          </template>
+        </FilterList>
         
     </v-container>
 
@@ -39,7 +48,7 @@ import {mapGetters} from 'vuex'
         desserts: [
           
         ],
-        loading:true,
+        loading:[],
         copy: []
       }
     },
@@ -64,6 +73,14 @@ import {mapGetters} from 'vuex'
 
     },
 
+    computed:{
+      ...mapGetters({
+        persons:'employees/persons',
+        // loading: 'employees/loading'
+      })
+
+    },
+
     watch:{
       loading(value, oldval)
       {
@@ -71,11 +88,20 @@ import {mapGetters} from 'vuex'
       }
     },
 
-    mounted(){
-      setTimeout(()=>{
-        this.loading = false
-      },1000)
+    mounted()
+    {
+      
+      // this.fetch()
+    },
+    created(){
+      this.$store.dispatch('employees/fetch')
+      .then(()=>{
+        this.copy = this.persons
+      })
+    },
 
+    beforeMount(){
+ 
     },
 
     created()

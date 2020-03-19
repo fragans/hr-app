@@ -8,10 +8,45 @@
                 <v-col col="6">
 
                     <v-text-field
-                    v-model="employee.name"
+                    v-model="applicant.name"
                     :counter="10"
                     label="Employee name"
-                    disabled
+                    
+                    ></v-text-field>
+
+                    <v-text-field
+                    v-model="applicant.email"
+                    :counter="10"
+                    label="Email"
+                    
+                    ></v-text-field>
+
+                    <v-text-field
+                    v-model="applicant.phone"
+                    :counter="10"
+                    label="Phone"
+                    
+                    ></v-text-field>
+
+                    <v-text-field
+                    v-model="applicant.position"
+                    :counter="10"
+                    label="Position"
+                    
+                    ></v-text-field>
+
+                    <v-text-field
+                    v-model="applicant.division"
+                    :counter="10"
+                    label="Division"
+                    
+                    ></v-text-field>
+
+                    <v-text-field
+                    v-model="applicant.status"
+                    :counter="10"
+                    label="Status"
+                    
                     ></v-text-field>
 
                     <v-text-field
@@ -28,19 +63,19 @@
 
                 </v-col>
                 <v-row>
-
-                    <v-col col="3" class="flex items-center justify-center w-full">
-                        <v-btn class="mr-4 "  color="success">
+                    <v-spacer></v-spacer>
+                    <v-col col="3" class="flex items-center justify-center">
+                        <v-btn class="mr-4 " block color="success" @click="updateApplicant">
                             <v-icon left>mdi-content-save</v-icon>    
-                            Send
+                            Update
                         </v-btn>
-                        <v-btn class="mr-4"   color="error">
+                        <!-- <v-btn class="mr-4 " block color="success" @click="updateStatusApplicant">
+                            <v-icon left>mdi-content-save</v-icon>    
+                            Update Status
+                        </v-btn> -->
+                        <v-btn class="mr-4" block  color="error">
                             <v-icon left>mdi-cancel</v-icon>    
-                            reject
-                        </v-btn>
-                        <v-btn class="mr-4"   color="error" @click="dialog = true">
-                            <v-icon left>mdi-account-remove</v-icon>    
-                            Remove
+                            Cancel
                         </v-btn>
                     </v-col>
                 </v-row>
@@ -72,28 +107,42 @@ import { mapGetters } from 'vuex'
         data(){
             return{
                 opsiStatus:['Pending','Approved','Rejected'],
-                status:'',
-                dialog: false
+                // status:'',
             }
         },
         computed:{
             ...mapGetters({
                 day:'dayoff/day',
-                employee: 'employees/person'
+                // employee: 'employees/person'
+                applicant: 'applicants/apply'
             })
         },
+
         methods:{
-            removeApplicant(){
-                this.$store.dispatch('applicants/remove',this.$route.params.id)
-                .then(()=>{
-                    this.$router.push({ name: 'Applicants' })
-                })
+            updateApplicant()
+            {
+                let data = {
+                      id: this.$route.params.id,
+                      name: this.applicant.name,
+                      email: this.email,
+                      phone: this.phone,
+                      position: this.position,
+                      division: this.division,
+                      photo: "0",
+                      status: this.applicant.status,
+                      gender: this.gender
+                }
+
+                this.$store.dispatch('applicants/update',data)
             }
+
         },
+
         created(){
             this.$store.dispatch('dayoff/fetchById',this.$route.params.id)
             .then(()=>{
-                this.$store.dispatch('employees/fetchById',this.day.emp_id)
+                this.$store.dispatch('applicants/fetchById',this.$route.params.id)
+                this.data = this.applicant
             })
         }
     }

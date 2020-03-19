@@ -1,16 +1,16 @@
 <template>
     <v-row class="p-4">
         <v-col col="8" class="mr-2">
-            <v-text-field v-model="name" :error-messages="nameErrors" :counter="10" label="Name" required @input="$v.name.$touch()" @blur="$v.name.$touch()" ></v-text-field>
+            <v-text-field v-model="employee.name"  label="Name" required ></v-text-field>
 
-            <v-text-field v-model="email" :error-messages="emailErrors" label="E-mail" required @input="$v.email.$touch()" @blur="$v.email.$touch()" ></v-text-field>
+            <v-text-field v-model="employee.email" label="E-mail" required ></v-text-field>
 
-            <v-text-field v-model="phone" label="Phone" required  ></v-text-field>
+            <v-text-field v-model="employee.phone" label="Phone" required  ></v-text-field>
             <!-- <v-select v-model="select" :items="items" :error-messages="selectErrors" label="Item" required @change="$v.select.$touch()" @blur="$v.select.$touch()" ></v-select>  -->
 
-             <v-radio-group v-model="sex" :rules="[v => !!v || 'Item is required']" required class="flex">
-                <v-radio label="Man" value="0"></v-radio>
-                <v-radio label="Woman" value="1"></v-radio>
+             <v-radio-group v-model="employee.gender" :rules="[v => !!v || 'Item is required']" required class="flex" >
+                <v-radio label="Man" value="Male"></v-radio>
+                <v-radio label="Woman" value="Female"></v-radio>
             </v-radio-group>
 
             
@@ -31,7 +31,7 @@
               <v-date-picker v-model="date" no-title ></v-date-picker>
             </v-menu>
             
-            <v-text-field v-model="birthPlace" label="Birth place" required  ></v-text-field>
+            <v-text-field v-model="employee.birthplace" label="Birth place" required  ></v-text-field>
 
         </v-col>
         <v-col col="3"> 
@@ -48,6 +48,7 @@
   import { required, maxLength, email } from 'vuelidate/lib/validators'
   import imgUpload from '@/components/Edit/ImageUploader'
   import Emergency from '@/components/Edit/EmergencyContact'
+  import {mapGetters} from 'vuex'
   export default {
     components:{imgUpload},
     mixins: [validationMixin],
@@ -68,7 +69,7 @@
       birthPlace:'',
       birthDate:'',
       phone:'',
-      sex:'',
+      sex: '',
       name: '',
       email: '',
       date: new Date().toISOString().substr(0, 10),
@@ -89,13 +90,13 @@
         !this.$v.select.required && errors.push('Item is required')
         return errors
       },
-      nameErrors () {
-        const errors = []
-        if (!this.$v.name.$dirty) return errors
-        !this.$v.name.maxLength && errors.push('Name must be at most 10 characters long')
-        !this.$v.name.required && errors.push('Name is required.')
-        return errors
-      },
+      // nameErrors () {
+      //   const errors = []
+      //   if (!this.$v.name.$dirty) return errors
+      //   !this.$v.name.maxLength && errors.push('Name must be at most 10 characters long')
+      //   !this.$v.name.required && errors.push('Name is required.')
+      //   return errors
+      // },
       emailErrors () {
         const errors = []
         if (!this.$v.email.$dirty) return errors
@@ -106,11 +107,21 @@
       computedDateFormatted () {
         return this.formatDate(this.date)
       },
+
+      ...mapGetters({
+        employee: 'employees/person',
+        loading: 'employees/loading'
+      })
     },
     watch: {
       date (val) {
         this.dateFormatted = this.formatDate(this.date)
       },
+
+      loading()
+      {
+        if(!this.loading) this.date = employee.birthdate
+      }
     },
     methods: {
       submit () {
@@ -131,8 +142,9 @@
       },
       parseDate (date) {
         if (!date) return null
-
+          console.log(date)
         const [month, day, year] = date.split('/')
+        console.log(month, day, year)
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
       },
     },

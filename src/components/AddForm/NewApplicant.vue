@@ -68,13 +68,16 @@ import Emergency from '@/components/Edit/EmergencyContact'
                 return () => import('@/components/' + this.currentTab)
             }
         },
+        methods:{
+            saveApplicant()
+            {
+                this.$store.dispatch('applicants/insert')
+            }
+        },
         watch:{
             tab:function(val, OldVal) {
                 this.currentTab = this.items[val].name;
             }
-        },
-        methods:{
-            
         },
         created(){
             

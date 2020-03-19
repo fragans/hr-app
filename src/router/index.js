@@ -20,21 +20,9 @@ const routes = [{
         component: () =>
             import ('../views/Dashboard.vue')
     },
-    {
-        path: '/employees/:id',
-        name: 'Edit',
-        icon: 'account-group',
-        meta: {
-            title: '',
-            requiresAuth: true
-        },
-        component: () =>
-            import ('../views/EmployeeEdit.vue')
-
-    },
+   
     {
         path: '/employees',
-        name: 'Employees',
         icon: 'account-group',
         meta: {
             title: 'Employees',
@@ -42,7 +30,32 @@ const routes = [{
             nav: true
         },
         component: () =>
-            import ('../views/Employees.vue')
+            import ('../views/Employees.vue'),
+            children:[
+                {
+                    name:'Employees',
+                    path: '',
+                    icon: 'file-document-box-search',
+                    meta:{
+                        title:'Employees',
+                        icon: 'file-document-box-search',
+                    },
+                    component: () =>
+                    import('../components/Parent/AllEmployees.vue')
+                },
+                {
+                    name:'Edit Employee',
+                    path: '/edit/:id',
+                    icon:'mdi-run-fast'      ,
+                    meta:{
+                        title:'asue',
+                        icon:'mdi-run-fast'      ,
+                    },
+                    component: () =>
+                    import('../components/Edit/EditEmployee.vue')
+                },
+            ],
+
 
     },
     {
@@ -90,10 +103,10 @@ const routes = [{
             {
                 name:'Edit Applicant Status',
                 path: 'edit/:id',
-                icon:'mdi-run-fast'      ,
+                icon:'mdi-run-fast',
                 meta:{
                     title:'asue',
-                    icon:'mdi-run-fast'      ,
+                    icon:'mdi-run-fast',
                 },
                 component: () =>
                 import('../components/Edit/EditApplicant.vue')

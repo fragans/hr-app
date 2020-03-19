@@ -101,7 +101,7 @@ import {mapGetters} from 'vuex'
 
             update()
             {
-                this.$store.dispatch('employees/update',this.employee)
+                this.$store.dispatch('employees/update',this.employee.id)
             }
         },
 

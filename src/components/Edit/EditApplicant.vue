@@ -18,15 +18,42 @@
                     v-model="applicant.name"
                     :counter="10"
                     label="Employee name"
-                    disabled
+                    
                     ></v-text-field>
 
-                    <!-- <v-select :options="['Unprocessed', 'Scheduled to Psycho Test', 'Scheduled to Interview', 'Finish']" v-model="applicant.status"></v-select> -->
+                    <v-text-field
+                    v-model="applicant.email"
+                    :counter="10"
+                    label="Email"
+                    
+                    ></v-text-field>
+
+                    <v-text-field
+                    v-model="applicant.phone"
+                    :counter="10"
+                    label="Phone"
+                    
+                    ></v-text-field>
+
+                    <v-text-field
+                    v-model="applicant.position"
+                    :counter="10"
+                    label="Position"
+                    
+                    ></v-text-field>
+
+                    <v-text-field
+                    v-model="applicant.division"
+                    :counter="10"
+                    label="Division"
+                    
+                    ></v-text-field>
 
                     <v-text-field
                     v-model="applicant.status"
                     :counter="10"
                     label="Status"
+                    
                     ></v-text-field>
 
                     <v-text-field
@@ -49,6 +76,10 @@
                             <v-icon left>mdi-content-save</v-icon>    
                             Update
                         </v-btn>
+                        <!-- <v-btn class="mr-4 " block color="success" @click="updateStatusApplicant">
+                            <v-icon left>mdi-content-save</v-icon>    
+                            Update Status
+                        </v-btn> -->
                         <v-btn class="mr-4" block  color="error">
                             <v-icon left>mdi-cancel</v-icon>    
                             Cancel
@@ -71,7 +102,7 @@ import { mapGetters } from 'vuex'
         data(){
             return{
                 opsiStatus:['Pending','Approved','Rejected'],
-                status:'',
+                // status:'',
             }
         },
         computed:{
@@ -81,12 +112,27 @@ import { mapGetters } from 'vuex'
                 applicant: 'applicants/apply'
             })
         },
+
         methods:{
             updateApplicant()
             {
-                this.$store.dispatch('applicants/update',this.applicant)
+                let data = {
+                      "id": this.$route.params.id,
+                      "name": this.applicant.name,
+                      "email": this.email,
+                      "phone": this.phone,
+                      "position": this.position,
+                      "division": this.division,
+                      "photo": "0",
+                      "status": this.applicant.status,
+                      "gender": this.gender
+                }
+
+                this.$store.dispatch('applicants/update',data)
             }
+
         },
+
         created(){
             this.$store.dispatch('dayoff/fetchById',this.$route.params.id)
             .then(()=>{

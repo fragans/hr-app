@@ -17,12 +17,25 @@
    
     props:{
       data: {
-        type: Object,
-        default: {
-          position : '',
-          division : ''
-        }
-      }
+        type:Object,
+        default: ()=>({
+          address:'',
+          division:'',
+          birth_date:'',
+          birth_place:'',
+          email:'',
+          emergency_contact:[{
+            name:'',
+            phone:''
+          }],
+          gender:'',
+          id:'',
+          name:'',
+          photo:'',
+          position:'',
+          status:''
+        })
+      },
     },
 
 

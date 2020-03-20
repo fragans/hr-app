@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import router from '../../router'
 const state = {
     apply:{},
     applies:[],
@@ -22,23 +22,24 @@ const actions = {
         })
     },
     insert({commit,dispatch},payload){
+        console.log(payload)
         dispatch('fetch').then(()=>{
-            console.log(state.apply)
+            // console.log(state.applies)
             return axios.post('http://localhost:3000/newApplicants',
             {
-                emp_id: payload.emp_id,
                 name: payload.name,
                 email: payload.email,
                 phone: payload.phone,
-                position: payload.position,
-                division: payload.division,
+                position: "",
+                division: "",
                 photo: "0",
                 status: "Unprocessed",
                 gender: payload.gender,
                 address: payload.address,
                 date: payload.date,
-                id:(state.apply.length+1 )                
-            })
+                id:(state.applies.length+1 )                
+            }
+            )
             .then(response=>{
                 console.log(response)
             })

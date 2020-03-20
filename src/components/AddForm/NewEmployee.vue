@@ -5,19 +5,15 @@
             <v-icon left>mdi-card-bulleted</v-icon>
             <h1>
                 {{$route.name}}
-                <!-- {{ $route.params.id }} -->
             </h1>
             
         </v-col>
         <v-spacer></v-spacer>
         <v-col col="3">
-            <v-btn class="mr-4" color="success" @click="update">
-                <v-icon left>mdi-content-save</v-icon>    
+            <v-btn block class="mr-4" color="success" @click="insert">
+                <v-icon left>mdi-content-save-outline</v-icon>    
                 save
             </v-btn>
-            <v-btn color="error">
-                <v-icon left>mdi-cancel</v-icon>    
-                cancel</v-btn>
         </v-col>
     </v-row>
     <v-divider/>
@@ -30,7 +26,7 @@
                     <v-icon left> mdi-{{item.icon}}</v-icon>
                     {{item.name}}
                 </v-tab>
-                <template v-if="!loading">
+                <template>
                 <v-tab-item v-for="block in items" :key="block.name">           
                     <keep-alive>
                         <component :is="block.name" v-bind="computedProp" ></component>
@@ -49,8 +45,8 @@
 
 <script>
 import Profile from '@/components/Edit/Profile'
-import Occupation from '@/components/Edit/Occupation'
 import Address from '@/components/Edit/Address'
+import Occupation from '@/components/Edit/Occupation'
 import Emergency from '@/components/Edit/EmergencyContact'
 import axios from 'axios'
 import {mapGetters} from 'vuex'
@@ -71,28 +67,38 @@ import {mapGetters} from 'vuex'
                     {name:'Emergency',icon:'alert-box-outline'},
                 ],
                 data:'',
-                loading:true,
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                employee:
+                        {
+                            address:'',
+                            division:'',
+                            birth_date:'',
+                            birth_place:'',
+                            email:'',
+                            emergency_contact:[{
+                                name:'',
+                                phone:''
+                            }],
+                            gender:'',
+                            name:'',
+                            photo:'',
+                            position:'',
+                            status:''
+                        }
             }
         },
         computed:{
             renderedComponent: () => {
                 let self = this;
-                return () => import('@/components/Edit/' + this.currentTab)
+                return () => import('@/components/' + this.currentTab)
             },
-            ...mapGetters({
-                employee : 'employees/person'
-            }),
 
             computedProp()
             {
-                if (this.$route.name === 'Edit Employee')
+                console.log('asdasdas')
+                if(this.$route.name === 'New Employee')
                 {
-                    return { data: this.employee }
-                }
-                else if(this.$route.name === 'New Applicant')
-                {
-                    return {data : ''}
+                    console.log('apply ui')
+                    return { data : this.employee }
                 }
             }
         },
@@ -102,32 +108,10 @@ import {mapGetters} from 'vuex'
             }
         },
         methods:{
-            filter(value){
-                // let d = this.desserts;
-                let d = this.persons
-                var filtered  = d.filter((el)=>{
-                    return el.status === value
-                })
-                this.copy = filtered
-            },
-
-            update()
+            insert()
             {
-                // console.log('up')
-                // console.log(this.employee)
-                this.$store.dispatch('employees/update',this.employee)
+                this.$store.dispatch('employees/insert',this.employee)
             }
-        },
-
-        created()
-        {
-            // console.log('emp'+this.employee)
-            this.$store.dispatch('employees/fetchById', this.$route.params.id)
-              .then(()=>{
-                  console.log('emp/fetchById')
-                this.data = this.employee
-                this.loading = false
-            })
         },
     }
 </script>

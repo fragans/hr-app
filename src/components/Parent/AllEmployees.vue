@@ -12,7 +12,7 @@
           </v-tabs>
 
           <template slot="action">
-            <v-btn>Add Employee</v-btn>
+            <v-btn to='employees/add'>Add Employee</v-btn>
           </template>
         </FilterList>
         

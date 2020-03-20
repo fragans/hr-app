@@ -40,6 +40,9 @@
 
 <script>
     export default {
+        props:['image'],
+        
+        
         data(){
             return{
                 showImg:'https://www.forda-mof.org/theme/img/no_image.png',
@@ -56,8 +59,8 @@
         },
         watch:{
             imgConverted(){
-                this.decodeText()
-            }
+                this.decodeText(this.imgConverted)
+            },
         },
         methods:{
             onSelect(e){
@@ -75,6 +78,8 @@
                             var base64String = window.btoa(binaryData)
                             //showing file converted to base64
                             this.imgConverted = base64String
+                            // this.image = base64String
+                            this.updateImage();
                             console.log('decoded_size='+base64String.length)
                         };
                     })(f);
@@ -89,9 +94,24 @@
 
                 
             },
-            decodeText(){
-                this.showImg = "data:image/jpg;base64," + this.imgConverted
+            decodeText(image){
+                console.log('run decoded')
+                this.showImg = "data:image/jpg;base64," + image
+            },
+            updateImage(){
+                this.$store.commit('employees/setPersonPhoto', this.imgConverted)
+                this.image = this.imgConverted
             }
+        }
+        ,mounted(){
+            this.$nextTick(()=>{
+                console.log(this.image != '')
+                if(this.image != ''){
+                this.decodeText(this.image)
+                }
+            }
+                
+            )
         }
     }
 </script>

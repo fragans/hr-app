@@ -1,21 +1,11 @@
 <template>
     <v-row class="p-4">
         <v-col>
-            <v-text-field v-model="data.emergencyperson" label="Person Name"></v-text-field>
+            <v-text-field v-model="data.emergency_contact[0].name" label="Person Name"></v-text-field>
 
-            <v-text-field v-model="data.emergencycontact" label="Person Contact"></v-text-field>
+            <v-text-field v-model="data.emergency_contact[0].phone" label="Person Contact"></v-text-field>
              
         </v-col>
-        <v-col col="3"> 
-            <v-img :src="`https://picsum.photos/500/300?image=1`" :lazy-src="`https://picsum.photos/10/6?image=1`" aspect-ratio="1" class="grey lighten-2" >
-                  <template v-slot:placeholder>
-                    <v-row class="fill-height ma-0" align="center" justify="center" >
-                      <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                    </v-row>
-                  </template>
-                </v-img>
-        </v-col>
-        
     </v-row >
     
 </template>
@@ -25,12 +15,25 @@
   export default {
     props:{
       data: {
-        type: Object,
-        default: {
-          emergencyperson : '',
-          emergencycontact: ''
-        }
-      }
+        type:Object,
+        default: ()=>({
+          address:'',
+          division:'',
+          birth_date:'',
+          birth_place:'',
+          email:'',
+          emergency_contact:[{
+            name:'',
+            phone:''
+          }],
+          gender:'',
+          id:'',
+          name:'',
+          photo:'',
+          position:'',
+          status:''
+        })
+      },
     },
 
     data: () => ({

@@ -63,9 +63,9 @@
 
                 </v-col>
                 <v-row>
-                    <v-spacer></v-spacer>
+
                     <v-col col="3" class="flex items-center justify-center">
-                        <v-btn class="mr-4 " block color="success" @click="updateApplicant">
+                        <v-btn class="mr-4 "  color="success" @click="updateApplicant">
                             <v-icon left>mdi-content-save</v-icon>    
                             Update
                         </v-btn>
@@ -73,7 +73,7 @@
                             <v-icon left>mdi-content-save</v-icon>    
                             Update Status
                         </v-btn> -->
-                        <v-btn class="mr-4" block  color="error">
+                        <v-btn class="mr-4"   color="error">
                             <v-icon left>mdi-cancel</v-icon>    
                             Cancel
                         </v-btn>

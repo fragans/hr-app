@@ -104,8 +104,8 @@ import { mapGetters } from 'vuex'
             submitDayOff(){
                 this.$store.dispatch('dayoff/insert',{
                     emp_id: this.employee,
-                    date_start: this.startDateFormatted,
-                    date_end: this.endDateFormatted,
+                    date_start: this.startDate,
+                    date_end: this.endDate,
                     status: 'Pending'
                 })
                 .then(()=>{

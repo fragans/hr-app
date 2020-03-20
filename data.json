@@ -1383,13 +1383,14 @@
       "gender": "Male"
     },
     {
+      "id": 5,
       "name": "Jack Dawson update",
       "email": "jackdawson@email.com",
       "phone": "08123678243",
       "position": "Software Engineer",
       "division": "Engineering",
       "photo": "",
-      "status": "Unprocessed",
+      "status": "Scheduled to Psycho Test",
       "gender": "Male",
       "address": "Jalan Kanankiri no 12",
       "emergency_contact": [
@@ -1397,8 +1398,7 @@
           "name": "Jack Dawson",
           "phone": "08123678243"
         }
-      ],
-      "id": 5
+      ]
     }
   ],
   "user": [

@@ -52,6 +52,7 @@
 import Profile from '@/components/Edit/Profile'
 import Occupation from '@/components/Edit/Occupation'
 import Address from '@/components/Edit/Address'
+import Occupation from '@/components/Edit/Occupation'
 import Emergency from '@/components/Edit/EmergencyContact'
 import axios from 'axios'
 import {mapGetters} from 'vuex'
@@ -59,7 +60,7 @@ import {mapGetters} from 'vuex'
     export default
     {
         components:{
-            Profile,Occupation,Address,Emergency
+            Profile,Address,Emergency,Occupation
         },
         data(){
             return {
@@ -67,7 +68,7 @@ import {mapGetters} from 'vuex'
                 currentTab:'Profile',
                 items: [
                     {name:'Profile',icon:'account'},
-                    {name:'Occupation', icon:'briefcase'},
+                    {name:'Occupation',icon:'briefcase'},
                     {name:'Address',icon:'mailbox-open-outline'},
                     {name:'Emergency',icon:'alert-box-outline'},
                 ],

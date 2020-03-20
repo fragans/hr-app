@@ -56,7 +56,7 @@ const actions = {
     updateStatusApplicant({commit}, payload)
     {
         // console.log("di applicant.js : "+payload)
-        return axios.put(`http:localhost:3000/newApplicants/${payload.id}`,{
+        return axios.put(`http://localhost:3000/newApplicants/${payload.id}`,{
             id: payload.id,
             name: payload.name,
             email: payload.email,

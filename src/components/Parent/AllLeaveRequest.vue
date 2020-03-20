@@ -33,27 +33,29 @@ import { mapGetters } from 'vuex'
         search: '',
         headers: [
           {
-            text: 'EmployeeID',
+            text: 'Employee',
             align: 'start',
             sortable: false,
-            value: 'emp_id',
+            value: 'name',
           },
-          { text: 'Start Date', value: 'date_end' },
-          { text: 'End Date', value: 'date_start' },
+          { text: 'Start Date', value: 'date_start' },
+          { text: 'End Date', value: 'date_end' },
           { text: 'Status', value: 'status' },
           
         ],
-        copy: []
+        copy: [],
+        allData: []
       }
     },
     computed:{
       ...mapGetters({
         dayoff : 'dayoff/days',
+        persons: 'employees/persons'
       })
     },
     methods:{
         filter(value){
-              let d = this.dayoff;
+              let d = this.allData;
               var filtered  = d.filter((el)=>{
                 return el.status === value
             })
@@ -61,13 +63,38 @@ import { mapGetters } from 'vuex'
         },
 
         reset(){
-          this.copy = this.dayoff
+          this.copy = this.allData
+        },
+        query(){
+          let res=[]
+          this.persons.forEach(emp => {
+            this.dayoff.forEach(d => {
+              if (emp.id === d.emp_id) {
+                res.push(
+                  {
+                    id: d.id,
+                    name:emp.name,
+                    date_start :d.date_start,
+                    date_end :d.date_end,
+                    status: d.status
+                  }
+                )
+              }
+            });
+          });
+          this.allData = res
+          this.copy = res
+          console.log(res)
         }
+        
     },
     created(){
       this.$store.dispatch('dayoff/fetch')
         .then(()=>{
-          this.copy = this.dayoff
+          this.$store.dispatch('employees/fetch').then(()=>{
+            this.query()
+          })
+          
         }
       )
     },

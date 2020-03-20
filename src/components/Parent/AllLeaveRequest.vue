@@ -33,10 +33,10 @@ import { mapGetters } from 'vuex'
         search: '',
         headers: [
           {
-            text: 'EmployeeID',
+            text: 'Employee',
             align: 'start',
             sortable: false,
-            value: 'emp_id',
+            value: 'name',
           },
           { text: 'Start Date', value: 'date_end' },
           { text: 'End Date', value: 'date_start' },
@@ -49,6 +49,7 @@ import { mapGetters } from 'vuex'
     computed:{
       ...mapGetters({
         dayoff : 'dayoff/days',
+        persons: 'employees/persons'
       })
     },
     methods:{
@@ -62,12 +63,35 @@ import { mapGetters } from 'vuex'
 
         reset(){
           this.copy = this.dayoff
+        },
+        query(){
+          let res=[]
+          this.persons.forEach(emp => {
+            this.dayoff.forEach(d => {
+              if (emp.id === d.emp_id) {
+                res.push(
+                  {
+                    name:emp.name,
+                    date_start :d.date_start,
+                    date_end :d.date_end,
+                    status: d.status
+                  }
+                )
+              }
+            });
+          });
+          this.copy = res
+          console.log(res)
         }
+        
     },
     created(){
       this.$store.dispatch('dayoff/fetch')
         .then(()=>{
-          this.copy = this.dayoff
+          this.$store.dispatch('employees/fetch').then(()=>{
+            this.query()
+          })
+          // this.copy = this.dayoff
         }
       )
     },

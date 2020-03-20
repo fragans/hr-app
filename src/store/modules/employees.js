@@ -111,6 +111,13 @@ const actions = {
             commit('setEmployee',data)
             commit('setLoading')
         })
+    },
+    remove({commit},payload){
+        console.log('remove')
+        return axios.delete(`http://localhost:3000/employees/${payload}`)
+        .then(({ data })=>{
+           
+        })
     }
 }
 

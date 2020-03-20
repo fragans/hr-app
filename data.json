@@ -704,23 +704,6 @@
           "phone": ""
         }
       ]
-    },
-    {
-      "name": "carlo",
-      "email": "",
-      "position": "",
-      "division": "",
-      "photo": "",
-      "status": "Unprocessed",
-      "gender": "",
-      "address": "",
-      "emergency_contact": [
-        {
-          "name": "dion",
-          "phone": "120989868"
-        }
-      ],
-      "id": 15
     }
   ],
   "outtoday": [

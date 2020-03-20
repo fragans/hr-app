@@ -1,51 +1,42 @@
 <template>
     <v-row class="p-4">
         <v-col>
+            <v-text-field v-model="data.emergency_contact[0].name" label="Person Name"></v-text-field>
 
-          <v-text-field v-model="data.emergency_contact.name" label="Person name" required  ></v-text-field>
-
-          <v-text-field v-model="data.emergency_contact.phone"  label="Phone number" required  ></v-text-field>
+            <v-text-field v-model="data.emergency_contact[0].phone" label="Person Contact"></v-text-field>
              
         </v-col>
-        
     </v-row >
     
 </template>
 
 <script>
-  // import { validationMixin } from 'vuelidate'
-  // import { required, maxLength, email } from 'vuelidate/lib/validators'
-
   export default {
-    // mixins: [validationMixin],
-
-    // validations: {
-    //   name: { required, maxLength: maxLength(10) },
-    //   email: { required, email },
-    //   select: { required },
-    //   checkbox: {
-    //     checked (val) {
-    //       return val
-    //     },
-    //   },
-    // },
-
+    props:{
+      data: {
+        type:Object,
+        default: ()=>({
+          address:'',
+          division:'',
+          birth_date:'',
+          birth_place:'',
+          email:'',
+          emergency_contact:[{
+            name:'',
+            phone:''
+          }],
+          gender:'',
+          id:'',
+          name:'',
+          photo:'',
+          position:'',
+          status:''
+        })
+      },
+    },
     data: () => ({
-      name:'',
-      phone:''
-      // sex:'',
-      // name: '',
-      // email: '',
-      // select: null,
-      // items: [
-      //   'Item 1',
-      //   'Item 2',
-      //   'Item 3',
-      //   'Item 4',
-      // ],
-      // checkbox: false,
+      //test
     }),
-
     computed: {
       // checkboxErrors () {
       //   const errors = []
@@ -74,7 +65,6 @@
       //   return errors
       // },
     },
-
     methods: {
       submit () {
         // this.$v.$touch()
@@ -91,5 +81,4 @@
 </script>
 
 <style scoped>
-
 </style>

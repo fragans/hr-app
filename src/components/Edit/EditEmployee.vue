@@ -4,7 +4,7 @@
         <v-col col="6" class="flex justify-center items-center uppercase">
             <v-icon left>mdi-card-bulleted</v-icon>
             <h1>
-                {{$route.name}} Employee
+                {{$route.name}} <!-- Employee -->
                 <!-- {{ $route.params.id }} -->
             </h1>
             

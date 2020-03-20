@@ -26,17 +26,17 @@ const actions = {
             console.log(state.apply)
             return axios.post('http://localhost:3000/newApplicants',
             {
-                emp_id: payload.emp_id,
+                // emp_id: payload.emp_id,
                 name: payload.name,
                 email: payload.email,
                 phone: payload.phone,
                 position: payload.position,
                 division: payload.division,
-                photo: "0",
+                photo: "",
                 status: "Unprocessed",
                 gender: payload.gender,
                 address: payload.address,
-                date: payload.date,
+                // date: payload.date,
                 id:(state.apply.length+1 )                
             })
             .then(response=>{

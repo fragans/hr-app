@@ -63,40 +63,17 @@
 
                 </v-col>
                 <v-row>
-<<<<<<< HEAD
-                    <v-spacer></v-spacer>
-                    <v-col col="3" class="flex items-center justify-center">
-                        <v-btn class="mr-4 " block color="success" @click="updateApplicant">
-=======
 
+                    <v-spacer></v-spacer>
                     <v-col col="3" class="flex items-center justify-center w-full">
                         <v-btn class="mr-4 "  color="success">
->>>>>>> 4f4a019529be5274f7b68e4d0d53bc8fdf5671d8
                             <v-icon left>mdi-content-save</v-icon>    
                             Update
                         </v-btn>
-<<<<<<< HEAD
-                        <!-- <v-btn class="mr-4 " block color="success" @click="updateStatusApplicant">
-                            <v-icon left>mdi-content-save</v-icon>    
-                            Update Status
-                        </v-btn> -->
-                       <!-- <v-btn class="mr-4" block  color="error">
-                            <v-icon left>mdi-cancel</v-icon>    
-                            Cancel
-                        </v-btn> -->
 
-                        <v-btn class="mr-4" block  color="error" @click="deleteApplicant">
-                            <v-icon left>mdi-delete</v-icon>    
-                            Delete
-=======
-                        <v-btn class="mr-4"   color="error">
-                            <v-icon left>mdi-cancel</v-icon>    
-                            reject
-                        </v-btn>
                         <v-btn class="mr-4"   color="error" @click="dialog = true">
                             <v-icon left>mdi-account-remove</v-icon>    
                             Remove
->>>>>>> 4f4a019529be5274f7b68e4d0d53bc8fdf5671d8
                         </v-btn>
                     </v-col>
                 </v-row>
@@ -128,12 +105,9 @@ import { mapGetters } from 'vuex'
         data(){
             return{
                 opsiStatus:['Pending','Approved','Rejected'],
-<<<<<<< HEAD
-                // status:'',
-=======
                 status:'',
                 dialog: false
->>>>>>> 4f4a019529be5274f7b68e4d0d53bc8fdf5671d8
+
             }
         },
         computed:{
@@ -142,37 +116,25 @@ import { mapGetters } from 'vuex'
                 applicant: 'applicants/apply'
             })
         },
-<<<<<<< HEAD
 
         methods:{
             updateApplicant()
             {
                 let data = {
-                      "id": this.$route.params.id,
-                      "name": this.data.name,
-                      "email": "HArdcode",
-                      "phone": "HArdcode",
-                      "position": "HArdcode",
-                      "division": "HArdcode",
-                      "photo": "0",
-                      "status": "HArdcode",
-                      "gender": "Male"
+                      id: this.$route.params.id,
+                      name: this.applicant.name,
+                      email: "HArdcode",
+                      phone: "HArdcode",
+                      position: "HArdcode",
+                      division: "HArdcode",
+                      photo: "0",
+                      status: "HArdcode",
+                      gender: "Male"
                 }
 
                 this.$store.dispatch('applicants/update',data)
             },
 
-            deleteApplicant()
-            {
-                console.log("di editapplicant, id : "+this.$route.params.id)
-                let id = this.$route.params.id
-                this.$store.dispatch('applicants/delete', id)
-            }
-
-        },
-
-=======
-        methods:{
             removeApplicant(){
                 this.$store.dispatch('applicants/remove',this.$route.params.id)
                 .then(()=>{
@@ -180,7 +142,7 @@ import { mapGetters } from 'vuex'
                 })
             }
         },
->>>>>>> 4f4a019529be5274f7b68e4d0d53bc8fdf5671d8
+
         created(){
             this.$store.dispatch('dayoff/fetchById',this.$route.params.id)
             .then(()=>{

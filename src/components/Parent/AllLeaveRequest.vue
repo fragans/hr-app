@@ -38,7 +38,8 @@ import { mapGetters } from 'vuex'
             sortable: false,
             value: 'emp_id',
           },
-          { text: 'Date', value: 'date' },
+          { text: 'Start Date', value: 'date_end' },
+          { text: 'End Date', value: 'date_start' },
           { text: 'Status', value: 'status' },
           
         ],
@@ -60,7 +61,7 @@ import { mapGetters } from 'vuex'
         },
 
         reset(){
-          this.copy = this.persons
+          this.copy = this.dayoff
         }
     },
     created(){

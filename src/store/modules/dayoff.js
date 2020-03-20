@@ -34,7 +34,7 @@ const actions = {
                 emp_id: payload.emp_id,
                 status: payload.status,
                 date: payload.date,
-                id:(state.day.length+1 ),
+                id:String(state.days.length+1 ),
                 
             })
             .then(response=>{

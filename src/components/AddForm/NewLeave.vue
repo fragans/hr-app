@@ -3,8 +3,7 @@
 
         <v-row class="pt-4" width="300">
             <v-card class="p-8 mx-auto w-full max-w-md">
-
-
+                
             <v-row>
                 
                 <v-select :loading="loading"  v-model="employee" :items="persons" item-text="name" item-value="id" label="Employee Name" placeholder="Identify yourself ... ">
@@ -12,12 +11,12 @@
                 
             </v-row>   
             <v-row>
-                <v-menu v-model="dayoff" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="290px" >
+                <v-menu v-model="show_start" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="290px" >
                     <template v-slot:activator="{ on }">
                         <v-text-field
-                        v-model="startDateFormatted"
+                        v-model="startDate"
                         label="Start Date"
-                        hint="MM/DD/YYYY format"
+                        hint="YYYY-MM-DD format"
                         persistent-hint
                         @blur="date = parseDate(startDateFormatted)"
                         v-on="on"
@@ -27,12 +26,12 @@
                 </v-menu>    
             </v-row> 
             <v-row>
-                <v-menu v-model="dayoff" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="290px" >
+                <v-menu v-model="show_end" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="290px" >
                     <template v-slot:activator="{ on }">
                         <v-text-field
-                        v-model="endDateFormatted"
+                        v-model="endDate"
                         label="Start Date"
-                        hint="MM/DD/YYYY format"
+                        hint="YYYY-MM-DD format"
                         persistent-hint
                         @blur="date = parseDate(endDateFormatted)"
                         v-on="on"
@@ -78,7 +77,8 @@ import { mapGetters } from 'vuex'
                 employee:'',
                 startDate: new Date().toISOString().substr(0, 10),
                 endDate: new Date().toISOString().substr(0, 10),
-                dayoff:'',
+                show_end:false,
+                show_start:false,
                 startDateFormatted: vm.formatDate(new Date().toISOString().substr(0, 10)),
                 endDateFormatted: vm.formatDate(new Date().toISOString().substr(0, 10)),
 
@@ -92,19 +92,20 @@ import { mapGetters } from 'vuex'
             parseDate (date) {
                 if (!date) return null
 
-                const [month, day, year] = date.split('/')
+                const [month, day, year] = date.split('-')
                 return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
             },
              formatDate (date) {
                 if (!date) return null
 
                 const [year, month, day] = date.split('-')
-                return `${month}/${day}/${year}`
+                return `${year}-${month}-${day}`
             },
             submitDayOff(){
                 this.$store.dispatch('dayoff/insert',{
                     emp_id: this.employee,
-                    date: this.startDateFormatted,
+                    date_start: this.startDateFormatted,
+                    date_end: this.endDateFormatted,
                     status: 'Pending'
                 })
                 .then(()=>{

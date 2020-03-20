@@ -4,7 +4,7 @@
         <v-col col="6" class="flex justify-center items-center uppercase">
             <v-icon left>mdi-card-bulleted</v-icon>
             <h1>
-                {{$route.name}} <!-- Employee -->
+                {{$route.name}}
                 <!-- {{ $route.params.id }} -->
             </h1>
             
@@ -15,9 +15,9 @@
                 <v-icon left>mdi-content-save</v-icon>    
                 save
             </v-btn>
-            <v-btn color="error">
+            <v-btn color="error" @click="dialog = true">
                 <v-icon left>mdi-cancel</v-icon>    
-                cancel</v-btn>
+                remove</v-btn>
         </v-col>
     </v-row>
     <v-divider/>
@@ -43,6 +43,15 @@
         </v-col>
         
     </v-card>
+    <v-dialog v-model="dialog" persistent max-width="290">
+        <v-card class="p-4">
+            <v-card-title class="headline text-center">remove employee?</v-card-title>
+            <v-card-actions class="items-center justify-center">
+
+            <v-btn color="success" class="text-white" @click="remove">Ok</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
 </v-container>
     
 </template>
@@ -54,7 +63,6 @@ import Address from '@/components/Edit/Address'
 import Emergency from '@/components/Edit/EmergencyContact'
 import axios from 'axios'
 import {mapGetters} from 'vuex'
-
     export default
     {
         components:{
@@ -71,19 +79,18 @@ import {mapGetters} from 'vuex'
                     {name:'Emergency',icon:'alert-box-outline'},
                 ],
                 data:'',
-                loading:true,
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                loading:true,   
+                dialog:false
             }
         },
         computed:{
             renderedComponent: () => {
                 let self = this;
-                return () => import('@/components/' + this.currentTab)
+                return () => import('@/components/Edit/' + this.currentTab)
             },
             ...mapGetters({
                 employee : 'employees/person'
             }),
-
             computedProp()
             {
                 if (this.$route.name === 'Edit Employee')
@@ -110,19 +117,26 @@ import {mapGetters} from 'vuex'
                 })
                 this.copy = filtered
             },
-
             update()
             {
+                // console.log('up')
+                // console.log(this.employee)
                 this.$store.dispatch('employees/update',this.employee)
+            },
+            remove(){
+                console.log('remove')
+                // this.dialog=true
+                this.$store.dispatch('employees/remove',this.$route.params.id).then(()=>{
+                    this.$router.push({name:'Employees'})
+                })
             }
         },
-
         created()
         {
             // console.log('emp'+this.employee)
-            // this.$store.dispatch('employees/fetchById', this.$route.params.id)
-            this.$store.dispatch('employees/fetchById', 1)
+            this.$store.dispatch('employees/fetchById', this.$route.params.id)
               .then(()=>{
+                  console.log('emp/fetchById')
                 this.data = this.employee
                 this.loading = false
             })
@@ -131,5 +145,4 @@ import {mapGetters} from 'vuex'
 </script>
 
 <style scoped>
-
 </style>

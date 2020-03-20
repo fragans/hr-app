@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import router from '../../router'
 const state = {
     apply:{},
     applies:[],
@@ -22,11 +22,12 @@ const actions = {
         })
     },
     insert({commit,dispatch},payload){
+        console.log(payload)
         dispatch('fetch').then(()=>{
-            console.log(state.apply)
+            // console.log(state.applies)
             return axios.post('http://localhost:3000/newApplicants',
             {
-                // emp_id: payload.emp_id,
+                id:(state.applies.length+1),
                 name: payload.name,
                 email: payload.email,
                 phone: payload.phone,
@@ -36,9 +37,15 @@ const actions = {
                 status: "Unprocessed",
                 gender: payload.gender,
                 address: payload.address,
-                // date: payload.date,
-                id:(state.apply.length+1 )                
-            })
+                emergency_contact:[
+                    {
+                        name: payload.name,
+                        phone: payload.phone
+                    }
+                ],
+                date: payload.date    
+            }
+            )
             .then(response=>{
                 console.log(response)
             })
@@ -46,20 +53,56 @@ const actions = {
 
     },
 
+    updateStatusApplicant({commit}, payload)
+    {
+        // console.log("di applicant.js : "+payload)
+        return axios.put(`http:localhost:3000/newApplicants/${payload.id}`,{
+            id: payload.id,
+            name: payload.name,
+            email: payload.email,
+            phone: payload.phone,
+            position: payload.position,
+            division: payload.division,
+            birth_date: payload.birth_date,
+            birth_place: payload.birth_place,
+            photo: payload.photo,
+            status: payload.status,
+            gender: payload.gender,
+            address: payload.address,
+            emergency_contact: [
+                {
+                name: payload.emergency_contact[0].name,
+                phone: payload.emergency_contact[0].phone
+                }
+            ]
+        }).then(response=>{console.log(response)})
+    },
+
     update(state,payload)
     {
         // console.log("di fungsi update payload = "+payload.id)
-        console.log("di fungsi update "+payload.status)
-        return axios.put(`http://localhost:3000/newApplicants/`+payload.id, payload).
-        then(response=>{
-            console.log(response)
-        })
-    },
-
-    delete(state, payload)
-    {
-        console.log("di fungsi delete payload = "+payload.id)
-        return axios.delete(`http://localhost:3000/newApplicants/`+payload.id).
+        console.log("di fungsi update "+payload)
+        return axios.put(`http://localhost:3000/newApplicants/${payload.id}`, 
+            {
+                id: payload.id,
+                name: payload.name,
+                email: payload.email,
+                phone: payload.phone,
+                position: payload.position,
+                division: payload.division,
+                birth_date: payload.birth_date,
+                birth_place: payload.birth_place,
+                photo: payload.photo,
+                status: payload.status,
+                gender: payload.gender,
+                address: payload.address,
+                emergency_contact: [
+                    {
+                    name: payload.emergency_contact[0].name,
+                    phone: payload.emergency_contact[0].phone
+                    }
+                ]
+            }).
         then(response=>{
             console.log(response)
         })

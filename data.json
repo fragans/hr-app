@@ -456,7 +456,7 @@
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "Someone",
           "phone": "0812487789231"
@@ -474,7 +474,7 @@
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "Steven Tyler",
           "phone": "08123564235"
@@ -492,7 +492,7 @@
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "May",
           "phone": "081236378"
@@ -510,7 +510,7 @@
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "Dominique",
           "phone": "08123567"
@@ -528,7 +528,7 @@
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -546,7 +546,7 @@
       "status": "Permanent",
       "gender": "Female",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -564,7 +564,7 @@
       "status": "Permanent",
       "gender": "Female",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -582,7 +582,7 @@
       "status": "Permanent",
       "gender": "Female",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -600,7 +600,7 @@
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -618,7 +618,7 @@
       "status": "Probation",
       "gender": "Female",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -636,7 +636,7 @@
       "status": "Probation",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -654,7 +654,7 @@
       "status": "Contract",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -672,7 +672,7 @@
       "status": "Probation",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -1381,6 +1381,24 @@
       "photo": "",
       "status": "Scheduled to Interview",
       "gender": "Male"
+    },
+    {
+      "name": "Jack Dawson update",
+      "email": "jackdawson@email.com",
+      "phone": "08123678243",
+      "position": "Software Engineer",
+      "division": "Engineering",
+      "photo": "",
+      "status": "Unprocessed",
+      "gender": "Male",
+      "address": "Jalan Kanankiri no 12",
+      "emergency_contact": [
+        {
+          "name": "Jack Dawson",
+          "phone": "08123678243"
+        }
+      ],
+      "id": 5
     }
   ],
   "user": [

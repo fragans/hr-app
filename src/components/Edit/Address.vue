@@ -1,7 +1,9 @@
 <template>
     <v-row class="p-4">
         <v-col>
-            <v-textarea v-model="data.address" label="Address" required  ></v-textarea>
+
+            <v-textarea v-model="data.address" label="Address" required></v-textarea>
+
         </v-col>
         
         
@@ -10,37 +12,40 @@
 </template>
 
 <script>
-
   export default {
-
     props:{
       data: {
-        type: Object,
-        default: {
-          address : ''
-        }
-      }
+        type:Object,
+        default: ()=>({
+          address:'',
+          division:'',
+          birth_date:'',
+          birth_place:'',
+          email:'',
+          emergency_contact:[{
+            name:'',
+            phone:''
+          }],
+          gender:'',
+          id:'',
+          name:'',
+          photo:'',
+          position:'',
+          status:''
+        })
+      },
     },
-
+    data: () => ({
+      
+    }),
     computed: {
       
     },
-
     methods: {
-      submit () {
-        // this.$v.$touch()
-      },
-      clear () {
-        // this.$v.$reset()
-        // this.name = ''
-        // this.email = ''
-        // this.select = null
-        // this.checkbox = false
-      }
-    }
+      
+    },
   }
 </script>
 
 <style scoped>
-
 </style>

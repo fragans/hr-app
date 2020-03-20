@@ -2,7 +2,6 @@
     
 
     <v-container>
-      ini vieww
         <router-view>
 
         </router-view>

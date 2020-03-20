@@ -43,15 +43,65 @@ const actions = {
             commit('setLoading')
         })
     },
+    insert({commit,dispatch},payload){
+        console.log(payload)
+        dispatch('fetch').then(()=>{
+            // console.log(state.applies)
+            return axios.post('http://localhost:3000/employees',
+            {
+                name: payload.name,
+                email: payload.email,
+                phone: payload.phone,
+                position: "",
+                division: "",
+                photo: payload.photo,
+                status: "Unprocessed",
+                gender: payload.gender,
+                address: payload.address,
+                date: payload.date,
+                emergency_contact: [
+                    {
+                    name: payload.emergency_contact[0].name,
+                    phone: payload.emergency_contact[0].phone
+                    }
+                ],
+                id:(state.persons.length+1 )                
+            }
+            )
+            .then(response=>{
+                console.log(response)
+            })
+        })
 
+    },
     update(state,payload)
     {
-        // return axios.put(`http://localhost:3000/employees/${payload}`).
-        return axios.put(`http://localhost:3000/employees/`+payload.id)
+        console.log(payload)
+        return axios.put(`http://localhost:3000/employees/${payload.id}`,
+            {
+                name: payload.name,
+                email: payload.email,
+                phone: payload.phone,
+                position: payload.position,
+                division: payload.division,
+                birth_date: payload.birth_date,
+                birth_place: payload.birth_place,
+                photo: payload.photo,
+                status: payload.status,
+                gender: payload.gender,
+                address: payload.address,
+                emergency_contact: [
+                    {
+                    name: payload.emergency_contact[0].name,
+                    phone: payload.emergency_contact[0].phone
+                    }
+                ]
+            }
+        ).
         then(response=>{
             console.log(response)
         })
-        // console.log(payload)
+        console.log(payload)
     },
 
     fetchById({commit},payload){
@@ -60,6 +110,13 @@ const actions = {
         .then(({ data })=>{
             commit('setEmployee',data)
             commit('setLoading')
+        })
+    },
+    remove({commit},payload){
+        console.log('remove')
+        return axios.delete(`http://localhost:3000/employees/${payload}`)
+        .then(({ data })=>{
+           
         })
     }
 }
@@ -79,6 +136,9 @@ const mutations = {
 
     setEmployee(state,payload){
         state.person= payload
+    },
+    setPersonPhoto(state,payload){
+        state.person.photo = payload
     },
 
     setLoading(state)

@@ -54,6 +54,17 @@ const routes = [{
                     component: () =>
                     import('../components/Edit/EditEmployee.vue')
                 },
+                {
+                    name:'New Employee',
+                    path: 'add',
+                    icon:'mdi-run-fast'      ,
+                    meta:{
+                        title:'asue',
+                        icon:'mdi-run-fast'      ,
+                    },
+                    component: () =>
+                    import('../components/AddForm/NewEmployee.vue')
+                },
             ],
 
 
@@ -205,7 +216,7 @@ const routes = [{
             title: 'Apply for Job'
         },
         component: () =>
-            import ('../views/NewApplicant.vue')
+            import ('../views/Recruit.vue')
     },
     {
         

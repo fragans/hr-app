@@ -4,20 +4,16 @@
         <v-col col="6" class="flex justify-center items-center uppercase">
             <v-icon left>mdi-card-bulleted</v-icon>
             <h1>
-                {{$route.name}} Employee
-                <!-- {{ $route.params.id }} -->
+                {{$route.name}}
             </h1>
             
         </v-col>
         <v-spacer></v-spacer>
         <v-col col="3">
-            <v-btn class="mr-4" color="success" @click="update">
-                <v-icon left>mdi-content-save</v-icon>    
+            <v-btn block class="mr-4" color="success" @click="insert">
+                <v-icon left>mdi-content-save-outline</v-icon>    
                 save
             </v-btn>
-            <v-btn color="error">
-                <v-icon left>mdi-cancel</v-icon>    
-                cancel</v-btn>
         </v-col>
     </v-row>
     <v-divider/>
@@ -30,10 +26,10 @@
                     <v-icon left> mdi-{{item.icon}}</v-icon>
                     {{item.name}}
                 </v-tab>
-                <template v-if="!loading">
+                <template>
                 <v-tab-item v-for="block in items" :key="block.name">           
                     <keep-alive>
-                        <component :is="block.name" v-bind="currentProperties"></component>
+                        <component :is="block.name" v-bind="computedProp" ></component>
                     </keep-alive>
                 </v-tab-item >
                 </template>
@@ -49,13 +45,14 @@
 
 <script>
 import Profile from '@/components/Edit/Profile'
-import Occupation from '@/components/Edit/Occupation'
 import Address from '@/components/Edit/Address'
+import Occupation from '@/components/Edit/Occupation'
 import Emergency from '@/components/Edit/EmergencyContact'
 import axios from 'axios'
+import {mapGetters} from 'vuex'
 
-import { mapGetters } from 'vuex'
-    export default {
+    export default
+    {
         components:{
             Profile,Occupation,Address,Emergency
         },
@@ -70,8 +67,23 @@ import { mapGetters } from 'vuex'
                     {name:'Emergency',icon:'alert-box-outline'},
                 ],
                 data:'',
-                loading:true,
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                employee:
+                        {
+                            address:'',
+                            division:'',
+                            birth_date:'',
+                            birth_place:'',
+                            email:'',
+                            emergency_contact:[{
+                                name:'',
+                                phone:''
+                            }],
+                            gender:'',
+                            name:'',
+                            photo:'',
+                            position:'',
+                            status:''
+                        }
             }
         },
         computed:{
@@ -79,56 +91,28 @@ import { mapGetters } from 'vuex'
                 let self = this;
                 return () => import('@/components/' + this.currentTab)
             },
-            ...mapGetters({
 
-                employee:'employees/person',
-                apllicants:'applicant/apply'
-
-            })
-        },
-        methods:{
-            currentProperties(){
-                if (this.$route.name === 'New Applicant') {
-                    return { foo: 'bar' }
-                }
-            },
-
-            filter(value){
-                // let d = this.desserts;
-                let d = this.persons
-                var filtered  = d.filter((el)=>{
-                    return el.status === value
-                })
-                this.copy = filtered
-            },
-
-            update()
+            computedProp()
             {
-                this.$store.dispatch('employees/update',this.employee.id)
+                console.log('asdasdas')
+                if(this.$route.name === 'New Employee')
+                {
+                    console.log('apply ui')
+                    return { data : this.employee }
+                }
             }
-
         },
-
         watch:{
             tab:function(val, OldVal) {
                 this.currentTab = this.items[val].name;
             }
         },
-
-        created()
-        {
-            // console.log('emp'+this.employee)
-            this.$store.dispatch('employees/fetchById', this.$route.params.id)
-              .then(()=>{
-                this.data = this.employee
-                this.loading = false
-            })
+        methods:{
+            insert()
+            {
+                this.$store.dispatch('employees/insert',this.employee)
+            }
         },
-
-        mounted(){
-            this.dispatch('employee/fetchById'.this.$route.params.id)
-        }
-
     }
 </script>
 

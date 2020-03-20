@@ -2,16 +2,23 @@
 <v-container>
     <v-row class="title">
         <v-col col="6" class="flex justify-center items-center uppercase">
+            <v-icon left>mdi-card-bulleted</v-icon>
+            <h1>
+                {{$route.name}} Employee
+                <!-- {{ $route.params.id }} -->
+            </h1>
+            
         </v-col>
         <v-spacer></v-spacer>
         <v-col col="3">
-            <v-btn class="mr-4" color="success">
-                <v-icon left>mdi-content-save</v-icon>    
-                save
+            <v-btn class="mr-4" color="success" @click="insert">
+                <v-icon left>mdi-email-outline</v-icon>    
+                submit
             </v-btn>
-            <v-btn color="error">
-                <v-icon left>mdi-cancel</v-icon>    
-                cancel</v-btn>
+            <v-btn color="primary">
+                <v-icon left>mdi-file-upload-outline</v-icon>    
+                upload CV
+            </v-btn>
         </v-col>
     </v-row>
     <v-divider/>
@@ -24,12 +31,13 @@
                     <v-icon left> mdi-{{item.icon}}</v-icon>
                     {{item.name}}
                 </v-tab>
-                
+                <template>
                 <v-tab-item v-for="block in items" :key="block.name">           
                     <keep-alive>
-                        <component :is="block.name" ></component>
+                        <component :is="block.name" v-bind="computedProp" ></component>
                     </keep-alive>
                 </v-tab-item >
+                </template>
 
             </v-tabs>
 
@@ -45,7 +53,11 @@ import Profile from '@/components/Edit/Profile'
 import Occupation from '@/components/Edit/Occupation'
 import Address from '@/components/Edit/Address'
 import Emergency from '@/components/Edit/EmergencyContact'
-    export default {
+import axios from 'axios'
+import {mapGetters} from 'vuex'
+
+    export default
+    {
         components:{
             Profile,Occupation,Address,Emergency
         },
@@ -54,24 +66,50 @@ import Emergency from '@/components/Edit/EmergencyContact'
                 tab: 0,
                 currentTab:'Profile',
                 items: [
-                {name:'Profile',icon:'account'},
-                {name:'Occupation',icon:'briefcase'},
-                {name:'Address',icon:'mailbox-open-outline'},
-                {name:'Emergency',icon:'alert-box-outline'},
+                    {name:'Profile',icon:'account'},
+                    {name:'Occupation', icon:'briefcase'},
+                    {name:'Address',icon:'mailbox-open-outline'},
+                    {name:'Emergency',icon:'alert-box-outline'},
                 ],
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                data:'',
+                employee:
+                        {
+                            address:'',
+                            division:'',
+                            birth_date:'',
+                            birth_place:'',
+                            email:'',
+                            emergency_contact:[{
+                                name:'',
+                                phone:''
+                            }],
+                            gender:'',
+                            name:'',
+                            photo:'',
+                            position:'',
+                            status:''
+                        }
             }
         },
         computed:{
             renderedComponent: () => {
                 let self = this;
                 return () => import('@/components/' + this.currentTab)
-            }
-        },
-        methods:{
-            saveApplicant()
+            },
+
+            computedProp()
             {
-                this.$store.dispatch('applicants/insert')
+                console.log('asdasdas')
+                if(this.$route.name === 'Apply Job')
+                {
+                    console.log('apply ui')
+                    return { data : this.employee }
+                }
+                else if(this.$route.name === 'New Applicant')
+                {
+                    console.log('new appl')
+                    return { data : this.employee }
+                }
             }
         },
         watch:{
@@ -79,9 +117,12 @@ import Emergency from '@/components/Edit/EmergencyContact'
                 this.currentTab = this.items[val].name;
             }
         },
-        created(){
-            
-        }
+        methods:{
+            insert()
+            {
+                this.$store.dispatch('applicants/insert',this.employee)
+            }
+        },
     }
 </script>
 

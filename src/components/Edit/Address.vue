@@ -1,9 +1,7 @@
 <template>
     <v-row class="p-4">
         <v-col>
-
-            <v-textarea v-model="data.address" label="Address" required></v-textarea>
-
+            <v-textarea v-model="data.address" label="Address" required  ></v-textarea>
         </v-col>
         
         
@@ -24,17 +22,22 @@
       }
     },
 
-    data: () => ({
-      
-    }),
-
     computed: {
       
     },
 
     methods: {
-      
-    },
+      submit () {
+        // this.$v.$touch()
+      },
+      clear () {
+        // this.$v.$reset()
+        // this.name = ''
+        // this.email = ''
+        // this.select = null
+        // this.checkbox = false
+      }
+    }
   }
 </script>
 

@@ -196,7 +196,39 @@ const routes = [{
         component: () =>
             import ('../views/Image.vue')
     },
-  
+    {
+        
+        path: '/recruit',
+        name: 'Apply Job',
+        icon: 'lock',
+        meta: {
+            title: 'Apply for Job'
+        },
+        component: () =>
+            import ('../views/NewApplicant.vue')
+    },
+    {
+        
+        path: '/clockin',
+        name: 'Employee Clock In',
+        icon: 'calendar-check',
+        meta: {
+            title: 'Employee Attendance'
+        },
+        component: () =>
+            import ('../views/ClockIn.vue')
+    },
+    {
+        
+        path: '/clockout',
+        name: 'Employee Clock Out',
+        icon: 'calendar-check',
+        meta: {
+            title: 'Employee Attendance'
+        },
+        component: () =>
+            import ('../views/ClockOut.vue')
+    },
 
 ]
 

@@ -12,7 +12,7 @@
           </v-tabs>
 
           <template slot="action">
-            <v-btn to="/offwork/add">new req</v-btn>
+            <v-btn to="/offwork/add">New Request</v-btn>
           </template>
         </FilterList>
     </v-container>
@@ -70,11 +70,6 @@ import { mapGetters } from 'vuex'
         }
       )
     },
-    beforeMount(){
-        
-
-        
-    }
   }
 </script>
 

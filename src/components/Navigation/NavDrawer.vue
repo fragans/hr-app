@@ -106,7 +106,7 @@ import axios from 'axios'
           },
           fetchLeaveReq(){
             axios.get('http://localhost:3000/outtoday').then(({ data })=>{
-            console.log(data.length)
+            // console.log(data.length)
             this.leaveReq = data.length
             // this.desserts = data
             // this.copy = this.desserts;

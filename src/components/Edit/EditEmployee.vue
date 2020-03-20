@@ -120,7 +120,8 @@ import {mapGetters} from 'vuex'
         created()
         {
             // console.log('emp'+this.employee)
-            this.$store.dispatch('employees/fetchById', this.$route.params.id)
+            // this.$store.dispatch('employees/fetchById', this.$route.params.id)
+            this.$store.dispatch('employees/fetchById', 1)
               .then(()=>{
                 this.data = this.employee
                 this.loading = false

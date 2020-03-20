@@ -33,7 +33,7 @@
                 <template v-if="!loading">
                 <v-tab-item v-for="block in items" :key="block.name">           
                     <keep-alive>
-                        <component :is="block.name" :data="data" ></component>
+                        <component :is="block.name" v-bind="currentProperties"></component>
                     </keep-alive>
                 </v-tab-item >
                 </template>
@@ -53,10 +53,9 @@ import Occupation from '@/components/Edit/Occupation'
 import Address from '@/components/Edit/Address'
 import Emergency from '@/components/Edit/EmergencyContact'
 import axios from 'axios'
-import {mapGetters} from 'vuex'
 
-    export default
-    {
+import { mapGetters } from 'vuex'
+    export default {
         components:{
             Profile,Occupation,Address,Emergency
         },
@@ -81,15 +80,19 @@ import {mapGetters} from 'vuex'
                 return () => import('@/components/' + this.currentTab)
             },
             ...mapGetters({
-                employee : 'employees/person'
+
+                employee:'employees/person',
+                apllicants:'applicant/apply'
+
             })
         },
-        watch:{
-            tab:function(val, OldVal) {
-                this.currentTab = this.items[val].name;
-            }
-        },
         methods:{
+            currentProperties(){
+                if (this.$route.name === 'New Applicant') {
+                    return { foo: 'bar' }
+                }
+            },
+
             filter(value){
                 // let d = this.desserts;
                 let d = this.persons
@@ -103,6 +106,13 @@ import {mapGetters} from 'vuex'
             {
                 this.$store.dispatch('employees/update',this.employee.id)
             }
+
+        },
+
+        watch:{
+            tab:function(val, OldVal) {
+                this.currentTab = this.items[val].name;
+            }
         },
 
         created()
@@ -114,6 +124,11 @@ import {mapGetters} from 'vuex'
                 this.loading = false
             })
         },
+
+        mounted(){
+            this.dispatch('employee/fetchById'.this.$route.params.id)
+        }
+
     }
 </script>
 

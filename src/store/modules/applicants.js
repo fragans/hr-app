@@ -22,7 +22,6 @@ const actions = {
         })
     },
     insert({commit,dispatch},payload){
-        // console.log(payload)
         dispatch('fetch').then(()=>{
             console.log(state.apply)
             return axios.post('http://localhost:3000/newApplicants',
@@ -72,6 +71,13 @@ const actions = {
             commit('setApply',data)
 
         })
+    },
+    remove({commit},payload){
+        return axios.delete(`http://localhost:3000/newApplicants/${payload}`)
+        .then(response=>{
+            
+        })
+        
     }
 }
 

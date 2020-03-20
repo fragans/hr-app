@@ -33,7 +33,8 @@ const actions = {
             {
                 emp_id: payload.emp_id,
                 status: payload.status,
-                date: payload.date,
+                date_start: payload.date_start,
+                date_end: payload.date_end,
                 id:String(state.days.length+1 ),
                 
             })
@@ -49,6 +50,20 @@ const actions = {
         return axios.get(`http://localhost:3000/outtoday/${payload}`)
         .then(({ data })=>{
             commit('setDay',data)
+        })
+    },
+    editStatus({commit},payload){
+        // console.log(payload)
+        return axios.put(`http://localhost:3000/outtoday/${payload.id}`,
+            {
+                emp_id:payload.emp_id,
+                date_start:payload.date_start,
+                date_end:payload.date_end,
+                status:payload.status,
+            }
+        ).
+        then(response=>{
+            console.log(response)
         })
     }
 }

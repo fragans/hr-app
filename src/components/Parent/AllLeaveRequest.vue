@@ -38,12 +38,13 @@ import { mapGetters } from 'vuex'
             sortable: false,
             value: 'name',
           },
-          { text: 'Start Date', value: 'date_end' },
-          { text: 'End Date', value: 'date_start' },
+          { text: 'Start Date', value: 'date_start' },
+          { text: 'End Date', value: 'date_end' },
           { text: 'Status', value: 'status' },
           
         ],
-        copy: []
+        copy: [],
+        allData: []
       }
     },
     computed:{
@@ -54,7 +55,7 @@ import { mapGetters } from 'vuex'
     },
     methods:{
         filter(value){
-              let d = this.dayoff;
+              let d = this.allData;
               var filtered  = d.filter((el)=>{
                 return el.status === value
             })
@@ -62,7 +63,7 @@ import { mapGetters } from 'vuex'
         },
 
         reset(){
-          this.copy = this.dayoff
+          this.copy = this.allData
         },
         query(){
           let res=[]
@@ -71,6 +72,7 @@ import { mapGetters } from 'vuex'
               if (emp.id === d.emp_id) {
                 res.push(
                   {
+                    id: d.id,
                     name:emp.name,
                     date_start :d.date_start,
                     date_end :d.date_end,
@@ -80,6 +82,7 @@ import { mapGetters } from 'vuex'
               }
             });
           });
+          this.allData = res
           this.copy = res
           console.log(res)
         }
@@ -91,7 +94,7 @@ import { mapGetters } from 'vuex'
           this.$store.dispatch('employees/fetch').then(()=>{
             this.query()
           })
-          // this.copy = this.dayoff
+          
         }
       )
     },

@@ -492,16 +492,14 @@
       "phone": "021123456",
       "position": "Frontend Developer",
       "division": "Engineering",
-      "birth_date": "1995-03-31",
-      "birth_place": "Jakarta",
-      "photo": "",
+      "photo": "0",
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contact": [
+      "emergency_contanct": [
         {
-          "name": "May",
-          "phone": "081236378"
+          "name": "",
+          "phone": ""
         }
       ]
     },
@@ -727,6 +725,13 @@
       "date_start": "2020-03-27",
       "date_end": "2020-03-27",
       "status": "Approved"
+    },
+    {
+      "emp_id": "1",
+      "date_start": "2020-03-20",
+      "date_end": "2020-03-25",
+      "status": "Rejected",
+      "id": "4"
     }
   ],
   "todaypresent": [

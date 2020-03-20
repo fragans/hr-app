@@ -167,7 +167,7 @@ const routes = [{
                     icon:'mdi-run-fast'      ,
                 },
                 component: () =>
-                import('../views/EditLeave.vue')
+                import('../components/Edit/EditLeave.vue')
             },
             {
                 name: 'New Leave Request',

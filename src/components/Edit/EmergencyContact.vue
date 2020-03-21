@@ -1,6 +1,6 @@
 <template>
     <v-row class="p-4">
-        <v-col>
+        <v-col v-if="data.emergency_contact">
             <v-text-field v-model="data.emergency_contact[0].name" label="Person Name"></v-text-field>
 
             <v-text-field v-model="data.emergency_contact[0].phone" label="Person Contact"></v-text-field>
@@ -11,7 +11,6 @@
 </template>
 
 <script>
-
   export default {
     props:{
       data: {
@@ -35,11 +34,9 @@
         })
       },
     },
-
     data: () => ({
       //test
     }),
-
     computed: {
       // checkboxErrors () {
       //   const errors = []
@@ -68,7 +65,6 @@
       //   return errors
       // },
     },
-
     methods: {
       submit () {
         // this.$v.$touch()
@@ -85,5 +81,4 @@
 </script>
 
 <style scoped>
-
 </style>

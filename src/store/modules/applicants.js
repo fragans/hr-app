@@ -24,20 +24,32 @@ const actions = {
     insert({commit,dispatch},payload){
         console.log(payload)
         dispatch('fetch').then(()=>{
-            // console.log(state.applies)
+            let ids=[];
+            state.applies.forEach(a => {
+                ids.push(parseInt(a.id))
+            });
+            console.log(ids)
+            console.log(Math.max(...ids))
             return axios.post('http://localhost:3000/newApplicants',
             {
+                id:String(Math.max(...ids)+1),
                 name: payload.name,
                 email: payload.email,
                 phone: payload.phone,
                 position: payload.position,
                 division: payload.division,
-                photo: payload.phot,
+                photo: payload.photo,
                 status: "Unprocessed",
                 gender: payload.gender,
                 address: payload.address,
-                date: payload.date,
-                id:(state.applies.length+1 )                
+                emergency_contact:[
+                    {
+                        name: payload.name,
+                        phone: payload.phone
+                    }
+                ],
+                date: payload.date ,   
+                cv:payload.cv
             }
             )
             .then(response=>{
@@ -47,11 +59,56 @@ const actions = {
 
     },
 
+    updateStatusApplicant({commit}, payload)
+    {
+        // console.log("di applicant.js : "+payload)
+        return axios.put(`http://localhost:3000/newApplicants/${payload.id}`,{
+            id: String(payload.id),
+            name: payload.name,
+            email: payload.email,
+            phone: payload.phone,
+            position: payload.position,
+            division: payload.division,
+            birth_date: payload.birth_date,
+            birth_place: payload.birth_place,
+            photo: payload.photo,
+            status: payload.status,
+            gender: payload.gender,
+            address: payload.address,
+            emergency_contact: [
+                {
+                name: payload.emergency_contact[0].name,
+                phone: payload.emergency_contact[0].phone
+                }
+            ]
+        }).then(response=>{console.log(response)})
+    },
+
     update(state,payload)
     {
         // console.log("di fungsi update payload = "+payload.id)
-        console.log("di fungsi update "+payload.status)
-        return axios.put(`http://localhost:3000/newApplicants/`+payload.id, payload).
+        console.log("di fungsi update "+payload)
+        return axios.put(`http://localhost:3000/newApplicants/${payload.id}`, 
+            {
+                id: payload.id,
+                name: payload.name,
+                email: payload.email,
+                phone: payload.phone,
+                position: payload.position,
+                division: payload.division,
+                birth_date: payload.birth_date,
+                birth_place: payload.birth_place,
+                photo: payload.photo,
+                status: payload.status,
+                gender: payload.gender,
+                address: payload.address,
+                emergency_contact: [
+                    {
+                    name: payload.emergency_contact[0].name,
+                    phone: payload.emergency_contact[0].phone
+                    }
+                ]
+            }).
         then(response=>{
             console.log(response)
         })
@@ -67,7 +124,7 @@ const actions = {
     remove({commit},payload){
         return axios.delete(`http://localhost:3000/newApplicants/${payload}`)
         .then(response=>{
-            
+            console.log(response)
         })
         
     }

@@ -12,9 +12,7 @@
 </template>
 
 <script>
-
   export default {
-
     props:{
       data: {
         type:Object,
@@ -37,15 +35,12 @@
         })
       },
     },
-
     data: () => ({
       
     }),
-
     computed: {
       
     },
-
     methods: {
       
     },
@@ -53,5 +48,4 @@
 </script>
 
 <style scoped>
-
 </style>

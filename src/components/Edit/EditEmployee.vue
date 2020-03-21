@@ -63,7 +63,6 @@ import Address from '@/components/Edit/Address'
 import Emergency from '@/components/Edit/EmergencyContact'
 import axios from 'axios'
 import {mapGetters} from 'vuex'
-
     export default
     {
         components:{
@@ -92,7 +91,6 @@ import {mapGetters} from 'vuex'
             ...mapGetters({
                 employee : 'employees/person'
             }),
-
             computedProp()
             {
                 if (this.$route.name === 'Edit Employee')
@@ -119,7 +117,6 @@ import {mapGetters} from 'vuex'
                 })
                 this.copy = filtered
             },
-
             update()
             {
                 // console.log('up')
@@ -134,7 +131,6 @@ import {mapGetters} from 'vuex'
                 })
             }
         },
-
         created()
         {
             // console.log('emp'+this.employee)
@@ -149,5 +145,4 @@ import {mapGetters} from 'vuex'
 </script>
 
 <style scoped>
-
 </style>

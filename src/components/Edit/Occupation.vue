@@ -12,7 +12,6 @@
 </template>
 
 <script>
-
   export default {
    
     props:{
@@ -37,16 +36,12 @@
         })
       },
     },
-
-
     data: () => ({
       
     }),
-
     computed: {
       
     },
-
     methods: {
       
     },
@@ -54,5 +49,4 @@
 </script>
 
 <style scoped>
-
 </style>

@@ -74,7 +74,6 @@
       },
     },
     // mixins: [validationMixin],
-
     // validations: {
     //   phone: {required , maxLength: maxLength(12)},
     //   name: { required, maxLength: maxLength(10) },
@@ -86,14 +85,12 @@
     //     },
     //   },
     // },
-
     data: vm => ({
       show_calendar:false,
       date: vm.data.birth_date,
       dateFormatted: vm.formatDate(new Date().toISOString().substr(0, 10)),
       checkbox: false,
     }),
-
     computed: {
       // checkboxErrors () {
       //   const errors = []
@@ -124,7 +121,6 @@
       computedDateFormatted () {
         return this.formatDate(this.date)
       },
-
       // ...mapGetters({
       //   employee: 'employees/person',
       //   loading: 'employees/loading'
@@ -134,7 +130,6 @@
       // date (val) {
       //   this.dateFormatted = this.formatDate(this.date)
       // },
-
       // loading()
       // {
       //   if(!this.loading) this.date = employee.birthdate
@@ -154,7 +149,6 @@
       
       formatDate (date) {
         if (!date) return null
-
         const [year, month, day] = date.split('-')
         return `${year}-${month}-${day}`
       },
@@ -170,5 +164,4 @@
 </script>
 
 <style scoped>
-
 </style>

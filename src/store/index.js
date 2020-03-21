@@ -6,7 +6,7 @@ import employees from './modules/employees'
 import attendance from './modules/attendance'
 import dayoff from './modules/dayoff'
 import holidays from './modules/holidays'
-// import * as store from './modules';
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -18,6 +18,6 @@ export default new Vuex.Store({
         employees,
         attendance,
         applicants,
-        holidays
+        holidays,
     }
 })

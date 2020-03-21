@@ -1,7 +1,7 @@
 <template>
   <v-container class="home w-full ">
 
-    <v-row class="justify-center flex-wrap items-stretch flex m-0">
+    <v-row class="justify-center flex-wrap items-baseline flex m-0 ">
       <div class="w-1/3 p-2 min-w-250" >
         <Card >
           <h3 slot="title" class="m-2" >Total Employees</h3>
@@ -24,10 +24,12 @@
       
        <div class="w-1/3 p-2 min-w-250" >
         <Card >
-          <h3 slot="title" class="m-2" >Total Employees</h3>
+          <h3 slot="title" class="m-2" >Today's Present</h3>
           <div slot="content">
-            <h1 class="text-3xl mt-2 font-bold ml-4" >789</h1>
-            <p slot="text" class="text-gray-300 ml-2">230 males/ 209 females</p>
+            <h1 class="text-3xl mt-2 font-bold ml-4" >{{nowPresent}}
+              <span class="text-gray-150">/10</span>
+            </h1>
+            <p slot="text" class="text-gray-300 ml-2">{{currentTime()}}</p>
           </div>
         </Card>
       </div>
@@ -101,6 +103,8 @@ export default {
   },
   data(){
     return{
+      nowPresent:0,
+      nowDate:'',
       date:[],
       filterDays:''
     }
@@ -108,14 +112,38 @@ export default {
   computed:{
     ...mapGetters({
       applies: 'applicants/applies',
-      days: 'holidays/days'
+      days: 'holidays/days',
+      persons : 'employees/persons',
+      attends:'attendance/attends',
     })
   },
   methods:{
+    currentTime(){
+      let date = new Date().toLocaleString('id').substr(0,10).split("/").join("-")
+      let [day,month,year] = date.split('-')
+      const p = require('human-date')
+      this.nowDate = (year.split(" ").join("")+'-'+month.padStart(2, '0')+'-'+day.padStart(2, '0'));
+      return p.prettyPrint(new Date(month+'-'+day+'-'+year))
+    },
     dateDiff(date){
       const diff = require('human-date');
       return diff.relativeTime(date)
-
+      
+    },
+    todayPresent(){
+      let res=0;
+        this.persons.forEach((emp,i) => {
+            this.attends.forEach(at=>{
+              console.log(this.nowDate)
+              if(at.date === this.nowDate){
+                console.log(at.date)
+                if(at.emp_id === emp.id){
+                  res++
+                }
+              }
+            })
+        });
+        this.nowPresent=this.nowPresent+res;
     },
     formatDate(date){
       const p = require('human-date')
@@ -132,7 +160,7 @@ export default {
       const [year, month, day] = now.split('-')
       // console.log(year, month, day);
       const formattedNow = year+month+day;
-      console.log('now='+formattedNow)
+      
       let res = [];
       let days = this.days[0];
       for (const key in days) {
@@ -149,7 +177,6 @@ export default {
         }
         
       }
-      console.log(res)
       this.filterDays = res;
     }
   },
@@ -158,6 +185,11 @@ export default {
     this.$store.dispatch('holidays/fetch')
     .then(()=>{
       this.filterHolidays();
+    })
+    this.$store.dispatch('employees/fetch').then(()=>{
+      this.$store.dispatch('attendance/fetch').then(()=>{
+        this.todayPresent();
+      })
     })
   }
 }

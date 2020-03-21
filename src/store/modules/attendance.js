@@ -30,7 +30,7 @@ const actions = {
     clockIn({dispatch,state},payload){
         console.log(payload)        
         dispatch('fetch').then(()=>{
-            // console.log(state.attends)
+            console.log(state.attends.length)
             return axios.post('http://localhost:3000/todaypresent',
             {
                 id:String(state.attends.length+1 ),

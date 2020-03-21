@@ -678,6 +678,24 @@
           "phone": ""
         }
       ]
+    },
+    {
+      "id": 15,
+      "name": "Jack Dawson update",
+      "email": "jackdawsonupdate@email.com",
+      "phone": "08123678243",
+      "position": "Software Engineer",
+      "division": "Engineering",
+      "photo": "",
+      "status": "Finish",
+      "gender": "Male",
+      "address": "Jalan Kanankiri no 12",
+      "emergency_contact": [
+        {
+          "name": "Jack Dawson",
+          "phone": "08123678243"
+        }
+      ]
     }
   ],
   "outtoday": [
@@ -1381,24 +1399,6 @@
       "photo": "",
       "status": "Scheduled to Interview",
       "gender": "Male"
-    },
-    {
-      "id": 5,
-      "name": "Jack Dawson update",
-      "email": "jackdawson@email.com",
-      "phone": "08123678243",
-      "position": "Software Engineer",
-      "division": "Engineering",
-      "photo": "",
-      "status": "Scheduled to Psycho Test",
-      "gender": "Male",
-      "address": "Jalan Kanankiri no 12",
-      "emergency_contact": [
-        {
-          "name": "Jack Dawson",
-          "phone": "08123678243"
-        }
-      ]
     }
   ],
   "user": [

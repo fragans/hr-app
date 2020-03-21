@@ -114,7 +114,9 @@ import axios from 'axios'
                 day:'dayoff/day',
                 // employee: 'employees/person'
                 // applicant: 'applicants/apply'
-                employee: 'applicants/apply'
+                employee: 'applicants/apply',
+
+                dataEmployee: 'employees/persons'
             }),
 
             computedProp()
@@ -184,7 +186,8 @@ import axios from 'axios'
                         name: this.employee.emergency_contact[0].name,
                         phone: this.employee.emergency_contact[0].phone
                         }
-                    ]
+                    ],
+                    id_employee: this.dataEmployee.length
                 })
             }
         },

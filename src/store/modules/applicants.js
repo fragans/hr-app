@@ -3,6 +3,7 @@ import router from '../../router'
 const state = {
     apply:{},
     applies:[],
+    loading: true
 }
 
 const getters = {
@@ -11,6 +12,10 @@ const getters = {
     },
     apply(state){
         return state.apply
+    },
+    loading(state)
+    {
+        return state.loading
     }
 }
 const actions = {
@@ -33,7 +38,9 @@ const actions = {
                 phone: payload.phone,
                 position: payload.position,
                 division: payload.division,
-                photo: "",
+                birth_date: payload.birth_date,
+                birth_place: payload.birth_place,
+                photo: payload.photo,
                 status: "Unprocessed",
                 gender: payload.gender,
                 address: payload.address,
@@ -148,6 +155,7 @@ const actions = {
         return axios.get(`http://localhost:3000/newApplicants/${payload}`)
         .then(({ data })=>{
             commit('setApply',data)
+            commit('setLoading')
 
         })
     },
@@ -167,7 +175,10 @@ const mutations = {
     setApply(state, payload){
         state.apply = payload
     },
-
+    setLoading(state)
+    {
+        state.loading = false
+    }
 }
 
 export default {

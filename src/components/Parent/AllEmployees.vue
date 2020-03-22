@@ -1,7 +1,7 @@
 <template>
     
     <v-container v-if="persons.length > 0">
-        <FilterList :search="search" :headers="headers" :items="copy" rowClick="Edit Employee"> 
+        <FilterList :headers="headers" :items="copy" rowClick="Edit Employee"> 
           <h1 slot="title">Employee</h1>
 
           <v-tabs slot="filter" show-arrows>
@@ -31,7 +31,6 @@ import {mapGetters} from 'vuex'
       },
     data () {
       return {
-        search: '',
         headers: [
           { text: 'ID', value: 'id' },
           {

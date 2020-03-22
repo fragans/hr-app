@@ -58,13 +58,14 @@
 <script>
     import downloadCsv from 'vue-json-csv'
     export default {
-        props:["headers" , "items", "search","rowClick"],
+        props:["headers" , "items","rowClick"],
         components:{
             downloadCsv
         },
         
         data(){
             return{
+                search:'',
                 loading:true,
                 current_route: '',
             }

@@ -83,8 +83,9 @@ import { mapGetters } from 'vuex';
             line[ad]="A"
             this.attends.forEach(at=>{
               if(at.date === ad){
-                if(at.emp_id === emp.id)
+                if(at.emp_id === emp.id){
                 line[ad]= "P"
+                }
               }
             })
           });

@@ -4,22 +4,30 @@
         <v-col col="6" class="flex justify-center items-center uppercase">
             <v-icon left>mdi-card-bulleted</v-icon>
             <h1>
-                {{$route.name}} Employee
-                <!-- {{ $route.params.id }} -->
+                {{$route.name}} 
             </h1>
             
         </v-col>
-        <v-spacer></v-spacer>
         <v-col col="3">
-            <v-btn class="mr-4" color="success" @click="insert">
-                <v-icon left>mdi-email-outline</v-icon>    
-                submit
-            </v-btn>
-            <v-btn color="primary">
-                <v-icon left>mdi-file-upload-outline</v-icon>    
-                upload CV
-            </v-btn>
+            <v-file-input 
+            v-model="files" 
+            dense
+            label="Upload CV"
+            @change="onSelect" 
+            accept="application/pdf" 
+            show-size
+            >
+            </v-file-input>   
         </v-col>
+        <v-col col="3">
+            <v-btn class="mr-4" color="success" @click="insert" block>
+                <v-icon left>mdi-email-outline</v-icon>    
+                submit data
+            </v-btn>
+            
+            
+        </v-col>
+        
     </v-row>
     <v-divider/>
     <v-card>
@@ -52,7 +60,6 @@
 import Profile from '@/components/Edit/Profile'
 import Occupation from '@/components/Edit/Occupation'
 import Address from '@/components/Edit/Address'
-import Occupation from '@/components/Edit/Occupation'
 import Emergency from '@/components/Edit/EmergencyContact'
 import axios from 'axios'
 import {mapGetters} from 'vuex'
@@ -73,6 +80,11 @@ import {mapGetters} from 'vuex'
                     {name:'Emergency',icon:'alert-box-outline'},
                 ],
                 data:'',
+                files:[],
+                 rules: [
+                    value => !value || value.size < 2000000 || 'Avatar size should be less than 2 MB!',
+                ],
+                convertedPDF:'',
                 employee:
                         {
                             address:'',
@@ -88,7 +100,9 @@ import {mapGetters} from 'vuex'
                             name:'',
                             photo:'',
                             position:'',
-                            status:''
+                            status:'',
+                            cv:'',
+                            date:''
                         }
             }
         },
@@ -122,8 +136,47 @@ import {mapGetters} from 'vuex'
             insert()
             {
                 this.$store.dispatch('applicants/insert',this.employee)
-            }
+            },
+            onSelect(e){
+
+                var f = this.files; // FileList object
+                if(this.files.length === 0 ) return
+                console.log('file_size='+this.files.size)
+                if(this.files.size < 2000000){
+                    var reader = new FileReader();
+
+                    reader.onload = (()=> {
+                        return (e)=> {
+                            var binaryData = e.target.result;
+                            //Converting Binary Data to base 64
+                            var base64String = window.btoa(binaryData)
+                            //showing file converted to base64
+                            this.convertedPDF = base64String
+                            // this.image = base64String
+                            this.employee.cv=this.convertedPDF
+                            console.log('decoded_size='+base64String.length)
+                        };
+                    })(f);
+                    // Read in the image file as a data URL.
+                    console.log('convert to 64 success!')
+                    reader.readAsBinaryString(f);
+                }else{
+                    this.dialog = true
+                    this.files=[]
+                }
+                    
+
+                
+            },
         },
+        created(){
+            let now = new Date().toISOString().substr(0, 10)
+            // console.log('now='+now);
+            const [year, month, day] = now.split('-')
+
+            
+            this.employee.date = (year+'-'+month+'-'+day)
+        }
     }
 </script>
 

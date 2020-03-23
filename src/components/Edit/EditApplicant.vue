@@ -5,11 +5,9 @@
             <v-icon left>mdi-card-bulleted</v-icon>
             <h1>
                 {{$route.name}}
-                <!-- {{ $route.params.id }} -->
             </h1>
             
         </v-col>
-        <v-spacer></v-spacer>
         <v-col col="3">
             <v-btn class="mr-4" color="success" @click="updateApplicant">
                 <v-icon left>mdi-content-save</v-icon>    
@@ -19,19 +17,19 @@
             <v-menu>
                 <template v-slot:activator="{ on}">
                     <v-btn color="primary" dark v-on="on">
-                        Update Status
+                        <v-icon left>mdi-update</v-icon> Status
                     </v-btn>
                 </template>
                 <v-list>
                     <v-list-item v-for="(item, index) in status" :key="index" @click="updateStatus(index)">
-                      <v-list-item-title>{{ item.title }}</v-list-item-title>
+                        <v-list-item-title>{{ item.title }}</v-list-item-title>
                     </v-list-item>
                 </v-list>
             </v-menu>
 
-            <v-btn color="error" @click="dialog = true">
-                <v-icon left>mdi-cancel</v-icon>    
-                remove</v-btn>
+            <v-btn color="error" @click="dialog = true" class="ml-4">
+                <v-icon>mdi-trash-can-outline</v-icon>
+            </v-btn>
         </v-col>
         </v-row>
         <v-divider/>
@@ -40,7 +38,7 @@
             <v-col col="12">
                 <v-tabs v-model="tab" background-color="transparent" grow >
 
-                    <v-tab v-for="item in items" :key="item.name" color="success">
+                    <v-tab v-for="item in items" :key="item.name" color="success" >
                         <v-icon left> mdi-{{item.icon}}</v-icon>
                         {{item.name}}
                     </v-tab>
@@ -77,10 +75,11 @@ import Profile from '@/components/Edit/Profile'
 import Occupation from '@/components/Edit/Occupation'
 import Address from '@/components/Edit/Address'
 import Emergency from '@/components/Edit/EmergencyContact'
+import CV from '@/components/Edit/CV'
 import axios from 'axios'
     export default {
         components:{
-            Profile,Occupation,Address,Emergency
+            Profile,Occupation,Address,Emergency,CV
         },
         data(){
             return{
@@ -93,6 +92,7 @@ import axios from 'axios'
                     {name:'Occupation',icon:'briefcase'},
                     {name:'Address',icon:'mailbox-open-outline'},
                     {name:'Emergency',icon:'alert-box-outline'},
+                    {name:'CV',icon:'clipboard-text-outline'},
                 ],
                 status: [
                     { title: 'Unprocessed', id:1 },
@@ -121,20 +121,16 @@ import axios from 'axios'
 
             computedProp()
             {
-                console.log('editapplicant')
                 if(this.$route.name === 'Apply Job')
                 {
-                    console.log('apply ui')
                     return { data : this.employee }
                 }
                 else if(this.$route.name === 'New Applicant')
                 {
-                    console.log('new appl')
                     return { data : this.employee }
                 }
                 else if(this.$route.name === 'Edit Applicant Status')
                 {
-                    console.log('edit appl')
                     return { data : this.employee }
                 }
             }
@@ -166,9 +162,7 @@ import axios from 'axios'
             },
             updateStatus(index)
             {
-                console.log(this.status[index].title)
-
-                this.$store.dispatch('applicants/updateStatusApplicant', {
+                let payload= {
                     id: this.$route.params.id,
                     name: this.employee.name,
                     email: this.employee.email,
@@ -188,19 +182,25 @@ import axios from 'axios'
                         }
                     ],
                     id_employee: this.dataEmployee.length
+                }
+                // console.log(this.status[index].title)
+                if(index == 3){
+                    this.makeEmployee(payload);
+                    return
+                }
+                this.$store.dispatch('applicants/updateStatusApplicant', payload)
+            },
+            makeEmployee(payload){
+                payload.status = 'Probation';
+                console.log(payload)
+                this.$store.dispatch('employees/insert',payload).then(()=>{
+                    this.$store.dispatch('applicants/remove',this.$route.params.id)
                 })
             }
         },
         created(){
-            // this.$store.dispatch('dayoff/fetchById',this.$route.params.id)
-            // .then(()=>{
-            //     this.$store.dispatch('applicants/fetchById',this.$route.params.id)
-            //     this.data = this.employee
-            // })
-
             this.$store.dispatch('applicants/fetchById', this.$route.params.id)
               .then(()=>{
-                  // console.log('emp/fetchById')
                 this.data = this.employee
                 this.loading = false
             })

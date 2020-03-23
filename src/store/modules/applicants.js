@@ -29,10 +29,15 @@ const actions = {
     insert({commit,dispatch},payload){
         console.log(payload)
         dispatch('fetch').then(()=>{
-            // console.log(state.applies)
+            let ids=[];
+            state.applies.forEach(a => {
+                ids.push(parseInt(a.id))
+            });
+            console.log(ids)
+            console.log(Math.max(...ids))
             return axios.post('http://localhost:3000/newApplicants',
             {
-                id:(state.applies.length+1),
+                id:String(Math.max(...ids)+1),
                 name: payload.name,
                 email: payload.email,
                 phone: payload.phone,
@@ -50,7 +55,8 @@ const actions = {
                         phone: payload.phone
                     }
                 ],
-                date: payload.date    
+                date: payload.date ,   
+                cv:payload.cv
             }
             )
             .then(response=>{
@@ -62,6 +68,7 @@ const actions = {
 
     updateStatusApplicant({commit}, payload)
     {
+
         // console.log("di applicant.js : "+payload.status)
         // console.log("id employee : "+payload.id_employee)
 
@@ -119,6 +126,7 @@ const actions = {
                 ]
             }).then(response=>{console.log(response)})
         }
+
     },
 
     update(state,payload)
@@ -162,7 +170,7 @@ const actions = {
     remove({commit},payload){
         return axios.delete(`http://localhost:3000/newApplicants/${payload}`)
         .then(response=>{
-            
+            console.log(response)
         })
         
     }

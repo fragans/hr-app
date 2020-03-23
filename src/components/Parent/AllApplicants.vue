@@ -4,10 +4,10 @@
             <h1 slot="title">Employee</h1>
 
             <v-tabs slot="filter" show-arrows>
-            <v-tab @click="reset">All</v-tab>
-            <v-tab @click="filter('Unprocessed')">Unprocessed</v-tab>
-            <v-tab @click="filter('Scheduled to Psycho Test')"> Psycho Test</v-tab>
-            <v-tab @click="filter('Scheduled to Interview')"> Interview</v-tab>
+              <v-tab @click="reset">All</v-tab>
+              <v-tab @click="filter('Unprocessed')">Unprocessed</v-tab>
+              <v-tab @click="filter('Scheduled to Psycho Test')"> Psycho Test</v-tab>
+              <v-tab @click="filter('Scheduled to Interview')"> Interview</v-tab>
             </v-tabs>
 
             <template slot="action">
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-   import FilterList from '@/components/FilterList'
+import FilterList from '@/components/FilterList'
 import axios from 'axios'
 import { mapGetters } from 'vuex'
     export default {

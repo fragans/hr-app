@@ -702,6 +702,24 @@
           "phone": ""
         }
       ]
+    },
+    {
+      "name": "Jason Mendoza",
+      "email": "jasonmendoza@email.com",
+      "phone": "08124678235",
+      "position": "",
+      "division": "",
+      "photo": "",
+      "status": "Unprocessed",
+      "gender": "Male",
+      "address": "Jalan Lurus test update no 18",
+      "emergency_contact": [
+        {
+          "name": "Jason Mendoza",
+          "phone": "08124678235"
+        }
+      ],
+      "id": 15
     }
   ],
   "outtoday": [
@@ -1422,26 +1440,6 @@
         }
       ],
       "date": "2020-03-21"
-    },
-    {
-      "id": 7,
-      "name": "Jason Mendoza",
-      "email": "jasonmendoza@email.com",
-      "phone": "08124678235",
-      "position": "Software Engineer",
-      "division": "Engineer",
-      "birth_date": "1991-08-07",
-      "birth_place": "Jakarta",
-      "photo": "",
-      "status": "Scheduled to Psycho Test",
-      "gender": "Male",
-      "address": "Jalan Lurus test update no 18",
-      "emergency_contact": [
-        {
-          "name": "Jason Mendoza",
-          "phone": "08124678235"
-        }
-      ]
     }
   ],
   "user": [

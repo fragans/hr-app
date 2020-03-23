@@ -5,6 +5,8 @@ const state = {
 
     persons: [],
     person: {},
+    male: [],
+    female: [],
     loading: true
 
 }
@@ -24,6 +26,16 @@ const getters = {
     loading(state)
     {
         return state.loading
+    },
+
+    male(state)
+    {
+        return state.male
+    },
+
+    female(state)
+    {
+        return state.female
     }
 }
 
@@ -43,6 +55,32 @@ const actions = {
             commit('setLoading')
         })
     },
+    fetchMale({commit}, state)
+    {
+        return axios.get('http://localhost:3000/employees?gender=Male').
+        then(({ data })=>{
+            // console.log(data)
+            this.desserts = data
+            this.copy = this.desserts
+            // state.loading = false
+            // console.log(data)
+            commit('setMale', data)
+            commit('setLoading')
+        })
+    },
+    fetchFemale({commit}, state)
+    {
+        return axios.get('http://localhost:3000/employees?gender=Female').
+        then(({ data })=>{
+            // console.log(data)
+            this.desserts = data
+            this.copy = this.desserts
+            // state.loading = false
+            // console.log(data)
+            commit('setFemale', data)
+            commit('setLoading')
+        })
+    },
     insert({commit,dispatch},payload){
         console.log(payload)
         dispatch('fetch').then(()=>{
@@ -52,10 +90,10 @@ const actions = {
                 name: payload.name,
                 email: payload.email,
                 phone: payload.phone,
-                position: "",
-                division: "",
+                position: payload.position,
+                division: payload.division,
                 photo: payload.photo,
-                status: "Unprocessed",
+                status: "Probation",
                 gender: payload.gender,
                 address: payload.address,
                 date: payload.date,
@@ -144,6 +182,15 @@ const mutations = {
     setLoading(state)
     {
         state.loading = false
+    },
+
+    setMale(state, payload)
+    {
+        state.male = payload
+    },
+    setFemale(state, payload)
+    {
+        state.female = payload
     }
 }
 

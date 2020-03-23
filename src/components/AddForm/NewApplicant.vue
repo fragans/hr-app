@@ -35,7 +35,7 @@
         <v-col col="12">
             <v-tabs v-model="tab" background-color="transparent" grow >
 
-                <v-tab v-for="item in items" :key="item.name" color="success">
+                <v-tab v-for="item in items" :key="item.name" color="success" show-arrows>
                     <v-icon left> mdi-{{item.icon}}</v-icon>
                     {{item.name}}
                 </v-tab>
@@ -58,16 +58,16 @@
 
 <script>
 import Profile from '@/components/Edit/Profile'
-import Occupation from '@/components/Edit/Occupation'
 import Address from '@/components/Edit/Address'
 import Emergency from '@/components/Edit/EmergencyContact'
+import CV from '@/components/Edit/CV'
 import axios from 'axios'
 import {mapGetters} from 'vuex'
 
     export default
     {
         components:{
-            Profile,Address,Emergency,Occupation
+            Profile,Address,Emergency,Occupation,CV
         },
         data(){
             return {
@@ -78,6 +78,7 @@ import {mapGetters} from 'vuex'
                     {name:'Occupation',icon:'briefcase'},
                     {name:'Address',icon:'mailbox-open-outline'},
                     {name:'Emergency',icon:'alert-box-outline'},
+                    // {name:'CV',icon:'book-account'},
                 ],
                 data:'',
                 files:[],
@@ -135,6 +136,7 @@ import {mapGetters} from 'vuex'
         methods:{
             insert()
             {
+                console.log(this.employee)
                 this.$store.dispatch('applicants/insert',this.employee)
             },
             onSelect(e){

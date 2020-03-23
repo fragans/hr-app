@@ -6,8 +6,8 @@
         <Card >
           <h3 slot="title" class="m-2" >Total Employees</h3>
           <div slot="content">
-            <h1 class="text-3xl mt-2 font-bold ml-4" >789</h1>
-            <p slot="text" class="text-gray-300 ml-2">230 males/ 209 females</p>
+            <h1 class="text-3xl mt-2 font-bold ml-4" >{{totalEmployee}}</h1>
+            <p slot="text" class="text-gray-300 ml-2">{{totalMale}} males/ {{totalFemale}} females</p>
           </div>
         </Card>
       </div>
@@ -27,7 +27,7 @@
           <h3 slot="title" class="m-2" >Today's Present</h3>
           <div slot="content">
             <h1 class="text-3xl mt-2 font-bold ml-4" >{{nowPresent}}
-              <span class="text-gray-150">/10</span>
+              <span class="text-gray-150">/{{totalEmployee}}</span>
             </h1>
             <p slot="text" class="text-gray-300 ml-2">{{currentTime()}}</p>
           </div>
@@ -106,7 +106,10 @@ export default {
       nowPresent:0,
       nowDate:'',
       date:[],
-      filterDays:''
+      filterDays:'',
+      totalEmployee:0,
+      totalMale:0,
+      totalFemale:0
     }
   },
   computed:{
@@ -115,6 +118,8 @@ export default {
       days: 'holidays/days',
       persons : 'employees/persons',
       attends:'attendance/attends',
+      male:'employees/male',
+      female:'employees/female'
     })
   },
   methods:{
@@ -178,6 +183,19 @@ export default {
         
       }
       this.filterDays = res;
+    },
+
+    totalEmp()
+    {
+      this.totalEmployee = Object.keys(this.persons).length;
+    },
+    totalMales()
+    {
+      this.totalMale = Object.keys(this.male).length;
+    },
+    totalFemales()
+    {
+      this.totalFemale = Object.keys(this.female).length;
     }
   },
   mounted(){
@@ -191,6 +209,9 @@ export default {
         this.todayPresent();
       })
     })
+    this.$store.dispatch('employees/fetch').then(()=>{this.totalEmp();})
+    this.$store.dispatch('employees/fetchMale').then(()=>{this.totalMales();})
+    this.$store.dispatch('employees/fetchFemale').then(()=>{this.totalFemales();})
   }
 }
 </script>

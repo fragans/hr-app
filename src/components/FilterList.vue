@@ -2,18 +2,14 @@
     <v-row >
             <v-col class="w-full">
                 <v-row>
-                    <v-col>
-                          
-                    </v-col>
-                    <v-spacer></v-spacer>
-                    <v-col class="flex justify-around items-center">
+                    <v-col class="flex justify-end items-center">
                         
-                            <v-btn color="purple" class="text-white">
-                            
+                        <v-btn color="purple" class="text-white mr-4">
                             <download-csv class="text-white" :data="items" :name="'Export '+new Date()">
                                 export
                             </download-csv>
-                            </v-btn>
+                        </v-btn>
+
                         <slot name="action">
 
                         </slot>

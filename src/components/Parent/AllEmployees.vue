@@ -12,7 +12,10 @@
           </v-tabs>
 
           <template slot="action">
-            <v-btn to='employees/add'>Add Employee</v-btn>
+            <v-btn to='employees/add'>
+            <v-icon left>mdi-account-plus-outline</v-icon>
+            Add Employee
+            </v-btn>
           </template>
         </FilterList>
         

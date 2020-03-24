@@ -11,7 +11,10 @@
             </v-tabs>
 
             <template slot="action">
-            <v-btn to="applicants/add/">Add Applicant</v-btn>
+              <v-btn to="applicants/add/">
+                <v-icon left>mdi-account-plus-outline</v-icon>
+                Add Applicant
+              </v-btn>
             </template>
         </FilterList>
     </v-container>

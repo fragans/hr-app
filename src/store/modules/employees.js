@@ -17,7 +17,6 @@ const getters = {
         return state.persons
     },
 
-
     person(state)
     {
         return state.person
@@ -91,6 +90,7 @@ const actions = {
             });
             return axios.post('http://localhost:3000/employees',
             {
+                id:String(Math.max(...ids)+1),
                 name: payload.name,
                 email: payload.email,
                 phone: payload.phone,
@@ -108,7 +108,7 @@ const actions = {
                     }
                 ],
                 // id:(state.persons.length+1 )
-                id:String(Math.max(...ids)+1)               
+                            
             }
             )
             .then(response=>{

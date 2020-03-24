@@ -1,7 +1,7 @@
 <template>
     <v-content class="flex justify-center items-center">
         <v-row>
-            <v-card class="mx-auto p-4 w-full">
+            <v-card class="mx-auto p-4 w-full max-w-md">
 
             
                 <v-col col="6">

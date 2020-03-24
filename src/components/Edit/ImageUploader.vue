@@ -1,5 +1,5 @@
 <template>
-<v-content class="">
+<v-col class="">
     
         <v-row class="border border-gray-100">
             <v-img :src="showImg" aspect-ratio="1" ref="img" />
@@ -12,7 +12,7 @@
                 filled 
                 prepend-icon="mdi-account-box-outline" 
                 @change="onSelect" 
-                accept="image/png, image/jpeg, image/bmp" 
+                accept="application/pdf" 
                 show-size
                 >
             </v-file-input>   
@@ -33,7 +33,7 @@
     </v-dialog>
 
 
-</v-content>
+</v-col>
     
     
 </template>

@@ -1,16 +1,8 @@
 <template>
 <v-container>
     <v-row class="title">
-        <v-col col="6" class="flex justify-center items-center uppercase">
-            <v-icon left>mdi-card-bulleted</v-icon>
-            <h1>
-                {{$route.name}}
-                <!-- {{ $route.params.id }} -->
-            </h1>
-            
-        </v-col>
-        <v-spacer></v-spacer>
-        <v-col col="3">
+        
+        <v-col col="3" class="justify-end flex">
             <v-btn class="mr-4" color="success" @click="update">
                 <v-icon left>mdi-content-save</v-icon>    
                 save
@@ -19,6 +11,7 @@
                 <v-icon left>mdi-cancel</v-icon>    
                 remove</v-btn>
         </v-col>
+        
     </v-row>
     <v-divider/>
     <v-card>

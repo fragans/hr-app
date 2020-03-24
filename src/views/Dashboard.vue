@@ -16,8 +16,8 @@
         <Card >
           <h3 slot="title" class="m-2" >Out Today</h3>
           <div slot="content">
-            <h1 class="text-3xl mt-2 font-bold ml-4" >789</h1>
-            <p slot="text" class="text-gray-300 ml-2">230 males/ 209 females</p>
+            <h1 class="text-3xl mt-2 font-bold ml-4" >{{todayoff.length}}</h1>
+            <p slot="text" class="text-gray-300 ml-2">{{currentTime()}}</p>
           </div>
         </Card>
       </div>
@@ -109,7 +109,8 @@ export default {
       filterDays:'',
       totalEmployee:0,
       totalMale:0,
-      totalFemale:0
+      totalFemale:0,
+      totalOut:0
     }
   },
   computed:{
@@ -119,15 +120,18 @@ export default {
       persons : 'employees/persons',
       attends:'attendance/attends',
       male:'employees/male',
-      female:'employees/female'
+      female:'employees/female',
+      todayoff:'dayoff/todayoff'
     })
   },
   methods:{
     currentTime(){
       let date = new Date().toLocaleString('id').substr(0,10).split("/").join("-")
+
       let [day,month,year] = date.split('-')
       const p = require('human-date')
       this.nowDate = (year.split(" ").join("")+'-'+month.padStart(2, '0')+'-'+day.padStart(2, '0'));
+
       return p.prettyPrint(new Date(month+'-'+day+'-'+year))
     },
     dateDiff(date){
@@ -139,9 +143,9 @@ export default {
       let res=0;
         this.persons.forEach((emp,i) => {
             this.attends.forEach(at=>{
-              console.log(this.nowDate)
+              // console.log(this.nowDate)
               if(at.date === this.nowDate){
-                console.log(at.date)
+                // console.log(at.date)
                 if(at.emp_id === emp.id){
                   res++
                 }
@@ -212,6 +216,7 @@ export default {
     this.$store.dispatch('employees/fetch').then(()=>{this.totalEmp();})
     this.$store.dispatch('employees/fetchMale').then(()=>{this.totalMales();})
     this.$store.dispatch('employees/fetchFemale').then(()=>{this.totalFemales();})
+    this.$store.dispatch('dayoff/fetchTodayOff',this.nowDate).then(()=>{console.log(this.todayoff)})
   }
 }
 </script>

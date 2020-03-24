@@ -2,7 +2,7 @@
 
     <v-container >
         <FilterList :search="search" :headers="headers" :items="copy" rowClick="Edit Leave Status"> 
-          <h1 slot="title">Employee</h1>
+        <h1 slot="title">Employee</h1>
 
           <v-tabs slot="filter" show-arrows>
             <v-tab @click="reset">All</v-tab>
@@ -12,7 +12,10 @@
           </v-tabs>
 
           <template slot="action">
-            <v-btn to="/offwork/add">New Request</v-btn>
+            <v-btn to="/offwork/add">
+              <v-icon left>mdi-bell-plus</v-icon>
+              New Request
+            </v-btn>
           </template>
         </FilterList>
     </v-container>

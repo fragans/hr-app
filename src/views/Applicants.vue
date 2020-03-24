@@ -1,13 +1,14 @@
 <template>
     
     <v-container>
-       <!-- <v-row class="title py-4">
+        <v-row>
           <v-skeleton-loader :loading="loading" height="50" width="250" max-width="300" type="list-item-avatar" >
-              <v-card-title>
-                {{$route.name}}
-              </v-card-title>
-          </v-skeleton-loader>  
-      </v-row> -->
+            <v-card-title>
+            <!-- <v-icon left>mdi-{{current_route.icon}}</v-icon> -->
+            <h1>{{$route.name}}</h1>
+            </v-card-title>
+          </v-skeleton-loader>
+        </v-row>
       <router-view>
 
       </router-view>

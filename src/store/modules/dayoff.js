@@ -3,7 +3,8 @@ import axios from 'axios';
 const state = {
     day:{},
     days:[],
-    loading:true
+    loading:true,
+    todayoff:[]
 }
 
 const getters = {
@@ -15,6 +16,9 @@ const getters = {
     },
     loading(state){
         return state.loading
+    },
+    todayoff(state){
+        return state.todayoff
     }
 }
 const actions = {
@@ -47,9 +51,12 @@ const actions = {
                 console.log(response)
             })
         })
-        
-        
-
+    },
+    fetchTodayOff({commit},payload){
+        return axios.get(`http://localhost:3000/outtoday?date_start=${payload}`)
+        .then(({data})=>{
+            commit('setTodayOff',data)
+        })
     },
     fetchById({commit},payload){
         return axios.get(`http://localhost:3000/outtoday/${payload}`)
@@ -83,6 +90,9 @@ const mutations = {
     setLoading(state, payload){
         state.loading = payload
     },
+    setTodayOff(state,payload){
+        state.todayoff = payload
+    }
 }
 
 export default {

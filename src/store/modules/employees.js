@@ -85,6 +85,10 @@ const actions = {
         console.log(payload)
         dispatch('fetch').then(()=>{
             // console.log(state.applies)
+            let ids=[];
+            state.persons.forEach(a => {
+                ids.push(parseInt(a.id))
+            });
             return axios.post('http://localhost:3000/employees',
             {
                 name: payload.name,
@@ -103,7 +107,8 @@ const actions = {
                     phone: payload.emergency_contact[0].phone
                     }
                 ],
-                id:(state.persons.length+1 )                
+                // id:(state.persons.length+1 )
+                id:String(Math.max(...ids)+1)               
             }
             )
             .then(response=>{

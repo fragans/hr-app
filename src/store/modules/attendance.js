@@ -31,9 +31,14 @@ const actions = {
         console.log(payload)        
         dispatch('fetch').then(()=>{
             console.log(state.attends.length)
+            let ids=[];
+            state.attends.forEach(a => {
+                ids.push(parseInt(a.id))
+            });
             return axios.post('http://localhost:3000/todaypresent',
             {
-                id:String(state.attends.length+1 ),
+                // id:String(state.attends.length+1 ),
+                id: String(Math.max(...ids)+1),
                 emp_id: String(payload.id),
                 date: payload.date,
                 in: payload.time,

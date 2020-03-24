@@ -29,13 +29,18 @@ const actions = {
         // console.log(payload)
         dispatch('fetch').then(()=>{
             console.log(state.day)
+            let ids=[];
+            state.days.forEach(a => {
+                ids.push(parseInt(a.id))
+            });
             return axios.post('http://localhost:3000/outtoday',
             {
                 emp_id: payload.emp_id,
                 status: payload.status,
                 date_start: payload.date_start,
                 date_end: payload.date_end,
-                id:String(state.days.length+1 ),
+                // id:String(state.days.length+1 ),
+                id:String(Math.max(...ids)+1)
                 
             })
             .then(response=>{

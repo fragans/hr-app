@@ -59,6 +59,7 @@
 <script>
 import Profile from '@/components/Edit/Profile'
 import Address from '@/components/Edit/Address'
+import Occupation from '@/components/Edit/Occupation'
 import Emergency from '@/components/Edit/EmergencyContact'
 import CV from '@/components/Edit/CV'
 import axios from 'axios'

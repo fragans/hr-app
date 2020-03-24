@@ -1,22 +1,449 @@
 {
+  "holidays": [
+    {
+      "20190101": {
+        "deskripsi": "Hari Tahun Baru",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190205": {
+        "deskripsi": "Tahun Baru Imlek",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190307": {
+        "deskripsi": "Hari Raya Nyepi (Tahun Baru Saka)",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190403": {
+        "deskripsi": "Isra Mi'raj Nabi Muhammad",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190417": {
+        "deskripsi": "Election Day",
+        "dibuat": "20190415T232630Z",
+        "dimodifikasi": "20190415T232630Z",
+        "status": "CONFIRMED"
+      },
+      "20190419": {
+        "deskripsi": "Wafat Isa Almasih",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190421": {
+        "deskripsi": "Hari Paskah",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190501": {
+        "deskripsi": "Hari Buruh Internasional/Pekerja",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190519": {
+        "deskripsi": "Hari Raya Waisak",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190530": {
+        "deskripsi": "Kenaikan Yesus Kristus",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190601": {
+        "deskripsi": "Hari Lahir Pancasila",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190603": {
+        "deskripsi": "Cuti Bersama",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190604": {
+        "deskripsi": "Cuti Bersama",
+        "dibuat": "20200317T002609Z",
+        "dimodifikasi": "20200317T002609Z",
+        "status": "CONFIRMED"
+      },
+      "20190605": {
+        "deskripsi": "Idul Fitri (Lebaran Mudik)",
+        "dibuat": "20200317T002609Z",
+        "dimodifikasi": "20200317T002609Z",
+        "status": "CONFIRMED"
+      },
+      "20190606": {
+        "deskripsi": "Idul Fitri (Lebaran Mudik)",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190607": {
+        "deskripsi": "Cuti Bersama",
+        "dibuat": "20200317T002609Z",
+        "dimodifikasi": "20200317T002609Z",
+        "status": "CONFIRMED"
+      },
+      "20190811": {
+        "deskripsi": "Idul Adha (Lebaran Haji)",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190817": {
+        "deskripsi": "Hari Proklamasi Kemerdekaan R.I.",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20190901": {
+        "deskripsi": "Satu Muharam/Tahun Baru Hijriyah",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20191027": {
+        "deskripsi": "Diwali/Deepavali",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20191109": {
+        "deskripsi": "Maulid Nabi Muhammad",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20191224": {
+        "deskripsi": "Cuti Bersama (Malam Natal)",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20191225": {
+        "deskripsi": "Hari Natal",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20191231": {
+        "deskripsi": "Malam Tahun Baru",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200101": {
+        "deskripsi": "Hari Tahun Baru",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200125": {
+        "deskripsi": "Tahun Baru Imlek",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200322": {
+        "deskripsi": "Isra Mi'raj Nabi Muhammad",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200325": {
+        "deskripsi": "Hari Raya Nyepi (Tahun Baru Saka)",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200410": {
+        "deskripsi": "Wafat Isa Almasih",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200412": {
+        "deskripsi": "Hari Paskah",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200501": {
+        "deskripsi": "Hari Buruh Internasional/Pekerja",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200507": {
+        "deskripsi": "Hari Raya Waisak",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200521": {
+        "deskripsi": "Kenaikan Yesus Kristus",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200522": {
+        "deskripsi": "Cuti Bersama",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20200524": {
+        "deskripsi": "Idul Fitri (Lebaran Mudik)",
+        "dibuat": "20200317T002609Z",
+        "dimodifikasi": "20200317T002609Z",
+        "status": "CONFIRMED"
+      },
+      "20200525": {
+        "deskripsi": "Idul Fitri (Lebaran Mudik)",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200526": {
+        "deskripsi": "Cuti Bersama",
+        "dibuat": "20200317T002609Z",
+        "dimodifikasi": "20200317T002609Z",
+        "status": "CONFIRMED"
+      },
+      "20200527": {
+        "deskripsi": "Cuti Bersama",
+        "dibuat": "20200317T002609Z",
+        "dimodifikasi": "20200317T002609Z",
+        "status": "CONFIRMED"
+      },
+      "20200528": {
+        "deskripsi": "Cuti Bersama",
+        "dibuat": "20200317T002609Z",
+        "dimodifikasi": "20200317T002609Z",
+        "status": "CONFIRMED"
+      },
+      "20200529": {
+        "deskripsi": "Cuti Bersama",
+        "dibuat": "20200317T002609Z",
+        "dimodifikasi": "20200317T002609Z",
+        "status": "CONFIRMED"
+      },
+      "20200601": {
+        "deskripsi": "Hari Lahir Pancasila",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200731": {
+        "deskripsi": "Idul Adha (Lebaran Haji)",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200817": {
+        "deskripsi": "Hari Proklamasi Kemerdekaan R.I.",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200820": {
+        "deskripsi": "Satu Muharam/Tahun Baru Hijriyah",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20200821": {
+        "deskripsi": "Muharram / Islamic New Year Holiday",
+        "dibuat": "20200317T002609Z",
+        "dimodifikasi": "20200317T002609Z",
+        "status": "CONFIRMED"
+      },
+      "20201029": {
+        "deskripsi": "Maulid Nabi Muhammad",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20201030": {
+        "deskripsi": "The Prophet Muhammad's Birthday Holiday",
+        "dibuat": "20200317T002609Z",
+        "dimodifikasi": "20200317T002609Z",
+        "status": "CONFIRMED"
+      },
+      "20201114": {
+        "deskripsi": "Diwali/Deepavali",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20201224": {
+        "deskripsi": "Cuti Bersama (Malam Natal)",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20201225": {
+        "deskripsi": "Hari Natal",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20201231": {
+        "deskripsi": "Malam Tahun Baru",
+        "dibuat": "20190221T122231Z",
+        "dimodifikasi": "20190221T122231Z",
+        "status": "CONFIRMED"
+      },
+      "20210101": {
+        "deskripsi": "Hari Tahun Baru",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210212": {
+        "deskripsi": "Tahun Baru Imlek",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210311": {
+        "deskripsi": "Isra Mi'raj Nabi Muhammad",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210314": {
+        "deskripsi": "Hari Raya Nyepi (Tahun Baru Saka)",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210402": {
+        "deskripsi": "Wafat Isa Almasih",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210404": {
+        "deskripsi": "Hari Paskah",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210501": {
+        "deskripsi": "Hari Buruh Internasional/Pekerja",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210513": {
+        "deskripsi": "Kenaikan Yesus Kristus",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210514": {
+        "deskripsi": "Idul Fitri (Lebaran Mudik)",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210526": {
+        "deskripsi": "Hari Raya Waisak",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210601": {
+        "deskripsi": "Hari Lahir Pancasila",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210720": {
+        "deskripsi": "Idul Adha (Lebaran Haji)",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210810": {
+        "deskripsi": "Satu Muharam/Tahun Baru Hijriyah",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20210817": {
+        "deskripsi": "Hari Proklamasi Kemerdekaan R.I.",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20211019": {
+        "deskripsi": "Maulid Nabi Muhammad",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20211104": {
+        "deskripsi": "Diwali/Deepavali",
+        "dibuat": "20190916T225148Z",
+        "dimodifikasi": "20190916T225148Z",
+        "status": "CONFIRMED"
+      },
+      "20211224": {
+        "deskripsi": "Malam Natal",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20211225": {
+        "deskripsi": "Hari Natal",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "20211231": {
+        "deskripsi": "Malam Tahun Baru",
+        "dibuat": "20190911T231553Z",
+        "dimodifikasi": "20190911T231553Z",
+        "status": "CONFIRMED"
+      },
+      "created-at": "2020-03-18 04:06"
+    }
+  ],
   "employees": [
     {
-      "id": "1",
       "name": "Tony Stark",
       "email": "tonystark@email.com",
       "phone": "021123456",
       "position": "Devops",
-      "division": "Engineering",
-      "photo": "0",
+      "division": "gabut",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "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",
       "status": "Permanent",
       "gender": "Male",
-      "address": "",
-      "emergency_contanct": [
+      "address": "jalan pisangan",
+      "emergency_contact": [
         {
-          "name": "",
-          "phone": ""
+          "name": "carlo",
+          "phone": "01234567890"
         }
-      ]
+      ],
+      "id": "1"
     },
     {
       "id": "2",
@@ -25,14 +452,16 @@
       "phone": "021213456",
       "position": "Devops",
       "division": "Engineering",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
-          "name": "",
-          "phone": ""
+          "name": "Someone",
+          "phone": "0812487789231"
         }
       ]
     },
@@ -43,14 +472,16 @@
       "phone": "0213214567",
       "position": "Manager Devops",
       "division": "Engineering",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
-          "name": "",
-          "phone": ""
+          "name": "Steven Tyler",
+          "phone": "08123564235"
         }
       ]
     },
@@ -79,14 +510,16 @@
       "phone": "021123455",
       "position": "Manager Frontend Developer",
       "division": "Engineering",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
-          "name": "",
-          "phone": ""
+          "name": "Dominique",
+          "phone": "08123567"
         }
       ]
     },
@@ -97,11 +530,13 @@
       "phone": "021123454",
       "position": "Frontend Developer",
       "division": "Engineering",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -115,11 +550,13 @@
       "phone": "02123456",
       "position": "Frontend Developer",
       "division": "Engineering",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Permanent",
       "gender": "Female",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -133,11 +570,13 @@
       "phone": "021294850",
       "position": "Software Engineer",
       "division": "Engineering",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Permanent",
       "gender": "Female",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -151,11 +590,13 @@
       "phone": "021123456",
       "position": "Staff",
       "division": "Research and Development",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Permanent",
       "gender": "Female",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -169,11 +610,13 @@
       "phone": "021354621",
       "position": "Manager",
       "division": "Research and Development",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Permanent",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -187,11 +630,13 @@
       "phone": "021346782",
       "position": "Software Engineer",
       "division": "Engineering",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Probation",
       "gender": "Female",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -205,11 +650,13 @@
       "phone": "021324678",
       "position": "Staff",
       "division": "Research and Development",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Probation",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -223,11 +670,13 @@
       "phone": "0212345626",
       "position": "Staff",
       "division": "Research and Development",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Contract",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
@@ -241,108 +690,84 @@
       "phone": "0212342672",
       "position": "Software Engineer",
       "division": "Engineering",
-      "photo": "0",
+      "birth_date": "1995-03-31",
+      "birth_place": "Jakarta",
+      "photo": "",
       "status": "Probation",
       "gender": "Male",
       "address": "",
-      "emergency_contanct": [
+      "emergency_contact": [
         {
           "name": "",
           "phone": ""
         }
       ]
+    },
+    {
+      "name": "Jason Mendoza",
+      "email": "jasonmendoza@email.com",
+      "phone": "08124678235",
+      "position": "",
+      "division": "",
+      "photo": "",
+      "status": "Unprocessed",
+      "gender": "Male",
+      "address": "Jalan Lurus test update no 18",
+      "emergency_contact": [
+        {
+          "name": "Jason Mendoza",
+          "phone": "08124678235"
+        }
+      ],
+      "id": 15
+    },
+    {
+      "name": "Kamilah Al-Jamil",
+      "email": "kamilah@email.com",
+      "phone": "0836578124",
+      "position": "Software Engineer",
+      "division": "Engineering",
+      "photo": "",
+      "status": "Probation",
+      "gender": "Female",
+      "address": "Jalan Kemana 39",
+      "emergency_contact": [
+        {
+          "name": "Kamilah Al-Jamil",
+          "phone": "0836578124"
+        }
+      ],
+      "id": "16"
     }
   ],
   "outtoday": [
     {
       "id": "1",
       "emp_id": "9",
-      "date": "2020-03-27",
+      "date_start": "2020-03-27",
+      "date_end": "2020-03-27",
       "status": "Pending"
     },
     {
       "id": "2",
       "emp_id": "10",
-      "date": "2020-03-27",
+      "date_start": "2020-03-27",
+      "date_end": "2020-03-27",
       "status": "Rejected"
     },
     {
       "id": "3",
       "emp_id": "5",
-      "date": "2020-03-27",
+      "date_start": "2020-03-27",
+      "date_end": "2020-03-27",
       "status": "Approved"
     },
     {
-      "emp_id": "3",
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 4
-    },
-    {
-      "emp_id": "2",
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 5
-    },
-    {
-      "emp_id": "2",
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 6
-    },
-    {
-      "emp_id": "2",
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 7
-    },
-    {
-      "emp_id": "",
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 8
-    },
-    {
-      "emp_id": "",
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 9
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 10
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 11
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 12
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 13
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 14
-    },
-    {
-      "emp_id": null,
-      "status": "Pending",
-      "date": "03/13/2020",
-      "id": 15
+      "emp_id": "1",
+      "date_start": "2020-03-20",
+      "date_end": "2020-03-25",
+      "status": "Rejected",
+      "id": "4"
     }
   ],
   "todaypresent": [
@@ -372,75 +797,586 @@
     },
     {
       "id": "5",
+      "emp_id": "6",
+      "date": "2020-03-27",
+      "time": "08:01:30"
+    },
+    {
+      "id": "6",
+      "emp_id": "7",
+      "date": "2020-03-27",
+      "time": "08:02:30"
+    },
+    {
+      "id": "7",
+      "emp_id": "8",
+      "date": "2020-03-27",
+      "time": "08:03:30"
+    },
+    {
+      "id": "8",
       "emp_id": "11",
       "date": "2020-03-27",
       "time": "08:00:40"
     },
     {
-      "id": "6",
+      "id": "9",
       "emp_id": "12",
       "date": "2020-03-27",
       "time": "08:00:50"
     },
     {
-      "id": "7",
+      "id": "10",
       "emp_id": "13",
       "date": "2020-03-27",
       "time": "08:01:00"
     },
     {
-      "id": "8",
+      "id": "11",
       "emp_id": "14",
       "date": "2020-03-27",
       "time": "08:02:00"
     },
     {
-      "id": "9",
+      "id": "12",
       "emp_id": "1",
       "date": "2020-03-28",
       "time": "09:00:00"
     },
     {
-      "id": "10",
+      "id": "13",
       "emp_id": "2",
       "date": "2020-03-28",
       "time": "09:00:10"
     },
     {
-      "id": "11",
+      "id": "14",
       "emp_id": "3",
       "date": "2020-03-28",
       "time": "09:00:20"
     },
     {
-      "id": "12",
+      "id": "15",
       "emp_id": "4",
       "date": "2020-03-28",
       "time": "09:00:30"
     },
     {
-      "id": "13",
-      "emp_id": "11",
+      "id": "16",
+      "emp_id": "5",
       "date": "2020-03-28",
       "time": "09:00:40"
     },
     {
-      "id": "14",
-      "emp_id": "12",
+      "id": "17",
+      "emp_id": "6",
       "date": "2020-03-28",
       "time": "09:00:50"
     },
     {
-      "id": "15",
-      "emp_id": "13",
+      "id": "18",
+      "emp_id": "7",
       "date": "2020-03-28",
       "time": "09:01:00"
     },
     {
-      "id": "16",
-      "emp_id": "14",
+      "id": "19",
+      "emp_id": "8",
       "date": "2020-03-28",
       "time": "09:02:00"
+    },
+    {
+      "id": "20",
+      "emp_id": "9",
+      "date": "2020-03-28",
+      "time": "09:02:00"
+    },
+    {
+      "id": "21",
+      "emp_id": "10",
+      "date": "2020-03-28",
+      "time": "09:08:00"
+    },
+    {
+      "id": "22",
+      "emp_id": "11",
+      "date": "2020-03-28",
+      "time": "09:03:00"
+    },
+    {
+      "id": "23",
+      "emp_id": "12",
+      "date": "2020-03-28",
+      "time": "09:05:00"
+    },
+    {
+      "id": "24",
+      "emp_id": "13",
+      "date": "2020-03-28",
+      "time": "09:06:00"
+    },
+    {
+      "id": "25",
+      "emp_id": "14",
+      "date": "2020-03-28",
+      "time": "09:15:00"
+    },
+    {
+      "id": "26",
+      "emp_id": "1",
+      "date": "2020-03-26",
+      "time": "08:00:00"
+    },
+    {
+      "id": "27",
+      "emp_id": "2",
+      "date": "2020-03-26",
+      "time": "08:00:10"
+    },
+    {
+      "id": "28",
+      "emp_id": "3",
+      "date": "2020-03-26",
+      "time": "08:00:20"
+    },
+    {
+      "id": "29",
+      "emp_id": "4",
+      "date": "2020-03-26",
+      "time": "08:00:30"
+    },
+    {
+      "id": "30",
+      "emp_id": "5",
+      "date": "2020-03-26",
+      "time": "08:00:40"
+    },
+    {
+      "id": "31",
+      "emp_id": "6",
+      "date": "2020-03-26",
+      "time": "08:00:50"
+    },
+    {
+      "id": "32",
+      "emp_id": "7",
+      "date": "2020-03-26",
+      "time": "08:01:00"
+    },
+    {
+      "id": "33",
+      "emp_id": "8",
+      "date": "2020-03-26",
+      "time": "08:02:00"
+    },
+    {
+      "id": "34",
+      "emp_id": "8",
+      "date": "2020-03-26",
+      "time": "09:00:00"
+    },
+    {
+      "id": "35",
+      "emp_id": "9",
+      "date": "2020-03-26",
+      "time": "09:00:10"
+    },
+    {
+      "id": "36",
+      "emp_id": "10",
+      "date": "2020-03-26",
+      "time": "09:00:20"
+    },
+    {
+      "id": "37",
+      "emp_id": "11",
+      "date": "2020-03-26",
+      "time": "09:00:30"
+    },
+    {
+      "id": "38",
+      "emp_id": "12",
+      "date": "2020-03-26",
+      "time": "09:00:40"
+    },
+    {
+      "id": "39",
+      "emp_id": "13",
+      "date": "2020-03-26",
+      "time": "09:00:50"
+    },
+    {
+      "id": "40",
+      "emp_id": "14",
+      "date": "2020-03-26",
+      "time": "09:01:00"
+    },
+    {
+      "id": "41",
+      "emp_id": "1",
+      "date": "2020-03-25",
+      "time": "08:00:00"
+    },
+    {
+      "id": "42",
+      "emp_id": "2",
+      "date": "2020-03-25",
+      "time": "08:00:10"
+    },
+    {
+      "id": "43",
+      "emp_id": "3",
+      "date": "2020-03-25",
+      "time": "08:00:20"
+    },
+    {
+      "id": "44",
+      "emp_id": "4",
+      "date": "2020-03-25",
+      "time": "08:00:30"
+    },
+    {
+      "id": "45",
+      "emp_id": "6",
+      "date": "2020-03-25",
+      "time": "08:00:50"
+    },
+    {
+      "id": "46",
+      "emp_id": "7",
+      "date": "2020-03-25",
+      "time": "08:01:00"
+    },
+    {
+      "id": "47",
+      "emp_id": "8",
+      "date": "2020-03-25",
+      "time": "08:02:00"
+    },
+    {
+      "id": "48",
+      "emp_id": "8",
+      "date": "2020-03-25",
+      "time": "09:00:00"
+    },
+    {
+      "id": "49",
+      "emp_id": "9",
+      "date": "2020-03-25",
+      "time": "09:00:10"
+    },
+    {
+      "id": "50",
+      "emp_id": "10",
+      "date": "2020-03-25",
+      "time": "09:00:20"
+    },
+    {
+      "id": "51",
+      "emp_id": "11",
+      "date": "2020-03-25",
+      "time": "09:00:30"
+    },
+    {
+      "id": "52",
+      "emp_id": "12",
+      "date": "2020-03-25",
+      "time": "09:00:40"
+    },
+    {
+      "id": "53",
+      "emp_id": "13",
+      "date": "2020-03-25",
+      "time": "09:00:50"
+    },
+    {
+      "id": "54",
+      "emp_id": "14",
+      "date": "2020-03-25",
+      "time": "09:01:00"
+    },
+    {
+      "id": "55",
+      "emp_id": "1",
+      "date": "2020-03-30",
+      "time": "08:00:00"
+    },
+    {
+      "id": "56",
+      "emp_id": "2",
+      "date": "2020-03-30",
+      "time": "08:00:10"
+    },
+    {
+      "id": "57",
+      "emp_id": "3",
+      "date": "2020-03-30",
+      "time": "08:00:20"
+    },
+    {
+      "id": "58",
+      "emp_id": "4",
+      "date": "2020-03-30",
+      "time": "08:00:30"
+    },
+    {
+      "id": "59",
+      "emp_id": "5",
+      "date": "2020-03-30",
+      "time": "08:00:40"
+    },
+    {
+      "id": "60",
+      "emp_id": "6",
+      "date": "2020-03-30",
+      "time": "08:00:50"
+    },
+    {
+      "id": "61",
+      "emp_id": "7",
+      "date": "2020-03-30",
+      "time": "08:01:00"
+    },
+    {
+      "id": "62",
+      "emp_id": "8",
+      "date": "2020-03-30",
+      "time": "08:02:00"
+    },
+    {
+      "id": "63",
+      "emp_id": "8",
+      "date": "2020-03-30",
+      "time": "09:00:00"
+    },
+    {
+      "id": "64",
+      "emp_id": "9",
+      "date": "2020-03-30",
+      "time": "09:00:10"
+    },
+    {
+      "id": "65",
+      "emp_id": "10",
+      "date": "2020-03-30",
+      "time": "09:00:20"
+    },
+    {
+      "id": "66",
+      "emp_id": "11",
+      "date": "2020-03-30",
+      "time": "09:00:30"
+    },
+    {
+      "id": "67",
+      "emp_id": "12",
+      "date": "2020-03-30",
+      "time": "09:00:40"
+    },
+    {
+      "id": "68",
+      "emp_id": "13",
+      "date": "2020-03-30",
+      "time": "09:00:50"
+    },
+    {
+      "id": "69",
+      "emp_id": "14",
+      "date": "2020-03-30",
+      "time": "09:01:00"
+    },
+    {
+      "id": "70",
+      "emp_id": "1",
+      "date": "2020-03-24",
+      "time": "08:00:00"
+    },
+    {
+      "id": "71",
+      "emp_id": "2",
+      "date": "2020-03-24",
+      "time": "08:00:10"
+    },
+    {
+      "id": "72",
+      "emp_id": "3",
+      "date": "2020-02-24",
+      "time": "08:00:10"
+    },
+    {
+      "id": "73",
+      "emp_id": "3",
+      "date": "2020-03-24",
+      "time": "08:00:20"
+    },
+    {
+      "id": "74",
+      "emp_id": "4",
+      "date": "2020-03-24",
+      "time": "08:00:30"
+    },
+    {
+      "id": "75",
+      "emp_id": "5",
+      "date": "2020-03-24",
+      "time": "08:00:40"
+    },
+    {
+      "id": "76",
+      "emp_id": "6",
+      "date": "2020-03-24",
+      "time": "08:00:50"
+    },
+    {
+      "id": "77",
+      "emp_id": "7",
+      "date": "2020-03-24",
+      "time": "08:01:00"
+    },
+    {
+      "id": "78",
+      "emp_id": "8",
+      "date": "2020-03-24",
+      "time": "08:02:00"
+    },
+    {
+      "id": "79",
+      "emp_id": "8",
+      "date": "2020-03-24",
+      "time": "09:00:00"
+    },
+    {
+      "id": "80",
+      "emp_id": "9",
+      "date": "2020-03-24",
+      "time": "09:00:10"
+    },
+    {
+      "id": "81",
+      "emp_id": "10",
+      "date": "2020-03-24",
+      "time": "09:00:20"
+    },
+    {
+      "id": "82",
+      "emp_id": "11",
+      "date": "2020-03-24",
+      "time": "09:00:30"
+    },
+    {
+      "id": "83",
+      "emp_id": "12",
+      "date": "2020-03-24",
+      "time": "09:00:40"
+    },
+    {
+      "id": "84",
+      "emp_id": "13",
+      "date": "2020-03-24",
+      "time": "09:00:50"
+    },
+    {
+      "id": "85",
+      "emp_id": "14",
+      "date": "2020-03-24",
+      "time": "09:01:00"
+    },
+    {
+      "id": "86",
+      "emp_id": "1",
+      "date": "2020-03-23",
+      "time": "08:00:00"
+    },
+    {
+      "id": "87",
+      "emp_id": "2",
+      "date": "2020-03-23",
+      "time": "08:00:10"
+    },
+    {
+      "id": "88",
+      "emp_id": "3",
+      "date": "2020-03-23",
+      "time": "08:00:20"
+    },
+    {
+      "id": "89",
+      "emp_id": "4",
+      "date": "2020-03-23",
+      "time": "08:00:30"
+    },
+    {
+      "id": "90",
+      "emp_id": "5",
+      "date": "2020-03-23",
+      "time": "08:00:40"
+    },
+    {
+      "id": "91",
+      "emp_id": "6",
+      "date": "2020-03-23",
+      "time": "08:00:50"
+    },
+    {
+      "id": "92",
+      "emp_id": "7",
+      "date": "2020-03-23",
+      "time": "08:01:00"
+    },
+    {
+      "id": "93",
+      "emp_id": "8",
+      "date": "2020-03-23",
+      "time": "08:02:00"
+    },
+    {
+      "id": "94",
+      "emp_id": "8",
+      "date": "2020-03-23",
+      "time": "09:00:00"
+    },
+    {
+      "id": "95",
+      "emp_id": "9",
+      "date": "2020-03-23",
+      "time": "09:00:10"
+    },
+    {
+      "id": "96",
+      "emp_id": "10",
+      "date": "2020-03-23",
+      "time": "09:00:20"
+    },
+    {
+      "id": "97",
+      "emp_id": "11",
+      "date": "2020-03-23",
+      "time": "09:00:30"
+    },
+    {
+      "id": "98",
+      "emp_id": "12",
+      "date": "2020-03-23",
+      "time": "09:00:40"
+    },
+    {
+      "id": "99",
+      "emp_id": "13",
+      "date": "2020-03-23",
+      "time": "09:00:50"
+    },
+    {
+      "id": "100",
+      "emp_id": "14",
+      "date": "2020-03-23",
+      "time": "09:01:00"
+    },
+    {
+      "id": "101",
+      "emp_id": "1",
+      "date": "2020-03-21",
+      "in": "00:10:18",
+      "out": ""
     }
   ],
   "newApplicants": [
@@ -451,9 +1387,10 @@
       "phone": "02112345633",
       "position": "Software Engineer",
       "division": "Engineering",
-      "photo": "0",
+      "photo": "",
       "status": "Unprocessed",
-      "gender": "Male"
+      "gender": "Male",
+      "date": "2020-02-15"
     },
     {
       "id": "2",
@@ -462,9 +1399,10 @@
       "phone": "02112345631",
       "position": "Software Engineer",
       "division": "Engineering",
-      "photo": "0",
+      "photo": "",
       "status": "Scheduled to Psycho Test",
-      "gender": "Female"
+      "gender": "Female",
+      "date": "2020-02-15"
     },
     {
       "id": "3",
@@ -473,9 +1411,10 @@
       "phone": "02112345632",
       "position": "Frontend Developer",
       "division": "Engineering",
-      "photo": "0",
+      "photo": "",
       "status": "Scheduled to Psycho Test",
-      "gender": "Male"
+      "gender": "Male",
+      "date": "2020-02-15"
     },
     {
       "id": "4",
@@ -484,9 +1423,41 @@
       "phone": "02112345634",
       "position": "Frontend Developer",
       "division": "Engineering",
-      "photo": "0",
+      "photo": "",
       "status": "Scheduled to Interview",
-      "gender": "Male"
+      "gender": "Male",
+      "date": "2020-02-15"
+    },
+    {
+      "name": "sandy",
+      "email": "sandy@gmail.com",
+      "phone": "0987654321",
+      "position": "",
+      "division": "",
+      "photo": "",
+      "status": "Unprocessed",
+      "gender": "Male",
+      "date": "2020-02-15",
+      "address": "jl slamet riyadi",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "name": "Jack Dawson",
+      "email": "jackdawson@email.com",
+      "phone": "08123567423",
+      "position": "Software Engineer",
+      "division": "Engineering",
+      "status": "Unprocessed",
+      "gender": "Male",
+      "address": "Jalan Kanankiri 10",
+      "emergency_contact": [
+        {
+          "name": "Jack Dawson",
+          "phone": "08123567423"
+        }
+      ],
+      "date": "2020-03-21"
     }
   ],
   "user": [

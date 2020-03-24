@@ -3,23 +3,14 @@
             <v-col class="w-full">
                 <v-row>
                     <v-col>
-                        <v-skeleton-loader :loading="loading" height="50" max-width="300" type="list-item-avatar" >
-                            <v-card-title>
-                            <v-icon left>mdi-{{current_route.icon}}</v-icon>
-                            <h1>{{$route.name}}</h1>
-                            </v-card-title>
-                        </v-skeleton-loader>    
+                          
                     </v-col>
                     <v-spacer></v-spacer>
                     <v-col class="flex justify-around items-center">
                         
-
-                            <!-- <v-btn @click="exportCSV">Export</v-btn>
-                            <v-btn @click="exportAllCSV">Export All</v-btn> -->
                             <v-btn color="purple" class="text-white">
-
                             
-                            <download-csv v-if="items.length > 0" class   = "text-white" :data="items" :name="'export '+new Date()">
+                            <download-csv class="text-white" :data="items" :name="'Export '+new Date()">
                                 export
                             </download-csv>
                             </v-btn>
@@ -67,20 +58,21 @@
 <script>
     import downloadCsv from 'vue-json-csv'
     export default {
-        props:["headers" , "items", "search"],
+        props:["headers" , "items","rowClick"],
         components:{
             downloadCsv
         },
         
         data(){
             return{
+                search:'',
                 loading:true,
                 current_route: '',
             }
         },
         methods:{
             handleClick(value){
-                this.$router.push({ name: 'Edit', params: { id:value.id } })
+                this.$router.push({ name: this.rowClick , params: { id:value.id } })
             },
         },
         created(){

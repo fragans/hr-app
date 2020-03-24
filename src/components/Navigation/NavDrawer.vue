@@ -7,10 +7,7 @@
         </v-list-item-avatar>
 
         <v-list-item-title>{{$store.state.user.user.username}}</v-list-item-title>
-
-        <v-btn icon @click.stop="mini = !mini" >
-          <v-icon>mdi-chevron-left</v-icon>
-        </v-btn>
+        
       </v-list-item>
 
       <v-divider></v-divider>
@@ -29,7 +26,7 @@
               <v-list-item-content>
                 <v-list-item-title >
                   
-                  {{ item.name }}
+                  {{ item.meta.title }}
                   <template v-if="(item.name === 'Leave Request')" >
                     <span class="bg-red-thunderbird-400 text-white px-1 ml-2">
 
@@ -109,7 +106,7 @@ import axios from 'axios'
           },
           fetchLeaveReq(){
             axios.get('http://localhost:3000/outtoday').then(({ data })=>{
-            console.log(data.length)
+            // console.log(data.length)
             this.leaveReq = data.length
             // this.desserts = data
             // this.copy = this.desserts;

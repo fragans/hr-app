@@ -6,6 +6,9 @@ import vuetify from './plugins/vuetify';
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 import '@/assets/css/styles.css'
+import LoadScript from 'vue-plugin-load-script';
+
+Vue.use(LoadScript);
 
 Vue.config.productionTip = false
 // Vue.config.resolve.symlinks(false);
@@ -16,3 +19,5 @@ new Vue({
     vuetify,
     render: h => h(App)
 }).$mount('#app')
+
+store.dispatch('employees/fetch')

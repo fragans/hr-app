@@ -1,11 +1,15 @@
 import axios from 'axios';
 
 const state = {
-    day:[],
+    day:{},
+    days:[],
     loading:true
 }
 
 const getters = {
+    days(state){
+        return state.days
+    },
     day(state){
         return state.day
     },
@@ -18,19 +22,25 @@ const actions = {
         
         return axios.get('http://localhost:3000/outtoday')
         .then(({ data })=>{
-            commit('setDay',data)
+            commit('setDays',data)
         })
     },
     insert({commit,dispatch},payload){
         // console.log(payload)
         dispatch('fetch').then(()=>{
             console.log(state.day)
+            let ids=[];
+            state.days.forEach(a => {
+                ids.push(parseInt(a.id))
+            });
             return axios.post('http://localhost:3000/outtoday',
             {
                 emp_id: payload.emp_id,
                 status: payload.status,
-                date: payload.date,
-                id:(state.day.length+1 ),
+                date_start: payload.date_start,
+                date_end: payload.date_end,
+                // id:String(state.days.length+1 ),
+                id:String(Math.max(...ids)+1)
                 
             })
             .then(response=>{
@@ -40,12 +50,35 @@ const actions = {
         
         
 
+    },
+    fetchById({commit},payload){
+        return axios.get(`http://localhost:3000/outtoday/${payload}`)
+        .then(({ data })=>{
+            commit('setDay',data)
+        })
+    },
+    editStatus({commit},payload){
+        // console.log(payload)
+        return axios.put(`http://localhost:3000/outtoday/${payload.id}`,
+            {
+                emp_id:payload.emp_id,
+                date_start:payload.date_start,
+                date_end:payload.date_end,
+                status:payload.status,
+            }
+        ).
+        then(response=>{
+            console.log(response)
+        })
     }
 }
 
 const mutations = {
-    setDay(state,payload){
-        state.day= payload
+    setDays(state,payload){
+        state.days= payload
+    },
+    setDay(state, payload){
+        state.day = payload
     },
     setLoading(state, payload){
         state.loading = payload

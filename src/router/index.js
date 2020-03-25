@@ -112,7 +112,7 @@ const routes = [{
                 import('../components/Parent/AllApplicants.vue')
             },
             {
-                name:'Edit Applicant Status',
+                name:'Edit Applicant',
                 path: 'edit/:id',
                 icon:'mdi-run-fast',
                 meta:{

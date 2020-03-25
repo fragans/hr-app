@@ -1,13 +1,7 @@
 <template>
 <v-container>
     <v-row class="title">
-        <v-col col="6" class="flex justify-center items-center uppercase">
-            <v-icon left>mdi-card-bulleted</v-icon>
-            <h1>
-                {{$route.name}} 
-            </h1>
-            
-        </v-col>
+
         <v-col col="3">
             <v-file-input 
             v-model="files" 
@@ -116,7 +110,6 @@ import {mapGetters} from 'vuex'
 
             computedProp()
             {
-                console.log('asdasdas')
                 if(this.$route.name === 'Apply Job')
                 {
                     console.log('apply ui')

@@ -1,17 +1,34 @@
 <template>
 <v-container>
     <v-row class="title">
-        
+        <v-col class="text-gray-450">
+            {{this.employee.status}} Employee
+        </v-col>
         <v-col col="3" class="justify-end flex">
-            <v-btn class="mr-4" color="success" @click="update">
+            <v-menu>
+                <template v-slot:activator="{ on}">
+                    <v-btn color="primary" dark v-on="on">
+                        <v-icon left>mdi-update</v-icon> Status
+                    </v-btn>
+                </template>
+                <v-list>
+                    <v-list-item v-for="(item, index) in status" :key="index" @click="updateStatus(index)">
+                        <v-list-item-title>{{ item }}</v-list-item-title>
+                    </v-list-item>
+                </v-list>
+            </v-menu>
+
+            <v-btn class="mx-4" color="success" @click="update">
                 <v-icon left>mdi-content-save</v-icon>    
                 save
             </v-btn>
-            <v-btn color="error" @click="dialog = true">
+            <v-btn color="error" @click="removeConfirm('remove')">
                 <v-icon left>mdi-cancel</v-icon>    
-                remove</v-btn>
+                remove
+            </v-btn>
         </v-col>
         
+
     </v-row>
     <v-divider/>
     <v-card>
@@ -36,12 +53,23 @@
         </v-col>
         
     </v-card>
-    <v-dialog v-model="dialog" persistent max-width="290">
-        <v-card class="p-4">
-            <v-card-title class="headline text-center">remove employee?</v-card-title>
-            <v-card-actions class="items-center justify-center">
+    <v-dialog v-model="dialog" persistent max-width="400">
+        <v-card class="">
+            
+            
+            
+            <v-card-title class="headline text-center flex break-words m-0 py-8 justify-center ">
+                <v-icon v-if="dialogAction == 'remove'" left x-large>mdi-trash-can</v-icon>    
+                <span>{{dialogText}} ?</span>
+                
+            </v-card-title>
 
-            <v-btn color="success" class="text-white" @click="remove">Ok</v-btn>
+            <v-card-actions class="items-center justify-end bg-gray-150">
+            
+                <v-btn v-if="dialogAction == 'remove'" color="success" outlined class="text-white" @click="remove" >Ok</v-btn>
+                <v-btn color="error" class="text-white" @click="dialog = !dialog">
+                    <v-icon>mdi-close</v-icon>
+                </v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
@@ -73,7 +101,10 @@ import {mapGetters} from 'vuex'
                 ],
                 data:'',
                 loading:true,   
-                dialog:false
+                dialog:false,
+                dialogText: '',
+                status:['Permanent','Probation','Contract']
+                
             }
         },
         computed:{
@@ -116,9 +147,22 @@ import {mapGetters} from 'vuex'
                 // console.log(this.employee)
                 this.$store.dispatch('employees/update',this.employee)
             },
+            updateStatus(idx){
+
+                this.employee.status = this.status[idx]
+                this.$store.dispatch('employees/update',this.employee).then(()=>{
+                    this.dialogText='Change status to '+this.status[idx]
+                    this.dialog = true
+                })
+                
+            },
+            removeConfirm(action){
+
+                this.dialogText = 'Remove this employee';
+                this.dialogAction = action;
+                this.dialog = true;
+            },
             remove(){
-                console.log('remove')
-                // this.dialog=true
                 this.$store.dispatch('employees/remove',this.$route.params.id).then(()=>{
                     this.$router.push({name:'Employees'})
                 })

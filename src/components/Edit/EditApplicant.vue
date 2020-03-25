@@ -1,6 +1,9 @@
 <template>
     <v-container>
         <v-row class="title">
+            <v-col class="text-gray-450">
+                Entry date: {{employee.date}}
+            </v-col>
             <v-col col="3" class="justify-end flex">
                 <v-btn class="mr-4" color="success" @click="updateApplicant">
                     <v-icon left>mdi-content-save</v-icon>    
@@ -121,7 +124,7 @@ import axios from 'axios'
                 {
                     return { data : this.employee }
                 }
-                else if(this.$route.name === 'Edit Applicant Status')
+                else if(this.$route.name === 'Edit Applicant')
                 {
                     return { data : this.employee }
                 }

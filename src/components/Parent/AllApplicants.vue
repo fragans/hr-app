@@ -39,8 +39,8 @@ import { mapGetters } from 'vuex'
             value: 'name',
           },
           { text: 'Email', value: 'email' },
-
-          { text: 'Status', value: 'status' }
+          { text: 'Status', value: 'status' },
+          { text: 'Date', value: 'date' }
         ],
         desserts: [
           

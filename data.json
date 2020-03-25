@@ -426,27 +426,6 @@
   ],
   "employees": [
     {
-      "name": "Tony Stark",
-      "email": "tonystark@email.com",
-      "phone": "021123456",
-      "position": "Devops",
-      "division": "gabut",
-      "birth_date": "1995-03-31",
-      "birth_place": "Jakarta",
-      "photo": "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",
-      "status": "Permanent",
-      "gender": "Male",
-      "address": "jalan pisangan",
-      "emergency_contact": [
-        {
-          "name": "carlo",
-          "phone": "01234567890"
-        }
-      ],
-      "id": "1"
-    },
-    {
-      "id": "2",
       "name": "Steve Rogers",
       "email": "steverogers@email.com",
       "phone": "021213456",
@@ -455,7 +434,7 @@
       "birth_date": "1995-03-31",
       "birth_place": "Jakarta",
       "photo": "",
-      "status": "Permanent",
+      "status": "Contract",
       "gender": "Male",
       "address": "",
       "emergency_contact": [
@@ -463,7 +442,8 @@
           "name": "Someone",
           "phone": "0812487789231"
         }
-      ]
+      ],
+      "id": "2"
     },
     {
       "id": "3",
@@ -770,6 +750,20 @@
       "date_end": "2020-03-25",
       "status": "Rejected",
       "id": "4"
+    },
+    {
+      "emp_id": "",
+      "status": "Pending",
+      "date_start": "2020-03-25",
+      "date_end": "2020-03-27",
+      "id": "5"
+    },
+    {
+      "emp_id": "3",
+      "status": "Pending",
+      "date_start": "2020-03-25",
+      "date_end": "2020-03-26",
+      "id": "6"
     }
   ],
   "todaypresent": [
@@ -1401,7 +1395,8 @@
           "name": "Jack Dawson",
           "phone": "08123567423"
         }
-      ]
+      ],
+      "date": "2020-02-25"
     },
     {
       "id": "2",
@@ -1436,7 +1431,7 @@
       "gender": "Male",
       "birth_date": "1995-03-31",
       "birth_place": "Cirebon",
-      "date": "2020-02-15",
+      "date": "2020-03-15",
       "cv": "",
       "emergency_contact": [
         {

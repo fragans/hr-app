@@ -180,8 +180,7 @@ import axios from 'axios'
                         name: this.employee.emergency_contact[0].name,
                         phone: this.employee.emergency_contact[0].phone
                         }
-                    ],
-                    id_employee: this.dataEmployee.length
+                    ]
                 }
                 // console.log(this.status[index].title)
                 if(index == 3){

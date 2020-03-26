@@ -68,43 +68,6 @@ const actions = {
 
     updateStatusApplicant({commit}, payload)
     {
-
-        // console.log("di applicant.js : "+payload.status)
-        // console.log("id employee : "+payload.id_employee)
-
-        if(payload.status === 'Finish')
-        {
-            //move to employee
-            console.log("di applicant.js : "+payload.status)
-            axios.post('http://localhost:3000/employees',
-            {
-                id:payload.id_employee+1,
-                name: payload.name,
-                email: payload.email,
-                phone: payload.phone,
-                position: payload.position,
-                division: payload.division,
-                birth_date: payload.birth_date,
-                birth_place: payload.birth_place,
-                photo: payload.photo,
-                status: payload.status,
-                gender: payload.gender,
-                address: payload.address,
-                emergency_contact: [
-                    {
-                    name: payload.emergency_contact[0].name,
-                    phone: payload.emergency_contact[0].phone
-                    }
-                ]            
-            }).then(()=>{
-                console.log("insert new employee from applicant")
-            })
-
-            //then delete applicant
-            return axios.delete(`http://localhost:3000/newApplicants/${payload.id}`).then(response=>{console.log(response)})
-        }
-        else
-        {
             return axios.put(`http://localhost:3000/newApplicants/${payload.id}`,{
                 id: payload.id,
                 name: payload.name,
@@ -125,8 +88,6 @@ const actions = {
                     }
                 ]
             }).then(response=>{console.log(response)})
-        }
-
     },
 
     update(state,payload)

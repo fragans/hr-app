@@ -1,13 +1,6 @@
 <template>
 <v-container>
     <v-row class="title">
-        <!-- <v-col col="6" class="flex justify-center items-center uppercase">
-            <v-icon left>mdi-card-bulleted</v-icon>
-            <h1>
-                {{$route.name}}
-            </h1>
-            
-        </v-col> -->
         <v-spacer></v-spacer>
         <v-col col="3">
             <v-btn block class="mr-4" color="success" @click="insert">
@@ -39,6 +32,16 @@
         </v-col>
         
     </v-card>
+
+    <v-dialog v-model="dialog" persistent max-width="290">
+        <v-card class="p-4">
+            <v-card-title class="headline text-center">Form Sent!</v-card-title>
+            <v-card-actions class="items-center justify-center">
+
+            <v-btn color="success" class="text-white" @click="redirect">Ok</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
 </v-container>
     
 </template>
@@ -67,6 +70,7 @@ import {mapGetters} from 'vuex'
                     {name:'Emergency',icon:'alert-box-outline'},
                 ],
                 data:'',
+                dialog:false,
                 employee:
                         {
                             address:'',
@@ -107,9 +111,14 @@ import {mapGetters} from 'vuex'
             }
         },
         methods:{
+            redirect(){
+                this.$router.push({name:'Dashboard'})
+            },
             insert()
             {
-                this.$store.dispatch('employees/insert',this.employee)
+                this.$store.dispatch('employees/insert',this.employee).then(()=>{
+                    this.dialog=true
+                })
             }
         },
     }

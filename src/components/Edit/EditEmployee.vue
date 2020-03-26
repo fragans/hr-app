@@ -66,7 +66,7 @@
 
             <v-card-actions class="items-center justify-end bg-gray-150">
             
-                <v-btn v-if="dialogAction == 'remove'" color="success" outlined class="text-white" @click="remove" >Ok</v-btn>
+                <v-btn v-if="dialogAction == 'remove'" color="success" outlined class="text-white" @click="remove" >{{dialogAction}}</v-btn>
                 <v-btn color="error" class="text-white" @click="dialog = !dialog">
                     <v-icon>mdi-close</v-icon>
                 </v-btn>

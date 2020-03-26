@@ -46,6 +46,15 @@
         </v-col>
         
     </v-card>
+    <v-dialog v-model="dialog" persistent max-width="290">
+        <v-card class="p-4">
+            <v-card-title class="headline text-center">Form Sent!</v-card-title>
+            <v-card-actions class="items-center justify-center">
+
+            <v-btn color="success" class="text-white" @click="redirect">Ok</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
 </v-container>
     
 </template>
@@ -75,6 +84,7 @@ import {mapGetters} from 'vuex'
                     {name:'Emergency',icon:'alert-box-outline'},
                     // {name:'CV',icon:'file-document-outline'},
                 ],
+                dialog:false,
                 data:'',
                 files:[],
                  rules: [
@@ -134,7 +144,12 @@ import {mapGetters} from 'vuex'
             insert()
             {
                 this.employee.photo = this.photo
-                this.$store.dispatch('applicants/insert',this.employee)
+                this.$store.dispatch('applicants/insert',this.employee).then(()=>{
+                    this.dialog=true
+                })
+            },
+            redirect(){
+                this.$router.push({name:'Dashboard'})
             },
             onSelect(e){
 

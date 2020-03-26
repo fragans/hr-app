@@ -4,7 +4,7 @@
             <v-card-title>
                 <v-col class="flex">
                     <v-icon left>mdi-account-group</v-icon>
-                    <h1>Welcome</h1>
+                    <h1>{{$route.name}}</h1>
                 </v-col>
                 
                 <v-col class="flex justify-end">
@@ -13,7 +13,7 @@
             </v-card-title>
         </v-card>
 
-        <v-card :color="item.color" dark to="clockin" class="mt-4" v-for="item in items" :key="item.name">
+        <v-card :color="item.color" :to="item.path" dark class="mt-4" v-for="item in items" :key="item.name">
             <v-card-title class="headline">
                 <v-icon left>mdi-{{item.icon}}</v-icon>
                 {{item.role}} {{item.name}}</v-card-title>
@@ -21,7 +21,7 @@
             <!-- <v-card-subtitle>Listen to your favorite artists and albums whenever and wherever, online and offline.</v-card-subtitle> -->
 
             <v-card-actions class="justify-end flex">
-              <v-btn text to='clockin'>{{item.name}} now</v-btn>
+              <v-btn text :to="item.path" >{{item.name}} now</v-btn>
             </v-card-actions>
         </v-card>
 
@@ -44,9 +44,6 @@
         methods:{
           logout(){
             this.$store.commit('user/logout')
-          },
-          login(){
-            this.$store.dispatch('user/userLogin', this.user)
           }
       },
       created(){

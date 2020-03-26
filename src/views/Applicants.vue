@@ -1,87 +1,59 @@
 <template>
     
     <v-container>
-        <FilterList :search="search" :headers="headers" :items="copy" > 
-          <h1 slot="title">Employee</h1>
+        <v-row>
+          <v-skeleton-loader :loading="loading" height="50" width="250" max-width="300" type="list-item-avatar" >
+            <v-card-title>
+            <!-- <v-icon left>mdi-{{current_route.icon}}</v-icon> -->
+            <h1>{{$route.name}}</h1>
+            </v-card-title>
+          </v-skeleton-loader>
+        </v-row>
+      <router-view>
 
-          <v-tabs slot="filter" show-arrows>
-            <v-tab @click="reset">All</v-tab>
-            <v-tab @click="filter('Unprocessed')">Unprocessed</v-tab>
-            <v-tab @click="filter('Scheduled to Psycho Test')"> Psycho Test</v-tab>
-            <v-tab @click="filter('Scheduled to Interview')"> Interview</v-tab>
-          </v-tabs>
-
-          <template slot="action">
-            <v-btn>Add Employee</v-btn>
-          </template>
-        </FilterList>
-        
+      </router-view>
     </v-container>
 
 </template>
 
-
 <script>
-import FilterList from '@/components/FilterList'
-import axios from 'axios'
-    export default {
-      components:{
-        FilterList
-      },
-    data () {
-      return {
-        search: '',
-        headers: [
-          {
-            text: 'Name',
-            align: 'start',
-            sortable: false,
-            value: 'name',
-          },
-          { text: 'Email', value: 'email' },
-          { text: 'Position', value: 'position' },
-          { text: 'Status', value: 'status' },
-          { text: 'Iron (%)', value: 'iron' },
-        ],
-        desserts: [
-          
-        ],
-        copy: []
-      }
-    },
-    methods:{
-        filter(value){
-              let d = this.desserts;
-              var filtered  = d.filter((el)=>{
-                return el.status === value
-            })
-            this.copy = filtered
-        },
 
+export default {
+  data(){
+    return{
+      loading:true
+    }
+  },
+  mounted(){
+     setTimeout(()=>{
+        this.loading = false
+      },1000)
+  },
+
+
+    methods:{
+       
         fetch()
         {
-          axios.get('http://localhost:3000/newApplicants').then(({ data })=>{
-            // console.log(data)
-            this.desserts = data
-            this.copy = this.desserts;
-          })
+            axios.get('http://localhost:3000/newApplicants').then(({ data })=>{
+              console.log(data)
+              this.desserts = data
+              this.copy = this.desserts;
+            })
         },
+
         reset(){
           this.copy = this.desserts
         }
     },
-    mounted()
-    {
-      this.fetch()
+
+    watch:{
+        loading(value, oldval)
+        {
+          this.copy = this.applicants
+        }
     },
-    beforeMount(){
-        
 
-        
-    }
   }
+
 </script>
-
-<style scoped>
-
-</style>

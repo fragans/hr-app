@@ -1,83 +1,33 @@
 <template>
-    
-    <v-container v-if="dayoff.length > 0">
-      
-        <FilterList :search="search" :headers="headers" :items="copy" > 
-          <h1 slot="title">Employee</h1>
 
-          <v-tabs slot="filter" show-arrows>
-            <v-tab @click="reset">All</v-tab>
-            <v-tab @click="filter('Approved')">Approved</v-tab>
-            <v-tab @click="filter('Pending')">Pending</v-tab>
-            <v-tab @click="filter('Rejected')">Rejected</v-tab>
-          </v-tabs>
+    <v-container>
+      <v-row>
+        <v-skeleton-loader :loading="loading" height="50" width="250" max-width="300" type="list-item-avatar" >
+          <v-card-title>
+          <h1>{{$route.name}}</h1>
+          </v-card-title>
+        </v-skeleton-loader>
+      </v-row>
 
-          <template slot="action">
-            <v-btn>    <router-link to="/offwork/add">new req</router-link></v-btn>
-          </template>
-        </FilterList>
-        
+      <router-view></router-view>
     </v-container>
 
 </template>
 
 
 <script>
-import FilterList from '@/components/FilterList'
-import axios from 'axios'
-import { mapGetters } from 'vuex'
-    export default {
-      components:{
-        FilterList
-      },
-    data () {
-      return {
-        search: '',
-        headers: [
-          {
-            text: 'EmployeeID',
-            align: 'start',
-            sortable: false,
-            value: 'emp_id',
-          },
-          { text: 'Date', value: 'date' },
-          { text: 'Status', value: 'status' },
-          
-        ],
-        copy: []
-      }
-    },
-    computed:{
-      ...mapGetters({
-        dayoff : 'dayoff/day',
-      })
-    },
-    methods:{
-        filter(value){
-              let d = this.dayoff;
-              var filtered  = d.filter((el)=>{
-                return el.status === value
-            })
-            this.copy = filtered
-        },
-
-        reset(){
-          this.copy = this.persons
-        }
-    },
-    created(){
-      this.$store.dispatch('dayoff/fetch')
-        .then(()=>{
-          this.copy = this.dayoff
-        }
-      )
-    },
-    beforeMount(){
-        
-
-        
+export default{
+  data(){
+    return{
+      loading:true
     }
+  },
+  mounted(){
+    setTimeout(()=>{
+        this.loading = false
+      },1000)
   }
+}
 </script>
 
 <style scoped>

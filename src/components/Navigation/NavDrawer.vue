@@ -106,7 +106,7 @@ import { mapGetters } from 'vuex'
         },
         methods:{
           logout(){
-            this.$router.push({ name: 'Login' })
+            this.$router.push({ name: 'Welcome' })
           }
         },
         created(){

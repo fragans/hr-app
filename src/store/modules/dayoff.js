@@ -52,8 +52,12 @@ const actions = {
             })
         })
     },
-    fetchTodayOff({commit},payload){
-        return axios.get(`http://localhost:3000/outtoday?date_start=${payload}`)
+    fetchTodayOff({commit}){
+        let date = new Date().toLocaleString('id').substr(0,10).split("/").join("-")
+        let [day,month,year] = date.split('-')
+        const nowDate = (year.split(" ").join("")+'-'+month.padStart(2, '0')+'-'+day.padStart(2, '0'));
+
+        return axios.get(`http://localhost:3000/outtoday?date_start=${nowDate}`)
         .then(({data})=>{
             commit('setTodayOff',data)
         })

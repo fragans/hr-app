@@ -17,7 +17,7 @@
             <router-link :to="item" class="flex" >
               <template @click.stop="mini = !mini">
               <v-list-item-icon class="py-4">
-                <v-badge bordered bottom color="red accent-4" dot v-if="leaveReq>0 && item.name === 'Leave Request'">
+                <v-badge bordered bottom color="red accent-4" dot v-if="leaveReq.length >0 && item.path === '/offwork'">
                   <v-icon>mdi-{{ item.icon }}</v-icon>
                 </v-badge>
                 <v-icon v-else>mdi-{{ item.icon }}</v-icon>
@@ -27,10 +27,9 @@
                 <v-list-item-title >
                   
                   {{ item.meta.title }}
-                  <template v-if="(item.name === 'Leave Request')" >
+                  <template v-if="(item.path === '/offwork')" >
                     <span class="bg-red-thunderbird-400 text-white px-1 ml-2">
-
-                    {{leaveReq}}
+                    {{leaveReq.length}}
                     </span>
                   </template>
                 </v-list-item-title>
@@ -77,6 +76,7 @@
 
 <script>
 import axios from 'axios'
+import { mapGetters } from 'vuex'
     export default {
         data(){
             return {
@@ -87,8 +87,12 @@ import axios from 'axios'
               dialog: false,
               dark:false,
               setTheme:false,
-              leaveReq: 0,
             }
+        },
+        computed:{
+          ...mapGetters({
+            leaveReq: 'dayoff/todayoff'
+          })
         },
         watch:{
           setTheme(val,OldVal) {
@@ -103,14 +107,6 @@ import axios from 'axios'
         methods:{
           logout(){
             this.$router.push({ name: 'Login' })
-          },
-          fetchLeaveReq(){
-            axios.get('http://localhost:3000/outtoday').then(({ data })=>{
-            // console.log(data.length)
-            this.leaveReq = data.length
-            // this.desserts = data
-            // this.copy = this.desserts;
-          })
           }
         },
         created(){
@@ -118,12 +114,12 @@ import axios from 'axios'
           this.items = this.$router.options.routes.filter((el)=>{
             return el.meta.nav
           })
-          this.fetchLeaveReq()
-
+          this.$store.dispatch('dayoff/fetchTodayOff')
         },
         mounted(){
           let theme = localStorage.getItem('dark')
           if (theme) this.setTheme = true
+          
         }
         
     }

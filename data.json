@@ -758,11 +758,11 @@
       "status": "Rejected"
     },
     {
-      "id": "3",
       "emp_id": "5",
       "date_start": "2020-03-27",
       "date_end": "2020-03-27",
-      "status": "Approved"
+      "status": "Rejected",
+      "id": "3"
     },
     {
       "emp_id": "1",
@@ -784,6 +784,13 @@
       "date_start": "2020-03-25",
       "date_end": "2020-03-26",
       "id": "6"
+    },
+    {
+      "emp_id": "17",
+      "status": "Pending",
+      "date_start": "2020-03-26",
+      "date_end": "2020-03-27",
+      "id": "7"
     }
   ],
   "todaypresent": [

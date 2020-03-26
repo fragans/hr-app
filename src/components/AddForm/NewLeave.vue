@@ -60,7 +60,7 @@
                 <v-btn color="success" class="text-white" @click="redirect">Ok</v-btn>
               </v-card-actions>
             </v-card>
-          </v-dialog>
+        </v-dialog>
 
             
         </v-row>

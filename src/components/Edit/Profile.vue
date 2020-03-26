@@ -35,7 +35,7 @@
 
         </v-col>
         <v-col col="3"> 
-          <imgUpload :image="data.photo" />
+          <imgUpload :photo="data.photo" />
             
         </v-col>
         

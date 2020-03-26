@@ -7,7 +7,8 @@ const state = {
     person: {},
     male: [],
     female: [],
-    loading: true
+    loading: true,
+    photo:''
 
 }
 
@@ -16,7 +17,6 @@ const getters = {
     {
         return state.persons
     },
-
 
     person(state)
     {
@@ -36,6 +36,9 @@ const getters = {
     female(state)
     {
         return state.female
+    },
+    photo(state){
+        return state.photo
     }
 }
 
@@ -91,14 +94,17 @@ const actions = {
             });
             return axios.post('http://localhost:3000/employees',
             {
+                id:String(Math.max(...ids)+1),
                 name: payload.name,
                 email: payload.email,
                 phone: payload.phone,
+                gender: payload.gender,
+                birth_date: payload.birth_date,
+                birth_place: payload.birth_place,
                 position: payload.position,
                 division: payload.division,
                 photo: payload.photo,
                 status: "Probation",
-                gender: payload.gender,
                 address: payload.address,
                 date: payload.date,
                 emergency_contact: [
@@ -108,7 +114,7 @@ const actions = {
                     }
                 ],
                 // id:(state.persons.length+1 )
-                id:String(Math.max(...ids)+1)               
+                            
             }
             )
             .then(response=>{
@@ -144,7 +150,6 @@ const actions = {
         then(response=>{
             console.log(response)
         })
-        console.log(payload)
     },
 
     fetchById({commit},payload){
@@ -177,11 +182,14 @@ const mutations = {
         state.person.name = payload
     },
 
-    setEmployee(state,payload){
+    setEmployee(state,payload)
+    {
         state.person= payload
     },
-    setPersonPhoto(state,payload){
-        state.person.photo = payload
+
+    setPersonPhoto(state,payload)
+    {
+        state.photo = payload
     },
 
     setLoading(state)

@@ -112,7 +112,7 @@ const routes = [{
                 import('../components/Parent/AllApplicants.vue')
             },
             {
-                name:'Edit Applicant Status',
+                name:'Edit Applicant',
                 path: 'edit/:id',
                 icon:'mdi-run-fast',
                 meta:{
@@ -139,7 +139,6 @@ const routes = [{
         path: '/offwork',
         icon:'run-fast',
         meta: {
-            requiresAuth: true,
             nav: true,
             title:'Leave Request'
             
@@ -152,6 +151,7 @@ const routes = [{
                 path: '',
                 icon:'mdi-run-fast'      ,
                 meta:{
+                    requiresAuth: true,
                     title:'Leave Request',
                     icon:'mdi-run-fast'      ,
                 },
@@ -163,7 +163,8 @@ const routes = [{
                 path: 'edit/:id',
                 icon:'mdi-run-fast'      ,
                 meta:{
-                    title:'asue',
+                    requiresAuth: true,
+                    title:'Edit Leave Status',
                     icon:'mdi-run-fast'      ,
                 },
                 component: () =>
@@ -173,6 +174,7 @@ const routes = [{
                 name: 'New Leave Request',
                 path: 'add',
                 meta: {
+                    requiresAuth: false,
                     title: 'Leave Request',
                     icon: 'run-fast',
                 },
@@ -198,6 +200,17 @@ const routes = [{
     },
     {
         
+        path: '/welcome',
+        name: 'Welcome',
+        icon: 'lock',
+        meta: {
+            title: 'Welcome'
+        },
+        component: () =>
+            import ('../views/Welcome.vue')
+    },
+    {
+        
         path: '/image',
         name: 'Image',
         icon: 'lock',
@@ -211,7 +224,7 @@ const routes = [{
         
         path: '/recruit',
         name: 'Apply Job',
-        icon: 'lock',
+        icon: 'account-tie',
         meta: {
             title: 'Apply for Job'
         },
@@ -233,7 +246,7 @@ const routes = [{
         
         path: '/clockout',
         name: 'Employee Clock Out',
-        icon: 'calendar-check',
+        icon: 'calendar-remove',
         meta: {
             title: 'Employee Attendance'
         },
@@ -254,10 +267,14 @@ router.beforeEach((to, from, next) => {
         store.dispatch('user/checkLogin')
         if (!store.state.user.is_login) {
             next({
-                path: '/login',
+                // path: '/login',
+                // query: { redirect: to.fullPath },
+                // component: () =>
+                //     import ('../views/Login.vue')
+                path: '/welcome',
                 query: { redirect: to.fullPath },
                 component: () =>
-                    import ('../views/Login.vue')
+                    import ('../views/Welcome.vue')
             })
         } else {
             next()

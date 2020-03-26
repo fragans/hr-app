@@ -1,13 +1,7 @@
 <template>
 <v-container>
     <v-row class="title">
-        <v-col col="6" class="flex justify-center items-center uppercase">
-            <v-icon left>mdi-card-bulleted</v-icon>
-            <h1>
-                {{$route.name}} 
-            </h1>
-            
-        </v-col>
+
         <v-col col="3">
             <v-file-input 
             v-model="files" 
@@ -33,9 +27,9 @@
     <v-card>
 
         <v-col col="12">
-            <v-tabs v-model="tab" background-color="transparent" grow >
+            <v-tabs v-model="tab" background-color="transparent" grow>
 
-                <v-tab v-for="item in items" :key="item.name" color="success" show-arrows>
+                <v-tab v-for="item in items" :key="item.name" color="success" >
                     <v-icon left> mdi-{{item.icon}}</v-icon>
                     {{item.name}}
                 </v-tab>
@@ -79,7 +73,7 @@ import {mapGetters} from 'vuex'
                     {name:'Occupation',icon:'briefcase'},
                     {name:'Address',icon:'mailbox-open-outline'},
                     {name:'Emergency',icon:'alert-box-outline'},
-                    // {name:'CV',icon:'book-account'},
+                    // {name:'CV',icon:'file-document-outline'},
                 ],
                 data:'',
                 files:[],
@@ -114,20 +108,22 @@ import {mapGetters} from 'vuex'
                 return () => import('@/components/' + this.currentTab)
             },
 
-            computedProp()
-            {
-                console.log('asdasdas')
-                if(this.$route.name === 'Apply Job')
-                {
+            computedProp(){
+
+                if(this.$route.name === 'Apply Job'){
                     console.log('apply ui')
                     return { data : this.employee }
                 }
-                else if(this.$route.name === 'New Applicant')
-                {
+                else if(this.$route.name === 'New Applicant'){
                     console.log('new appl')
                     return { data : this.employee }
                 }
-            }
+            },
+
+            ...mapGetters({
+                photo:'employees/photo'
+            })
+
         },
         watch:{
             tab:function(val, OldVal) {
@@ -137,7 +133,7 @@ import {mapGetters} from 'vuex'
         methods:{
             insert()
             {
-                console.log(this.employee)
+                this.employee.photo = this.photo
                 this.$store.dispatch('applicants/insert',this.employee)
             },
             onSelect(e){
@@ -173,12 +169,10 @@ import {mapGetters} from 'vuex'
             },
         },
         created(){
-            let now = new Date().toISOString().substr(0, 10)
-            // console.log('now='+now);
-            const [year, month, day] = now.split('-')
-
-            
-            this.employee.date = (year+'-'+month+'-'+day)
+            let date = new Date().toLocaleString('id').substr(0,10).split("/").join("-")
+            let [day,month,year] = date.split('-')
+            const nowDate = (year.split(" ").join("")+'-'+month.padStart(2, '0')+'-'+day.padStart(2, '0'));
+            this.employee.date = nowDate
         }
     }
 </script>

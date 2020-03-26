@@ -1,37 +1,34 @@
 <template>
     <v-container>
         <v-row class="title">
-        <v-col col="6" class="flex justify-center items-center uppercase">
-            <v-icon left>mdi-card-bulleted</v-icon>
-            <h1>
-                {{$route.name}}
-            </h1>
-            
-        </v-col>
-        <v-col col="3">
-            <v-btn class="mr-4" color="success" @click="updateApplicant">
-                <v-icon left>mdi-content-save</v-icon>    
-                save
-            </v-btn>
+            <v-col class="text-gray-450">
+                Entry date: {{employee.date}}
+            </v-col>
+            <v-col col="3" class="justify-end flex">
+                <v-btn class="mr-4" color="success" @click="updateApplicant">
+                    <v-icon left>mdi-content-save</v-icon>    
+                    save
+                </v-btn>
 
-            <v-menu>
-                <template v-slot:activator="{ on}">
-                    <v-btn color="primary" dark v-on="on">
-                        <v-icon left>mdi-update</v-icon> Status
-                    </v-btn>
-                </template>
-                <v-list>
-                    <v-list-item v-for="(item, index) in status" :key="index" @click="updateStatus(index)">
-                        <v-list-item-title>{{ item.title }}</v-list-item-title>
-                    </v-list-item>
-                </v-list>
-            </v-menu>
+                <v-menu>
+                    <template v-slot:activator="{ on}">
+                        <v-btn color="primary" dark v-on="on">
+                            <v-icon left>mdi-update</v-icon> Status
+                        </v-btn>
+                    </template>
+                    <v-list>
+                        <v-list-item v-for="(item, index) in status" :key="index" @click="updateStatus(index)">
+                            <v-list-item-title>{{ item.title }}</v-list-item-title>
+                        </v-list-item>
+                    </v-list>
+                </v-menu>
 
-            <v-btn color="error" @click="dialog = true" class="ml-4">
-                <v-icon>mdi-trash-can-outline</v-icon>
-            </v-btn>
-        </v-col>
+                <v-btn color="error" @click="dialog = true" class="ml-4">
+                    <v-icon>mdi-trash-can-outline</v-icon>
+                </v-btn>
+            </v-col>
         </v-row>
+
         <v-divider/>
 
         <v-card>
@@ -115,8 +112,6 @@ import axios from 'axios'
                 // employee: 'employees/person'
                 // applicant: 'applicants/apply'
                 employee: 'applicants/apply',
-
-                dataEmployee: 'employees/persons'
             }),
 
             computedProp()
@@ -129,7 +124,7 @@ import axios from 'axios'
                 {
                     return { data : this.employee }
                 }
-                else if(this.$route.name === 'Edit Applicant Status')
+                else if(this.$route.name === 'Edit Applicant')
                 {
                     return { data : this.employee }
                 }
@@ -151,6 +146,7 @@ import axios from 'axios'
             },
             updateApplicant()
             {
+                console.log(this.employee);
                 this.$store.dispatch('applicants/update',this.employee)
             },
             remove(){
@@ -162,6 +158,7 @@ import axios from 'axios'
             },
             updateStatus(index)
             {
+                console.log(this.employee.emergency_contact)
                 let payload= {
                     id: this.$route.params.id,
                     name: this.employee.name,
@@ -175,20 +172,20 @@ import axios from 'axios'
                     status: this.status[index].title,
                     gender: this.employee.gender,
                     address: this.employee.address,
+                    cv: this.employee.cv,
                     emergency_contact: [
                         {
-                        name: this.employee.emergency_contact[0].name,
-                        phone: this.employee.emergency_contact[0].phone
+                            name: this.employee.emergency_contact[0].name,
+                            phone: this.employee.emergency_contact[0].phone
                         }
-                    ],
-                    id_employee: this.dataEmployee.length
+                    ]
                 }
-                // console.log(this.status[index].title)
+
                 if(index == 3){
                     this.makeEmployee(payload);
                     return
                 }
-                this.$store.dispatch('applicants/updateStatusApplicant', payload)
+                this.$store.dispatch('applicants/update', payload)
             },
             makeEmployee(payload){
                 payload.status = 'Probation';

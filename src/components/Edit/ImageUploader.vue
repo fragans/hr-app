@@ -1,5 +1,5 @@
 <template>
-<v-content class="">
+<v-col class="">
     
         <v-row class="border border-gray-100">
             <v-img :src="showImg" aspect-ratio="1" ref="img" />
@@ -12,7 +12,7 @@
                 filled 
                 prepend-icon="mdi-account-box-outline" 
                 @change="onSelect" 
-                accept="image/png, image/jpeg, image/bmp" 
+                accept="image/*" 
                 show-size
                 >
             </v-file-input>   
@@ -33,14 +33,14 @@
     </v-dialog>
 
 
-</v-content>
+</v-col>
     
     
 </template>
 
 <script>
     export default {
-        props:['image'],
+        props:['photo'],
         
         
         data(){
@@ -100,14 +100,14 @@
             },
             updateImage(){
                 this.$store.commit('employees/setPersonPhoto', this.imgConverted)
-                this.image = this.imgConverted
+                // this.photo = this.imgConverted
             }
         }
         ,mounted(){
             this.$nextTick(()=>{
-                console.log(this.image != '')
-                if(this.image != ''){
-                this.decodeText(this.image)
+                console.log(this.photo)
+                if(this.photo != ''){
+                    this.decodeText(this.photo)
                 }
             }
                 

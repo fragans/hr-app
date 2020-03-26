@@ -203,7 +203,7 @@ export default {
     }
   },
   mounted(){
-    this.$store.dispatch('applicants/fetch')
+    this.$store.dispatch('applicants/fetchNewest')
     this.$store.dispatch('holidays/fetch')
     .then(()=>{
       this.filterHolidays();

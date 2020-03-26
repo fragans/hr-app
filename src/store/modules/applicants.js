@@ -99,7 +99,12 @@ const actions = {
             console.log(response)
         })
     },
-
+    fetchNewest({commit}){
+        return axios.get(`http://localhost:3000/newApplicants?_sort=date&_order=desc`)
+        .then(({data})=>{
+            commit('setApplies',data);
+        })
+    },
     fetchById({commit},payload){
         return axios.get(`http://localhost:3000/newApplicants/${payload}`)
         .then(({ data })=>{

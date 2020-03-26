@@ -119,11 +119,11 @@ import axios from 'axios'
             return el.meta.nav
           })
           this.fetchLeaveReq()
-         
-          
-          
-          // if (index !== -1) array.splice(index, 1);
 
+        },
+        mounted(){
+          let theme = localStorage.getItem('dark')
+          if (theme) this.setTheme = true
         }
         
     }

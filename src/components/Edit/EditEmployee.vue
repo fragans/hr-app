@@ -103,6 +103,7 @@ import {mapGetters} from 'vuex'
                 loading:true,   
                 dialog:false,
                 dialogText: '',
+                dialogAction:'',
                 status:['Permanent','Probation','Contract']
                 
             }
